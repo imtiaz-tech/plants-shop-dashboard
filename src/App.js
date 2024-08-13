@@ -1,36 +1,32 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Switch from 'react-router-dom';
-import withRouter  from 'react-router-dom';
-import AddModal from './components/common/AddModal';
-import Sidebar from './components/common/Sidebar';
+import React, { useEffect } from "react";
+import AddModal from "./components/common/AddModal";
+import Sidebar from "./components/common/Sidebar";
 import AuthIndex from "./screens/AuthIndex";
-import MainIndex from './screens/MainIndex';
+import MainIndex from "./screens/MainIndex";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function App(props) {
-  const activekey = () => {
-    var res = window.location.pathname
-    var baseUrl = process.env.PUBLIC_URL
-    baseUrl = baseUrl.split("/");
-    res = res.split("/");
-    res = res.length > 0 ? res[baseUrl.length] : "/";
-    res = res ? "/" + res : "/";;
-    const activeKey1 = res;
-    return activeKey1
-  }
-  if (activekey() === '/sign-in' || activekey() === '/sign-up' || activekey() === '/reset-password' || activekey() === '/verification' || activekey() === '/page-404') {
-    return (
-      <div id="ebazar-layout" className='theme-blue'>
-        <AuthIndex />
-      </div>
-    );
-  }
-  return (
-    <div id="ebazar-layout" className='theme-blue'>
-      <Sidebar activekey={activekey()} history={props.history} />
-      <AddModal />
-        <MainIndex activekey={activekey()} />
+  const navigate = useNavigate();
+  const auth = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (auth.token) {
+      navigate("/");
+    } else {
+      navigate("/sign-in");
+    }
+  }, [auth.token]);
+
+  return auth.token ? (
+    <div id="ebazar-layout" className="theme-blue">
+      <Sidebar/>
+      <MainIndex />
     </div>
-  )
+  ) : (
+    <div id="ebazar-layout" className="theme-blue">
+      <AuthIndex />
+    </div>
+  );
 }
 export default App;

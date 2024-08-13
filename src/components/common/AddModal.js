@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
-import { onChangeDarkMode, Onopenmodalsetting, onChangeHighcontrast, OnchangeRTLmode, OnGradientColor } from '../../Redux/Actions/Action';
+import { onChangeDarkMode, Onopenmodalsetting, onChangeHighcontrast, OnchangeRTLmode, OnGradientColor } from '../../old-Redux/Actions/Action';
 import { connect } from 'react-redux';
 import { SketchPicker } from "react-color";
 
 function AddModal(props) {
-    const { darkMode, openmodal, highcontrast, rtlmode } = props.Mainreducer
+    const {} = props.Mainreducer ?? {};
 
     const [arth, setArth] = useState(false);
     const [oncollapse, setOncollapse] = useState(false);
@@ -86,7 +86,7 @@ function AddModal(props) {
     }
 
     return (
-        <Modal className="modal fade right " id="Settingmodal" show={openmodal} onHide={() => { props.Onopenmodalsetting(false) }}>
+        <Modal className="modal fade right " id="Settingmodal"/* show={openmodal} */onHide={() => { props.Onopenmodalsetting(false) }}>
             <div className="modal-content" style={{}}>
                 <Modal.Header className="modal-header" closeButton>
                     <Modal.Title>
@@ -243,19 +243,19 @@ function AddModal(props) {
                         <ul className="list-group list-unstyled mb-0 mt-1">
                             <li className="list-group-item d-flex align-items-center py-1 px-2">
                                 <div className="form-check form-switch theme-switch mb-0">
-                                    <input className="form-check-input" type="checkbox" id="theme-switch" checked={darkMode === 'dark'} onChange={() => { props.onChangeDarkMode(darkMode === 'dark' ? 'light' : 'dark') }} />
+                                    <input className="form-check-input" type="checkbox" id="theme-switch"/* checked={darkMode === 'dark'} */onChange={() => { /*props.onChangeDarkMode(darkMode === 'dark' ? 'light' : 'dark') */}} />
                                     <label className="form-check-label" htmlFor="theme-switch">Enable Dark Mode!</label>
                                 </div>
                             </li>
                             <li className="list-group-item d-flex align-items-center py-1 px-2">
                                 <div className="form-check form-switch theme-high-contrast mb-0">
-                                    <input className="form-check-input" type="checkbox" id="theme-high-contrast" checked={highcontrast === 'high-contrast'} onChange={() => { props.onChangeHighcontrast(highcontrast === 'high-contrast' ? 'light' : 'high-contrast') }} />
+                                    <input className="form-check-input" type="checkbox" id="theme-high-contrast"/* checked={highcontrast === 'high-contrast'} */onChange={() => {/* props.onChangeHighcontrast(highcontrast === 'high-contrast' ? 'light' : 'high-contrast') */}} />
                                     <label className="form-check-label" htmlFor="theme-high-contrast">Enable High Contrast</label>
                                 </div>
                             </li>
                             <li className="list-group-item d-flex align-items-center py-1 px-2">
                                 <div className="form-check form-switch theme-rtl mb-0">
-                                    <input className="form-check-input" type="checkbox" id="theme-rtl" checked={document.body.classList.contains("rtl_mode")} onChange={() => { props.OnchangeRTLmode(rtlmode === 'rtl_mode' ? true : false) }} />
+                                    <input className="form-check-input" type="checkbox" id="theme-rtl" checked={document.body.classList.contains("")} onChange={() => {/* props.OnchangeRTLmode(rtlmode === 'rtl_mode' ? true : false) */}} />
                                     <label className="form-check-label" htmlFor="theme-rtl">Enable RTL Mode!</label>
                                 </div>
                             </li>

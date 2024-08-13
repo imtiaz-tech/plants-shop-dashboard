@@ -1,10 +1,10 @@
 import React from 'react';
 import { ImageTableData } from '../../Data/ProductAddData';
 import { connect } from 'react-redux';
-import { OnchangeAddimage } from '../../../Redux/Actions/Action'
+import { OnchangeAddimage } from '../../../old-Redux/Actions/Action'
 
 function Images(props) {
-    const { addimage } = props.Mainreducer
+    const { addimage } = props.Mainreducer ?? {}
 
     return (<>
         <div className="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
