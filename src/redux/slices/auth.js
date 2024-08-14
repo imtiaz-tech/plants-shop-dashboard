@@ -1,12 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios from "../../config/axios";
 
 export const signin = createAsyncThunk("auth/signin", async (data) => {
   try {
-    const res = await axios.post(
-      "http://localhost:5400/api/v1/auth/signin",
-      data
-    );
+    const res = await axios.post("/auth/signin", data);
     const response = await res.data;
     return response;
   } catch (error) {
@@ -45,6 +42,6 @@ const adminAuthSlice = createSlice({
   },
 });
 
-export const { logout } = adminAuthSlice.actions
+export const { logout } = adminAuthSlice.actions;
 
 export default adminAuthSlice.reducer;

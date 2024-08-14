@@ -1,20 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios from "../../config/axios";
 
 export const addCategory = createAsyncThunk(
   "products/addCategory",
   async (catData, { getState }) => {
     try {
       const { token } = getState().auth;
-      const res = await axios.post(
-        "http://localhost:5400/api/v1/products/add-category",
-        catData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await axios.post("/products/add-category", catData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const data = await res.data;
       return data;
     } catch (error) {
