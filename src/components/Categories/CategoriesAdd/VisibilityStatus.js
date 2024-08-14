@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-function VisibilityStatus() {
-    const [supplyopen, setSupplyopen] = useState(false)
+function VisibilityStatus(props) {
+    const {status, setStatus } = props;
     return (
         <>
             <div className="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
@@ -9,9 +9,9 @@ function VisibilityStatus() {
             </div>
             <div className="card-body">
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" name="couponsstatus" checked={!supplyopen}  
+                    <input className="form-check-input" type="radio" name="couponsstatus" checked={!status}  
                         onChange={(val) => {
-                            setSupplyopen(false)
+                            setStatus(false)
                         }}/>
                    
                     <label className="form-check-label">
@@ -19,21 +19,12 @@ function VisibilityStatus() {
                     </label>
                 </div>
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" name="couponsstatus" checked={supplyopen} 
+                    <input className="form-check-input" type="radio" name="couponsstatus" checked={status} 
                         onChange={(val) => {
-                            setSupplyopen(true)
+                            setStatus(true)
                         }} />
                     <label className="form-check-label">
-                        Scheduled
-                    </label>
-                </div>
-                <div className="form-check">
-                    <input className="form-check-input" type="radio" name="couponsstatus" checked={supplyopen} 
-                        onChange={(val) => {
-                            setSupplyopen(true)
-                        }}/>
-                    <label className="form-check-label">
-                        Hidden
+                    UnPublished
                     </label>
                 </div>
             </div>
