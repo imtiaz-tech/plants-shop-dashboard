@@ -19,12 +19,13 @@ const persistConfig = {
   storage,
 };
 
-const rootReducer = combineReducers({ auth: authReducer, products: productsReducer });
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, authReducer);
+
+const rootReducer = combineReducers({ auth: persistedReducer, products: productsReducer });
 
 const store = configureStore({
   devTools: process.env.NODE_ENV !== "production",
-  reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

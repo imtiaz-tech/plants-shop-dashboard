@@ -9,6 +9,7 @@ function CategoriesAdd() {
   const [name, setName] = useState("");
   const [status, setStatus] = useState(true)
   const dispatch = useDispatch();
+  
   const saveCategory = (event) => {
     event.preventDefault();
     const data = { name,status };
