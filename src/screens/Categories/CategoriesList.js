@@ -4,19 +4,19 @@ import PageHeader1 from "../../components/common/PageHeader1";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../../redux/slices/products";
 import moment from "moment";
-
 import ConfirmationModal from "../../components/Modals/ConfirmationModal";
 
 function CategoriesList() {
+  
+  
+
   const dispatch = useDispatch();
   const { categories, isloading } = useSelector((state) => state.products || {});
-  console.log("🚀 ~ CategoriesList ~ categories:", categories);
 
   const [isModal, setIsModal] = useState(false);
 
   useEffect(() => {
     dispatch(getCategories());
-    console.log("🚀 ~ useEffect ~ getCategories:", getCategories);
   }, []);
 
   return isloading ? (
@@ -115,7 +115,7 @@ function CategoriesList() {
                                 </td>
                                 <td className=" dt-body-right">
                                   <div className="btn-group" role="group" aria-label="Basic outlined example">
-                                    <Link to="categories-edit" className="btn btn-outline-secondary">
+                                    <Link to={`/categories-edit/${category._id}`} className="btn btn-outline-secondary">
                                       <i className="icofont-edit text-success"></i>
                                     </Link>
                                     <button

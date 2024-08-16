@@ -1,20 +1,21 @@
 import React from "react";
-import VisibilityStatus from "../../components/Categories/CategoriesAdd/VisibilityStatus";
-import BasicInformation from "../../components/Categories/CategoriesAdd/BasicInformation";
+import VisibilityStatus from "../../components/Categories/VisibilityStatus";
+import BasicInformation from "../../components/Categories/BasicInformation";
 import { useDispatch } from "react-redux";
 import { addCategory } from "../../redux/slices/products";
 import { useState } from "react";
 
 function CategoriesAdd() {
-  const [name, setName] = useState("");
-  const [status, setStatus] = useState(true)
   const dispatch = useDispatch();
   
+  const [name, setName] = useState("");
+  const [status, setStatus] = useState(true);
   const saveCategory = (event) => {
     event.preventDefault();
-    const data = { name,status };
+    const data = { name, status };
     dispatch(addCategory(data));
   };
+
   return (
     <div className="container-xxl">
       <div className="row align-items-center">

@@ -56,8 +56,8 @@ import Calendar from "./App/Calendar";
 import StaterPage from "./Stater Page/StaterPage";
 import Documentation from "./Documentation/Documentation";
 import Changelog from "./Changelog/Changelog";
-import CategoriesEdit from "./Categories/CategoriesEdit";
 import CategoriesAdd from "./Categories/CategoriesAdd";
+import CategoriesEdit from "./Categories/CategoriesEdit";
 import StoreLocation from "./StoreLocation/Storelocation";
 import Help from "./Help/Help";
 import SimpleInvoice from "../components/Accounts/Invoice/SimpleInvoice";
@@ -78,7 +78,7 @@ function MainIndex() {
           <Route path="/shopping-cart" element={<ShoppingCart />} />
           <Route path="/check-out" element={<CheckOut />} />
           <Route path="/categories-list" element={<CategoriesList />} />
-          <Route path="/categories-edit" element={<CategoriesEdit />} />
+          <Route path="/categories-edit/:id" element={<CategoriesEdit />} />
           <Route path="/categories-add" element={<CategoriesAdd />} />
           <Route path="/order-list" element={<OrderList />} />
           <Route path="/order-detail" element={<OrderDetail />} />

@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
 
-export const addCategory = createAsyncThunk("products/addCategory", async (data, { getState }) => {
+export const addCategory = createAsyncThunk("products/add-category", async (data, { getState }) => {
   try {
     const { token } = getState().auth;
     const res = await axios.post("/products/add-category", data, {
@@ -15,7 +15,7 @@ export const addCategory = createAsyncThunk("products/addCategory", async (data,
   }
 });
 
-export const getCategories = createAsyncThunk("products/getCategories", async (data, { getState }) => {
+export const getCategories = createAsyncThunk("products/get-categories", async (data, { getState }) => {
   try {
     const { token } = getState().auth;
     const res = await axios.get("/products/get-categories", {
@@ -23,13 +23,41 @@ export const getCategories = createAsyncThunk("products/getCategories", async (d
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log("🚀 ~ getCategories ~ res:", res)
     return res.data;
   } catch (error) {
     return error.response.data;
   }
 });
 
+export const getSingleCategory = createAsyncThunk("product/get-single-category", async (data, { getState }) => {
+  try {
+    const { token } = getState().auth;
+    const res = await axios.get(`/products/get-single-category/${data}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return res.data;
+  } catch (error) {
+    return error.response.data;
+  }
+});
+export const updateSingleCategory = createAsyncThunk(
+  "products/update-single-category",
+  async (updata, { getState }) => {
+    try {
+      const { token } = getState().auth;
+      const res = await axios.patch(`/products/update-single-category/${updata.id}`, updata, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return res.data;
+    } catch (error) {
+      return error.response.data;
+    }
+  }
+);
 const initialState = {
   categories: [],
   isloading: false,
@@ -60,6 +88,28 @@ const productAuthSlice = createSlice({
       state.categories = action.payload.data;
     });
     builder.addCase(getCategories.rejected, (state, action) => {
+      state.isloading = false;
+      state.error = action.error.message;
+    });
+    builder.addCase(getSingleCategory.pending, (state) => {
+      state.isloading = true;
+    });
+    builder.addCase(getSingleCategory.fulfilled, (state, action) => {
+      state.isloading = false;
+      state.category = action.payload.data;
+    });
+    builder.addCase(getSingleCategory.rejected, (state, action) => {
+      state.isloading = false;
+      state.error = action.error.message;
+    });
+    builder.addCase(updateSingleCategory.pending, (state) => {
+      state.isloading = true;
+    });
+    builder.addCase(updateSingleCategory.fulfilled, (state, action) => {
+      state.isloading = false;
+      state.updateCategory = action.payload.data;
+    });
+    builder.addCase(updateSingleCategory.rejected, (state, action) => {
       state.isloading = false;
       state.error = action.error.message;
     });

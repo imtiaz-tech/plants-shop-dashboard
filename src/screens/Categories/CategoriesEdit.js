@@ -1,47 +1,68 @@
-import React from 'react';
-import PageHeader1 from '../../components/common/PageHeader1';
-import VisibilityStatus from '../../components/Categories/CategoriesEdit/VisibilityStatus';
-import PublicaSchedule from '../../components/Categories/CategoriesEdit/PublicaSchedule';
-import Categories from '../../components/Categories/CategoriesEdit/Categories';
-import CategoriesImage from '../../components/Categories/CategoriesEdit/CategoriesImage';
-import BasicInformation from '../../components/Categories/CategoriesEdit/BasicInformation';
-import CroppedImages from '../../components/Categories/CategoriesEdit/CroppedImages';
+import React, { useEffect } from "react";
+import VisibilityStatus from "../../components/Categories/VisibilityStatus";
+import BasicInformation from "../../components/Categories/BasicInformation";
+import { useDispatch, useSelector } from "react-redux";
+import { updateSingleCategory, getSingleCategory } from "../../redux/slices/products";
+import { useState } from "react";
+import { useParams,useNavigate } from "react-router-dom";
 
-function CategoriesEdit() {
-    return (
-        <div className="container-xxl">
-            <PageHeader1 pagetitle='Categories Edit' button={true} />
-            <div className="row g-3">
-                <div className="col-xl-4 col-lg-4">
-                    <div className="sticky-lg-top">
+function CategoriesAdd() {
+  const navigate=useNavigate();
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
+  const [status, setStatus] = useState(true);
+  let params = useParams();
+  const { id } = params;
+  const { category } = useSelector((state) => {
+    return state.products || {};
+  });
 
-                        <div className="card mb-3">
-                            <VisibilityStatus />
-                        </div>
+  useEffect(() => {
+    setName(category?.name);
+    setStatus(category?.status);
+  }, [category]);
 
-                        <div className="card mb-3">
-                            <PublicaSchedule />
-                        </div>
+  useEffect(() => {
+    dispatch(getSingleCategory(id));
+  }, [id]);
 
-                        <div className="card mb-3">
-                            <Categories />
-                        </div>
-                        <div className="card mb-3">
-                            <CategoriesImage />
-                        </div>
+  const saveUpdateCategory = (event) => {
+    const data = { id, name, status };
+    dispatch(updateSingleCategory(data));
+    navigate("/categories-list")
+  };
 
-                    </div>
-                </div>
-                <div className="col-xl-8 col-lg-8">
-                    <div className="card mb-3">
-                        <BasicInformation />
-                    </div>
-                    <div className="card">
-                        <CroppedImages />
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className="container-xxl">
+      <div className="row align-items-center">
+        <div className="border-0 mb-4">
+          <div className="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+            <h3 className="fw-bold mb-0">Edit Category</h3>
+            <button
+              type="submit"
+              className="btn btn-primary btn-set-task w-sm-100 text-uppercase px-5"
+              onClick={saveUpdateCategory}
+            >
+              Save
+            </button>
+          </div>
         </div>
-    )
+      </div>
+      <div className="row g-3">
+        <div className="col-xl-4 col-lg-4">
+          <div className="sticky-lg-top">
+            <div className="card mb-3">
+              <VisibilityStatus status={status} setStatus={setStatus} />
+            </div>
+          </div>
+        </div>
+        <div className="col-xl-8 col-lg-8">
+          <div className="card mb-3">
+            <BasicInformation name={name} setName={setName} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
-export default CategoriesEdit;
+export default CategoriesAdd;
