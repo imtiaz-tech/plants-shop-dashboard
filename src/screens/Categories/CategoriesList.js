@@ -2,19 +2,25 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PageHeader1 from "../../components/common/PageHeader1";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategories } from "../../redux/slices/products";
+import { getCategories,deleteSingleCategory } from "../../redux/slices/products";
 import moment from "moment";
 import ConfirmationModal from "../../components/Modals/ConfirmationModal";
 
 function CategoriesList() {
-  
-  
 
   const dispatch = useDispatch();
   const { categories, isloading } = useSelector((state) => state.products || {});
 
   const [isModal, setIsModal] = useState(false);
 
+  
+
+ const deleteCategory=(id)=>{
+  const confirm = window.confirm("Delete this ?");
+  if(confirm){
+    dispatch(deleteSingleCategory(id));
+  }
+ }
   useEffect(() => {
     dispatch(getCategories());
   }, []);
@@ -119,8 +125,8 @@ function CategoriesList() {
                                       <i className="icofont-edit text-success"></i>
                                     </Link>
                                     <button
-                                      onClick={() => {
-                                        setIsModal(true);
+                                      onClick={() => { 
+                                        deleteCategory(category._id)
                                       }}
                                       type="button"
                                       className="btn btn-outline-secondary deleterow"

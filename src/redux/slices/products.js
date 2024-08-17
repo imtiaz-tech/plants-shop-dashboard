@@ -58,6 +58,21 @@ export const updateSingleCategory = createAsyncThunk(
     }
   }
 );
+export const deleteSingleCategory=createAsyncThunk("products/delete-single-category",async(id,{ getState })=>{
+    try{
+    const {token}=getState().auth;
+    const res = await axios.delete(`/products/delete-single-category/${id}`,{
+        headers:{
+            Authorization:`Bearer ${token}`
+        }
+    });
+    console.log("🚀 ~ deleteSingleCategory ~ res:", res);
+    return res.data;
+    }catch(error){
+    return error.response.data;
+    }
+})
+
 const initialState = {
   categories: [],
   isloading: false,
@@ -113,6 +128,17 @@ const productAuthSlice = createSlice({
       state.isloading = false;
       state.error = action.error.message;
     });
+    builder.addCase(deleteSingleCategory.pending,(state)=>{
+        state.isloading=true;
+    });
+    builder.addCase(deleteSingleCategory.fulfilled,(state,action)=>{
+        state.isloading=false;
+        state.deletecategory=action.payload?.data;
+    });
+    builder.addCase(deleteSingleCategory.rejected,(state,action)=>{
+        state.isloading=false;
+        state.error=action.error.message;
+    })
   },
 });
 export default productAuthSlice.reducer;
