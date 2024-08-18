@@ -2,25 +2,21 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PageHeader1 from "../../components/common/PageHeader1";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategories,deleteSingleCategory } from "../../redux/slices/products";
+import { getCategories, deleteSingleCategory } from "../../redux/slices/products";
 import moment from "moment";
 import ConfirmationModal from "../../components/Modals/ConfirmationModal";
 
 function CategoriesList() {
-
   const dispatch = useDispatch();
   const { categories, isloading } = useSelector((state) => state.products || {});
 
   const [isModal, setIsModal] = useState(false);
-
-  
-
- const deleteCategory=(id)=>{
-  const confirm = window.confirm("Delete this ?");
-  if(confirm){
+  const[deleteId,setDeleteId] =useState("");
+  const deleteCategory = (id) => {
     dispatch(deleteSingleCategory(id));
-  }
- }
+    setIsModal(false);  
+  };
+
   useEffect(() => {
     dispatch(getCategories());
   }, []);
@@ -125,8 +121,9 @@ function CategoriesList() {
                                       <i className="icofont-edit text-success"></i>
                                     </Link>
                                     <button
-                                      onClick={() => { 
-                                        deleteCategory(category._id)
+                                      onClick={() => {
+                                        setIsModal(true);
+                                        setDeleteId(category._id);
                                       }}
                                       type="button"
                                       className="btn btn-outline-secondary deleterow"
@@ -148,7 +145,7 @@ function CategoriesList() {
           </div>
         </div>
       </div>
-      <ConfirmationModal setIsModal={setIsModal} isModal={isModal} />
+      <ConfirmationModal setIsModal={setIsModal} isModal={isModal} deleteCategory={() => deleteCategory(deleteId)} />
     </div>
   );
 }
