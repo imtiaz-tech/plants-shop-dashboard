@@ -5,16 +5,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCategories, deleteSingleCategory } from "../../redux/slices/products";
 import moment from "moment";
 import ConfirmationModal from "../../components/Modals/ConfirmationModal";
+import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
 
 function CategoriesList() {
   const dispatch = useDispatch();
   const { categories, isloading } = useSelector((state) => state.products || {});
 
   const [isModal, setIsModal] = useState(false);
-  const[deleteId,setDeleteId] =useState("");
-  const deleteCategory = (id) => {
-    dispatch(deleteSingleCategory(id));
-    setIsModal(false);  
+  const [deleteId, setDeleteId] = useState("");
+
+  const deleteCategory = () => {
+    dispatch(deleteSingleCategory(deleteId));
+    setIsModal(false);
+  };
+
+  const onDeleteClick = (categoryId) => {
+    setIsModal(true);
+    setDeleteId(categoryId);
   };
 
   useEffect(() => {
@@ -22,7 +29,7 @@ function CategoriesList() {
   }, []);
 
   return isloading ? (
-    <p>Loading...</p>
+    <OverlaySpinner />
   ) : (
     <div className="body d-flex py-3">
       <div className="container-xxl">
@@ -122,8 +129,7 @@ function CategoriesList() {
                                     </Link>
                                     <button
                                       onClick={() => {
-                                        setIsModal(true);
-                                        setDeleteId(category._id);
+                                        onDeleteClick(category._id);
                                       }}
                                       type="button"
                                       className="btn btn-outline-secondary deleterow"
@@ -145,7 +151,7 @@ function CategoriesList() {
           </div>
         </div>
       </div>
-      <ConfirmationModal setIsModal={setIsModal} isModal={isModal} deleteCategory={() => deleteCategory(deleteId)} />
+      <ConfirmationModal setIsModal={setIsModal} isModal={isModal} deleteCategory={() => deleteCategory()} />
     </div>
   );
 }

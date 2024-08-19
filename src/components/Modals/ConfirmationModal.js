@@ -13,7 +13,7 @@ function ConfirmationModal(props) {
     >
       <Modal.Header>
         <h5 className="modal-title" id="staticBackdropLiveLabel">
-          Modal title
+          Are you sure?
         </h5>
         <button
           type="button"
@@ -26,8 +26,7 @@ function ConfirmationModal(props) {
 
       <Modal.Body>
         <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-          Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+          Are you sure you want to delete it?If you delete it changes cannot recovered again.
         </p>
       </Modal.Body>
 
