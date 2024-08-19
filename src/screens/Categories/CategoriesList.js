@@ -6,16 +6,42 @@ import { getCategories, deleteSingleCategory } from "../../redux/slices/products
 import moment from "moment";
 import ConfirmationModal from "../../components/Modals/ConfirmationModal";
 import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
+import Pagination from "../../components/Categories/Pagination";
 
 function CategoriesList() {
   const dispatch = useDispatch();
+
   const { categories, isloading } = useSelector((state) => state.products || {});
+  const { categoriesCount } = useSelector((state) => state.products || {});
 
   const [isModal, setIsModal] = useState(false);
   const [deleteId, setDeleteId] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(10);
+
+  const nPages = Math.ceil(categoriesCount / recordsPerPage);
+
+  const getCategoriesByPage = (pageNumber) => {
+    const data = {
+      currentPage: pageNumber,
+      recordsPerPage,
+    };
+    dispatch(getCategories(data));
+  };
+
+  useEffect(() => {
+    getCategoriesByPage(currentPage);
+  }, []);
+
+  const goToPage = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    getCategoriesByPage(pageNumber);
+  };
 
   const deleteCategory = () => {
-    dispatch(deleteSingleCategory(deleteId));
+    dispatch(deleteSingleCategory(deleteId)).then(() => {
+      getCategoriesByPage(currentPage);
+    });
     setIsModal(false);
   };
 
@@ -23,10 +49,6 @@ function CategoriesList() {
     setIsModal(true);
     setDeleteId(categoryId);
   };
-
-  useEffect(() => {
-    dispatch(getCategories());
-  }, []);
 
   return isloading ? (
     <OverlaySpinner />
@@ -142,6 +164,7 @@ function CategoriesList() {
                             ))}
                           </tbody>
                         </table>
+                        <Pagination nPages={nPages} currentPage={currentPage} goToPage={goToPage} />
                       </div>
                     </div>
                   </div>
@@ -151,7 +174,7 @@ function CategoriesList() {
           </div>
         </div>
       </div>
-      <ConfirmationModal setIsModal={setIsModal} isModal={isModal} deleteCategory={() => deleteCategory()} />
+      <ConfirmationModal setIsModal={setIsModal} isModal={isModal} deleteCategory={deleteCategory} />
     </div>
   );
 }

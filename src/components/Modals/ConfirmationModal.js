@@ -2,7 +2,7 @@ import React from "react";
 import { Modal } from "react-bootstrap";
 
 function ConfirmationModal(props) {
-  const { isModal, setIsModal ,deleteCategory} = props;
+  const { isModal, setIsModal, deleteCategory } = props;
   return (
     <Modal
       show={isModal}
@@ -25,9 +25,7 @@ function ConfirmationModal(props) {
       </Modal.Header>
 
       <Modal.Body>
-        <p>
-          Are you sure you want to delete it?If you delete it changes cannot recovered again.
-        </p>
+        <p>Are you sure you want to delete it? If you delete it changes cannot recovered again.</p>
       </Modal.Body>
 
       <Modal.Footer>

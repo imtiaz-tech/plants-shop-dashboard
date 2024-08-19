@@ -648,3 +648,11 @@ input[type="date"],input[type="time"]
     border: 1px solid var(--border-color);
     background-color: var(--card-color);
 }
+
+.pagination .active a {
+    color: white;
+}
+
+.pagination {
+    margin-top: 20px;
+}

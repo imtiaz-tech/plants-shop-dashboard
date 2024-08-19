@@ -18,7 +18,7 @@ export const addCategory = createAsyncThunk("products/add-category", async (data
 export const getCategories = createAsyncThunk("products/get-categories", async (data, { getState }) => {
   try {
     const { token } = getState().auth;
-    const res = await axios.get("/products/get-categories", {
+    const res = await axios.get(`/products/get-categories?perpage=${data.recordsPerPage}&pageno=${data.currentPage}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -58,20 +58,19 @@ export const updateSingleCategory = createAsyncThunk(
     }
   }
 );
-export const deleteSingleCategory=createAsyncThunk("products/delete-single-category",async(id,{ getState })=>{
-    try{
-    const {token}=getState().auth;
-    const res = await axios.delete(`/products/delete-single-category/${id}`,{
-        headers:{
-            Authorization:`Bearer ${token}`
-        }
+export const deleteSingleCategory = createAsyncThunk("products/delete-single-category", async (id, { getState }) => {
+  try {
+    const { token } = getState().auth;
+    const res = await axios.delete(`/products/delete-single-category/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
-    console.log("🚀 ~ deleteSingleCategory ~ res:", res);
     return res.data;
-    }catch(error){
+  } catch (error) {
     return error.response.data;
-    }
-})
+  }
+});
 
 const initialState = {
   categories: [],
@@ -101,6 +100,7 @@ const productAuthSlice = createSlice({
     builder.addCase(getCategories.fulfilled, (state, action) => {
       state.isloading = false;
       state.categories = action.payload.data;
+      state.categoriesCount = action.payload.count;
     });
     builder.addCase(getCategories.rejected, (state, action) => {
       state.isloading = false;
@@ -128,17 +128,17 @@ const productAuthSlice = createSlice({
       state.isloading = false;
       state.error = action.error.message;
     });
-    builder.addCase(deleteSingleCategory.pending,(state)=>{
-        state.isloading=true;
+    builder.addCase(deleteSingleCategory.pending, (state) => {
+      state.isloading = true;
     });
-    builder.addCase(deleteSingleCategory.fulfilled,(state,action)=>{
-        state.isloading=false;
-        state.deletecategory=action.payload?.data;
+    builder.addCase(deleteSingleCategory.fulfilled, (state, action) => {
+      state.isloading = false;
+      state.deletecategory = action.payload?.data;
     });
-    builder.addCase(deleteSingleCategory.rejected,(state,action)=>{
-        state.isloading=false;
-        state.error=action.error.message;
-    })
+    builder.addCase(deleteSingleCategory.rejected, (state, action) => {
+      state.isloading = false;
+      state.error = action.error.message;
+    });
   },
 });
 export default productAuthSlice.reducer;
