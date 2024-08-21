@@ -9,9 +9,12 @@ function CardBlock() {
                 ProductListdata.map((d, i) => {
                     return <div key={'ffff' + i} className="card border-0 mb-1">
                         <div className="form-check form-switch position-absolute top-0 end-0 py-3 px-3 d-none d-md-block">
-                            <input className="form-check-input" type="checkbox" id="Eaten-switch1" />
-                            <label className="form-check-label" htmlFor="Eaten-switch1">Add to Cart</label>
-                        </div>
+                            <button className="btn btn-outline-secondary">
+                            <i className="icofont-edit text-success"></i>
+                            </button>
+                            <button type="button" className="btn btn-outline-secondary deleterow">
+                                      <i className="icofont-ui-delete text-danger"></i>
+                                    </button>                        </div>
                         <div className="card-body d-flex align-items-center flex-column flex-md-row">
                             <Link to={process.env.PUBLIC_URL + "/product-detail"}>
                                 <img className="w120 rounded img-fluid" src={d.images} alt="" />

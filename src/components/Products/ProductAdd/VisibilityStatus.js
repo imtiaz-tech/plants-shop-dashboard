@@ -1,6 +1,7 @@
 import React from 'react';
 
-function VisibilityStatus() {
+function VisibilityStatus(props) {
+    const {status,setStatus}=props
     return (
         <>
             <div className="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
@@ -8,21 +9,17 @@ function VisibilityStatus() {
             </div>
             <div className="card-body">
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" name="couponsstatus" />
+                    <input className="form-check-input" type="radio" name="couponsstatus" checked={status}
+                    onChange={(e) => {setStatus(true) }}/>
                     <label className="form-check-label">
                         Published
                     </label>
                 </div>
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" name="couponsstatus" />
+                    <input className="form-check-input" type="radio" name="couponsstatus" checked={!status}
+            onChange={(e) => {setStatus(false) }} />
                     <label className="form-check-label">
-                        Scheduled
-                    </label>
-                </div>
-                <div className="form-check">
-                    <input className="form-check-input" type="radio" name="couponsstatus" />
-                    <label className="form-check-label">
-                        Hidden
+                        Unpublished
                     </label>
                 </div>
             </div>

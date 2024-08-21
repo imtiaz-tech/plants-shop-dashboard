@@ -10,7 +10,6 @@ import Pagination from "../../components/Categories/Pagination";
 
 function CategoriesList() {
   const dispatch = useDispatch();
-
   const { categories, isloading } = useSelector((state) => state.products || {});
   const { categoriesCount } = useSelector((state) => state.products || {});
 

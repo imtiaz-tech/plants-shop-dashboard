@@ -71,6 +71,21 @@ export const deleteSingleCategory = createAsyncThunk("products/delete-single-cat
     return error.response.data;
   }
 });
+export const addProduct = createAsyncThunk("products/add-product", async (data, { getState }) => {
+  try {
+    const { token } = getState().auth;
+    const res = await axios.post("/products/add-product", data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log("🚀 ~ addProduct ~ res:", res)
+    return res.data;
+  } catch (error) {
+    return error.response.data;
+  }
+});
+
 
 const initialState = {
   categories: [],
@@ -139,6 +154,17 @@ const productAuthSlice = createSlice({
       state.isloading = false;
       state.error = action.error.message;
     });
+    builder.addCase(addProduct.pending,(state)=>{
+      state.isloading=true;
+    });
+    builder.addCase(addProduct.fulfilled,(state,action)=>{
+      state.isloading=false;
+      state.product=action.payload.data;
+    });
+    builder.addCase(addProduct.rejected,(state,action)=>{
+      state.isloading=false;
+      state.error=action.error.message;
+    })
   },
 });
 export default productAuthSlice.reducer;
