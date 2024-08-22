@@ -79,7 +79,34 @@ export const addProduct = createAsyncThunk("products/add-product", async (data, 
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log("🚀 ~ addProduct ~ res:", res)
+    return res.data;
+  } catch (error) {
+    return error.response.data;
+  }
+});
+
+export const getProducts = createAsyncThunk("products/get-products", async (data, { getState }) => {
+  try {
+    const { token } = getState().auth;
+    const res = await axios.get("/products/get-products" ,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return res.data;
+  } catch (error) {
+    return error.response.data;
+  }
+});
+
+export const deleteSingleProduct = createAsyncThunk("products/delete-single-product", async (id, { getState }) => {
+  try {
+    const { token } = getState().auth;
+    const res = await axios.delete(`/products/delete-single-product/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return res.data;
   } catch (error) {
     return error.response.data;
@@ -89,6 +116,9 @@ export const addProduct = createAsyncThunk("products/add-product", async (data, 
 
 const initialState = {
   categories: [],
+  categoriesCount: 0,
+  products: [],
+  productsCount: 0,
   isloading: false,
   error: null,
 };
@@ -162,6 +192,28 @@ const productAuthSlice = createSlice({
       state.product=action.payload.data;
     });
     builder.addCase(addProduct.rejected,(state,action)=>{
+      state.isloading=false;
+      state.error=action.error.message;
+    });
+    builder.addCase(getProducts.pending,(state)=>{
+      state.isloading=true;
+    });
+    builder.addCase(getProducts.fulfilled,(state,action)=>{
+      state.isloading=false;
+      state.products=action.payload.data;
+    });
+    builder.addCase(getProducts.rejected,(state,action)=>{
+      state.isloading=false;
+      state.error=action.error.message;
+    });
+    builder.addCase(deleteSingleProduct.pending,(state)=>{
+      state.isloading=true;
+    });
+    builder.addCase(deleteSingleProduct.fulfilled,(state,action)=>{
+      state.isloading=false;
+      state.deleteproduct=action.payload.data;
+    });
+    builder.addCase(deleteSingleProduct.rejected,(state,action)=>{
       state.isloading=false;
       state.error=action.error.message;
     })

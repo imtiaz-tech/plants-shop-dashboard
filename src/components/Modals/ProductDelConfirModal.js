@@ -1,8 +1,8 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
 
-function ConfirmationModal(props) {
-  const { isModal, setIsModal, deleteCategory, } = props;
+function ProductConfirModal(props) {
+  const { isModal, setIsModal,deleteProduct } = props;
   return (
     <Modal
       show={isModal}
@@ -42,7 +42,7 @@ function ConfirmationModal(props) {
           type="button"
           className="btn btn-primary"
           onClick={() => {
-            deleteCategory();
+            deleteProduct();
             setIsModal(false);
           }}
         >
@@ -53,4 +53,4 @@ function ConfirmationModal(props) {
   );
 }
 
-export default ConfirmationModal;
+export default ProductConfirModal;
