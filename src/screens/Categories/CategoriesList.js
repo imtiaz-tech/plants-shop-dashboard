@@ -10,8 +10,7 @@ import Pagination from "../../components/Categories/Pagination";
 
 function CategoriesList() {
   const dispatch = useDispatch();
-  const { categories, isloading } = useSelector((state) => state.products || {});
-  const { categoriesCount } = useSelector((state) => state.products || {});
+  const { categories, categoriesCount, isloading } = useSelector((state) => state.products || {});
 
   const [isModal, setIsModal] = useState(false);
   const [deleteId, setDeleteId] = useState("");
@@ -173,7 +172,7 @@ function CategoriesList() {
           </div>
         </div>
       </div>
-      <ConfirmationModal setIsModal={setIsModal} isModal={isModal} deleteCategory={deleteCategory} />
+      <ConfirmationModal setIsModal={setIsModal} isModal={isModal} onConfirm={deleteCategory} />
     </div>
   );
 }

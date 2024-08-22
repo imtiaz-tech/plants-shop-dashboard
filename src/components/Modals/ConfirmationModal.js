@@ -2,7 +2,7 @@ import React from "react";
 import { Modal } from "react-bootstrap";
 
 function ConfirmationModal(props) {
-  const { isModal, setIsModal, deleteCategory, } = props;
+  const { isModal, setIsModal, onConfirm } = props;
   return (
     <Modal
       show={isModal}
@@ -42,7 +42,7 @@ function ConfirmationModal(props) {
           type="button"
           className="btn btn-primary"
           onClick={() => {
-            deleteCategory();
+            onConfirm();
             setIsModal(false);
           }}
         >

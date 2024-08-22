@@ -88,7 +88,7 @@ export const addProduct = createAsyncThunk("products/add-product", async (data, 
 export const getProducts = createAsyncThunk("products/get-products", async (data, { getState }) => {
   try {
     const { token } = getState().auth;
-    const res = await axios.get("/products/get-products" ,{
+    const res = await axios.get(`/products/get-products?perpage=${data.recordsPerPage}&pageno=${data.currentPage}` ,{
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -201,6 +201,8 @@ const productAuthSlice = createSlice({
     builder.addCase(getProducts.fulfilled,(state,action)=>{
       state.isloading=false;
       state.products=action.payload.data;
+      state.productsCount = action.payload.count;
+
     });
     builder.addCase(getProducts.rejected,(state,action)=>{
       state.isloading=false;
