@@ -10,7 +10,7 @@ import Pagination from "../../components/Categories/Pagination";
 
 function CategoriesList() {
   const dispatch = useDispatch();
-  const { categories, categoriesCount, isloading } = useSelector((state) => state.products || {});
+  const { categories, categoriesCount, isLoading } = useSelector((state) => state.products || {});
 
   const [isModal, setIsModal] = useState(false);
   const [deleteId, setDeleteId] = useState("");
@@ -48,7 +48,7 @@ function CategoriesList() {
     setDeleteId(categoryId);
   };
 
-  return isloading ? (
+  return isLoading ? (
     <OverlaySpinner />
   ) : (
     <div className="body d-flex py-3">

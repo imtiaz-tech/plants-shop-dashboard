@@ -5,11 +5,12 @@ import { useEffect } from "react";
 import ConfirmationModal from "../../Modals/ConfirmationModal";
 import Pagination from "../../../components/Categories/Pagination";
 import OverlaySpinner from "../../../components/Uicomponent/OverlaySpinner";
+import { Link } from "react-router-dom";
 
 function CardBlock() {
   const dispatch = useDispatch();
 
-  const { products, productsCount, isloading } = useSelector((state) => state.products || {});
+  const { products, productsCount, isLoading } = useSelector((state) => state.products || {});
 
   const [isModal, setIsModal] = useState(false);
   const [deleteId, setDeleteId] = useState("");
@@ -47,7 +48,7 @@ function CardBlock() {
     getProductsByPage(pageNumber);
   };
 
-  return isloading ? (
+  return isLoading ? (
     <OverlaySpinner />
   ) : (
     <div className="card mb-3 bg-transparent p-2">
@@ -56,7 +57,9 @@ function CardBlock() {
           <div className="card border-0 mb-1">
             <div className="form-check form-switch position-absolute top-0 end-0 py-3 px-3 d-none d-md-block">
               <button className="btn btn-outline-secondary">
+                <Link to={`/product-edit/${product._id}`}>
                 <i className="icofont-edit text-success"></i>
+                </Link>
               </button>
               <button
                 onClick={() => {
@@ -66,7 +69,7 @@ function CardBlock() {
                 className="btn btn-outline-secondary deleterow"
               >
                 <i className="icofont-ui-delete text-danger"></i>
-              </button>{" "}
+              </button>
             </div>
             <div className="card-body d-flex align-items-center flex-column flex-md-row">
               <div>

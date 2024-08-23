@@ -72,7 +72,7 @@ function MainIndex() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/product-grid" element={<ProductGrid />} />
           <Route path="/product-list" element={<ProductList />} />
-          <Route path="/product-edit" element={<ProductEdit />} />
+          <Route path="/product-edit/:id" element={<ProductEdit />} />
           <Route path="/product-detail" element={<ProductDetail />} />
           <Route path="/product-add" element={<ProductAdd />} />
           <Route path="/shopping-cart" element={<ShoppingCart />} />

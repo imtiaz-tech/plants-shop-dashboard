@@ -1,6 +1,8 @@
 import React from 'react';
 
-function PricingInfo() {
+function PricingInfo(props) {
+    const {price,setPrice,setSkuNum,skuNum,setQuantity,quantity}=props;
+
     return (
         <>
             <div className="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
@@ -8,18 +10,26 @@ function PricingInfo() {
             </div>
             <div className="card-body">
                 <div className="row g-3 align-items-center">
-                    <div className="col-md-12">
-                        <label className="form-label">Product Price Old</label>
-                        <input type="text" className="form-control" value="$350" onChange={() => { }} />
+                <div className="col-md-12">
+                        <label className="form-label">Product Price </label>
+                        <input type="text" className="form-control" value={price} onChange={(e) =>setPrice(e.target.value)} />
+                    </div>
+                    
+                    <div className="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+                <h6 className="m-0 fw-bold">Inventory Info</h6>
+            </div>
+            <div className="card-body">
+                <div className="row g-3 align-items-center">
+                <div className="col-md-12">
+                        <label className="form-label">SKU</label>
+                        <input type="text" className="form-control" value={skuNum} onChange={(e) =>setSkuNum(e.target.value) } />
                     </div>
                     <div className="col-md-12">
-                        <label className="form-label">Product Price New</label>
-                        <input type="text" className="form-control" value="$355" onChange={() => { }} />
+                        <label className="form-label">Total Stock Quantity</label>
+                        <input type="text" className="form-control" value={quantity} onChange={(e) =>setQuantity(e.target.value)} />
                     </div>
-                    <div className="col-md-12">
-                        <label className="form-label">Product Coupon</label>
-                        <input type="text" className="form-control" value="BATTT-XA47" onChange={() => { }} />
-                    </div>
+                </div>
+            </div>
                 </div>
             </div>
         </>

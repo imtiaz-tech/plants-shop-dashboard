@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Categories from "../../components/Products/ProductAdd/Categories";
 import PricingInfo from "../../components/Products/ProductAdd/PricingInfo";
 import VisibilityStatus from "../../components/Products/ProductAdd/VisibilityStatus";
@@ -6,11 +6,11 @@ import BasicInformation from "../../components/Products/ProductAdd/BasicInformat
 import Images from "../../components/Products/ProductAdd/Images";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addProduct } from "../../redux/slices/products";
+import { addProduct, getCategories } from "../../redux/slices/products";
 import { useNavigate } from "react-router-dom";
 
 function ProductAdd() {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [textEditor, setTextEditor] = useState("");
@@ -21,10 +21,15 @@ function ProductAdd() {
   const [category, setCategory] = useState(null);
   const [image, setImage] = useState("");
 
+  useEffect(() => {
+    dispatch(getCategories({ all: true }));
+  }, []);
+
   const saveProduct = () => {
     const data = { name, textEditor, status, price, skuNum, quantity, category, image };
-    dispatch(addProduct(data));
-    navigate("/product-list");
+    dispatch(addProduct(data)).then(() => {
+      navigate("/product-list");
+    });
   };
 
   return (

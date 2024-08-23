@@ -14,7 +14,7 @@ export const signin = createAsyncThunk("auth/signin", async (data) => {
 const initialState = {
   user: {},
   token: "",
-  isloading: false,
+  isLoading: false,
   error: null,
 };
 const adminAuthSlice = createSlice({
@@ -28,15 +28,15 @@ const adminAuthSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(signin.pending, (state) => {
-      state.isloading = true;
+      state.isLoading = true;
     });
     builder.addCase(signin.fulfilled, (state, action) => {
-      state.isloading = false;
+      state.isLoading = false;
       state.token = action.payload.data.token.token;
       state.user = action.payload.data.user;
     });
     builder.addCase(signin.rejected, (state, action) => {
-      state.isloading = false;
+      state.isLoading = false;
       state.action = action.error.message;
     });
   },

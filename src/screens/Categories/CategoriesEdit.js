@@ -4,10 +4,10 @@ import BasicInformation from "../../components/Categories/BasicInformation";
 import { useDispatch, useSelector } from "react-redux";
 import { updateSingleCategory, getSingleCategory } from "../../redux/slices/products";
 import { useState } from "react";
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function CategoriesAdd() {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [status, setStatus] = useState(true);
@@ -29,7 +29,7 @@ function CategoriesAdd() {
   const saveUpdateCategory = (event) => {
     const data = { id, name, status };
     dispatch(updateSingleCategory(data));
-    navigate("/categories-list")
+    navigate("/categories-list");
   };
 
   return (
