@@ -28,8 +28,9 @@ function CategoriesAdd() {
 
   const saveUpdateCategory = (event) => {
     const data = { id, name, status };
-    dispatch(updateSingleCategory(data));
-    navigate("/categories-list");
+    dispatch(updateSingleCategory(data)).then(()=>{
+      navigate("/categories-list");
+    })
   };
 
   return (

@@ -85,7 +85,7 @@ function CardBlock() {
                 <div className="d-flex flex-row flex-wrap align-items-center justify-content-center justify-content-md-start">
                   <div className="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
                     <div className="text-muted small">Category</div>
-                    <strong>{product.categoryId.name}</strong>
+                    <strong>{product.categoryId?.name}</strong>
                   </div>
                   <div className="pe-xl-5 pe-md-4 ps-md-0 px-3 mb-2">
                     <div className="text-muted small">Quantity</div>

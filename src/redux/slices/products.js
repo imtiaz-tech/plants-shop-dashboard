@@ -152,6 +152,7 @@ const initialState = {
   productsCount: 0,
   isLoading: false,
   isSingleProductLoading: false,
+  isAllProductsLoading: false,
   error: null,
 };
 
@@ -217,14 +218,14 @@ const productAuthSlice = createSlice({
       state.error = action.error.message;
     });
     builder.addCase(addProduct.pending,(state)=>{
-      state.isLoading=true;
+      state.isAllProductsLoading=true;
     });
     builder.addCase(addProduct.fulfilled,(state,action)=>{
-      state.isLoading=false;
+      state.isAllProductsLoading=false;
       state.product=action.payload.data;
     });
     builder.addCase(addProduct.rejected,(state,action)=>{
-      state.isLoading=false;
+      state.isAllProductsLoading=false;
       state.error=action.error.message;
     });
     builder.addCase(getProducts.pending,(state)=>{

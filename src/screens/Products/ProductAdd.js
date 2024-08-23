@@ -5,9 +5,10 @@ import VisibilityStatus from "../../components/Products/ProductAdd/VisibilitySta
 import BasicInformation from "../../components/Products/ProductAdd/BasicInformation";
 import Images from "../../components/Products/ProductAdd/Images";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { addProduct, getCategories } from "../../redux/slices/products";
 import { useNavigate } from "react-router-dom";
+import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
 
 function ProductAdd() {
   const navigate = useNavigate();
@@ -21,6 +22,9 @@ function ProductAdd() {
   const [category, setCategory] = useState(null);
   const [image, setImage] = useState("");
 
+  const { isAllProductsLoading } = useSelector((state) => state.products || {});
+
+
   useEffect(() => {
     dispatch(getCategories({ all: true }));
   }, []);
@@ -32,7 +36,9 @@ function ProductAdd() {
     });
   };
 
-  return (
+  return isAllProductsLoading ?(
+    <OverlaySpinner/>
+  ) : (
     <div className="container-xxl">
       <div className="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
         <h3 className="fw-bold mb-0">Add Product</h3>

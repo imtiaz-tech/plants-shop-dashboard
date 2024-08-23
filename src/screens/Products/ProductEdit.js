@@ -1,5 +1,4 @@
 import React from "react";
-import PageHeader1 from "../../components/common/PageHeader1";
 import Categories from "../../components/Products/ProductEdit/Categories";
 import PricingInfo from "../../components/Products/ProductEdit/PricingInfo";
 import VisibilityStatus from "../../components/Products/ProductEdit/VisibilityStatus";
