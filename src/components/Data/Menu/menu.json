@@ -33,7 +33,7 @@
     },
     {
       "name": "Orders",
-      "routerLink": [""],
+      "routerLink": ["order-list"],
       "identifier": "Orders",
       "iconClass": "icofont-notepad fs-5",
       "breadcrumbMessage": "",

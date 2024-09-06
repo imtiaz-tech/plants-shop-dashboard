@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
 
-export const addCategory = createAsyncThunk("products/add-category", async (data, { getState }) => {
+export const addCategory = createAsyncThunk("products/add-category", async (data, { getState, rejectWithValue  }) => {
   try {
     const { token } = getState().auth;
     const res = await axios.post("/products/add-category", data, {
@@ -11,11 +11,11 @@ export const addCategory = createAsyncThunk("products/add-category", async (data
     });
     return res.data;
   } catch (error) {
-    return error.response.data;
+    return rejectWithValue(error.response.data);
   }
 });
 
-export const getCategories = createAsyncThunk("products/get-categories", async (data, { getState }) => {
+export const getCategories = createAsyncThunk("products/get-categories", async (data, { getState,rejectWithValue }) => {
   try {
     const { token } = getState().auth;
     const res = await axios.get(`/products/get-categories?perpage=${data.recordsPerPage}&pageno=${data.currentPage}&all=${data.all}`, {
@@ -25,11 +25,11 @@ export const getCategories = createAsyncThunk("products/get-categories", async (
     });
     return res.data;
   } catch (error) {
-    return error.response.data;
+    return rejectWithValue(error.response.data);
   }
 });
 
-export const getSingleCategory = createAsyncThunk("product/get-single-category", async (data, { getState }) => {
+export const getSingleCategory = createAsyncThunk("product/get-single-category", async (data, { getState,rejectWithValue }) => {
   try {
     const { token } = getState().auth;
     const res = await axios.get(`/products/get-single-category/${data}`, {
@@ -39,12 +39,12 @@ export const getSingleCategory = createAsyncThunk("product/get-single-category",
     });
     return res.data;
   } catch (error) {
-    return error.response.data;
+    return rejectWithValue(error.response.data);
   }
 });
 export const updateSingleCategory = createAsyncThunk(
   "products/update-single-category",
-  async (updata, { getState }) => {
+  async (updata, { getState,rejectWithValue }) => {
     try {
       const { token } = getState().auth;
       const res = await axios.patch(`/products/update-single-category/${updata.id}`, updata, {
@@ -54,11 +54,11 @@ export const updateSingleCategory = createAsyncThunk(
       });
       return res.data;
     } catch (error) {
-      return error.response.data;
+      return rejectWithValue(error.response.data);
     }
   }
 );
-export const deleteSingleCategory = createAsyncThunk("products/delete-single-category", async (id, { getState }) => {
+export const deleteSingleCategory = createAsyncThunk("products/delete-single-category", async (id, { getState,rejectWithValue }) => {
   try {
     const { token } = getState().auth;
     const res = await axios.delete(`/products/delete-single-category/${id}`, {
@@ -68,10 +68,10 @@ export const deleteSingleCategory = createAsyncThunk("products/delete-single-cat
     });
     return res.data;
   } catch (error) {
-    return error.response.data;
+    return rejectWithValue(error.response.data);
   }
 });
-export const addProduct = createAsyncThunk("products/add-product", async (data, { getState }) => {
+export const addProduct = createAsyncThunk("products/add-product", async (data, { getState ,rejectWithValue}) => {
   try {
     const { token } = getState().auth;
     const res = await axios.post("/products/add-product", data, {
@@ -81,11 +81,11 @@ export const addProduct = createAsyncThunk("products/add-product", async (data, 
     });
     return res.data;
   } catch (error) {
-    return error.response.data;
+    return rejectWithValue(error.response.data);
   }
 });
 
-export const getProducts = createAsyncThunk("products/get-products", async (data, { getState }) => {
+export const getProducts = createAsyncThunk("products/get-products", async (data, { getState,rejectWithValue }) => {
   try {
     const { token } = getState().auth;
     const res = await axios.get(`/products/get-products?perpage=${data.recordsPerPage}&pageno=${data.currentPage}` ,{
@@ -95,11 +95,11 @@ export const getProducts = createAsyncThunk("products/get-products", async (data
     });
     return res.data;
   } catch (error) {
-    return error.response.data;
+    return rejectWithValue(error.response.data);
   }
 });
 
-export const deleteSingleProduct = createAsyncThunk("products/delete-single-product", async (id, { getState }) => {
+export const deleteSingleProduct = createAsyncThunk("products/delete-single-product", async (id, { getState,rejectWithValue }) => {
   try {
     const { token } = getState().auth;
     const res = await axios.delete(`/products/delete-single-product/${id}`, {
@@ -109,11 +109,11 @@ export const deleteSingleProduct = createAsyncThunk("products/delete-single-prod
     });
     return res.data;
   } catch (error) {
-    return error.response.data;
+    return rejectWithValue(error.response.data);
   }
 });
 
-export const getSingleProduct = createAsyncThunk("product/get-single-product", async (data, { getState }) => {
+export const getSingleProduct = createAsyncThunk("product/get-single-product", async (data, { getState,rejectWithValue }) => {
   try {
     const { token } = getState().auth;
     const res = await axios.get(`/products/get-single-product/${data}`, {
@@ -123,13 +123,13 @@ export const getSingleProduct = createAsyncThunk("product/get-single-product", a
     });
     return res.data;
   } catch (error) {
-    return error.response.data;
+    return rejectWithValue(error.response.data);
   }
 });
 
 export const updateSingleProduct = createAsyncThunk(
   "products/update-single-product",
-  async (updata, { getState }) => {
+  async (updata, { getState,rejectWithValue }) => {
     try {
       const { token } = getState().auth;
       const res = await axios.patch(`/products/update-single-product/${updata.id}`, updata, {
@@ -139,7 +139,7 @@ export const updateSingleProduct = createAsyncThunk(
       });
       return res.data;
     } catch (error) {
-      return error.response.data;
+      return rejectWithValue(error.response.data);
     }
   }
 );
@@ -170,7 +170,7 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(addCategory.rejected, (state, action) => {
       state.isLoading = false;
-      state.action = action.error.message;
+      state.error = action.payload;
     });
     builder.addCase(getCategories.pending, (state) => {
       state.isLoading = true;
@@ -182,7 +182,7 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(getCategories.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = action.error.message;
+      state.error = action.payload;
     });
     builder.addCase(getSingleCategory.pending, (state) => {
       state.isLoading = true;
@@ -193,7 +193,7 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(getSingleCategory.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = action.error.message;
+      state.error = action.payload;
     });
     builder.addCase(updateSingleCategory.pending, (state) => {
       state.isLoading = true;
@@ -204,7 +204,7 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(updateSingleCategory.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = action.error.message;
+      state.error = action.payload;
     });
     builder.addCase(deleteSingleCategory.pending, (state) => {
       state.isLoading = true;
@@ -215,7 +215,7 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(deleteSingleCategory.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = action.error.message;
+      state.error = action.payload;
     });
     builder.addCase(addProduct.pending,(state)=>{
       state.isAllProductsLoading=true;
@@ -226,7 +226,7 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(addProduct.rejected,(state,action)=>{
       state.isAllProductsLoading=false;
-      state.error=action.error.message;
+      state.error = action.payload;
     });
     builder.addCase(getProducts.pending,(state)=>{
       state.isLoading=true;
@@ -239,7 +239,7 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(getProducts.rejected,(state,action)=>{
       state.isLoading=false;
-      state.error=action.error.message;
+      state.error = action.payload;
     });
     builder.addCase(deleteSingleProduct.pending,(state)=>{
       state.isLoading=true;
@@ -250,7 +250,7 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(deleteSingleProduct.rejected,(state,action)=>{
       state.isLoading=false;
-      state.error=action.error.message;
+      state.error = action.payload;
     });
     builder.addCase(getSingleProduct.pending,(state)=>{
       state.isSingleProductLoading=true;
@@ -261,7 +261,7 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(getSingleProduct.rejected,(state,action)=>{
      state.isSingleProductLoading=false;
-     state.error=action.error.message
+     state.error = action.payload;
     });
     builder.addCase(updateSingleProduct.pending,(state)=>{
       state.isLoading=true;
@@ -272,7 +272,7 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(updateSingleProduct.rejected,(state,action)=>{
       state.isLoading=false;
-      state.error=action.error.message;
+      state.error = action.payload;
     })
   },
 });

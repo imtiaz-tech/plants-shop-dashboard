@@ -1,13 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
 
-export const signin = createAsyncThunk("auth/signin", async (data) => {
+export const signin = createAsyncThunk("auth/signin", async (data,{ rejectWithValue }) => {
   try {
     const res = await axios.post("/auth/signin", data);
     const response = await res.data;
     return response;
   } catch (error) {
-    return error.response.data;
+    return rejectWithValue(error.response.data);
   }
 });
 
@@ -37,7 +37,7 @@ const adminAuthSlice = createSlice({
     });
     builder.addCase(signin.rejected, (state, action) => {
       state.isLoading = false;
-      state.action = action.error.message;
+      state.error = action.payload;
     });
   },
 });

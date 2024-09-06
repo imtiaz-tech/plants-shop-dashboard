@@ -11,15 +11,15 @@ export const OrderListData = {
             name: "ID",
             selector: (row) => row.id,
             sortable: true,
-            cell: (row) => <Link to={process.env.PUBLIC_URL+"/order-detail"} className="">{row.id}</Link>,
+            cell: (row) => <Link to={"/order-detail"} className="">{row.id}</Link>,
             minWidth:'150px'
         },
-        {
-            name: "ITEM",
-            selector: (row) => row.name,
-            cell: row => <><img className="avatar rounded lg border" src={row.image} alt="" /> <span className="px-2">{row.name}</span></>,
-            sortable: true, minWidth: "250px"
-        },
+        // {
+        //     name: "ITEM",
+        //     selector: (row) => row.name,
+        //     cell: row => <><img className="avatar rounded lg border" src={row.image} alt="" /> <span className="px-2">{row.name}</span></>,
+        //     sortable: true, minWidth: "250px"
+        // },
         {
             name: "CUSTOMERS NAME",
             selector: (row) => row.customerName,

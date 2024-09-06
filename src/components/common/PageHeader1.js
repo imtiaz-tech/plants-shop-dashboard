@@ -43,7 +43,7 @@ function PageHeader1 (props) {
                         <div className="col"></div>
                         <div className="col-auto">
                             <a href="https://themeforest.net/user/pixelwibes" title="Download"  className="btn btn-white border lift">Download</a>
-                            <Link to={process.env.PUBLIC_URL+"/dashboard"} className="btn btn-dark lift">Go to Dashboard</Link>
+                            <Link to={"/dashboard"} className="btn btn-dark lift">Go to Dashboard</Link>
                         </div>
                     </div> : null
                         }
@@ -64,7 +64,7 @@ function PageHeader1 (props) {
                         
                         {
                             productlist ? <div className="btn-group group-link btn-set-task w-sm-100">
-                                <Link to={process.env.PUBLIC_URL+"/product-list"} className="btn btn-primary btn-set-task w-sm-100"><i className="icofont-listing-box px-2 fs-5"></i> List View</Link>
+                                <Link to={"/product-list"} className="btn btn-primary btn-set-task w-sm-100"><i className="icofont-listing-box px-2 fs-5"></i> List View</Link>
                             </div> : null
                         }
                         {
