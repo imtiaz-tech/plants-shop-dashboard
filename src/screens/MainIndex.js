@@ -81,7 +81,7 @@ function MainIndex() {
           <Route path="/categories-edit/:id" element={<CategoriesEdit />} />
           <Route path="/categories-add" element={<CategoriesAdd />} />
           <Route path="/order-list" element={<OrderList />} />
-          <Route path="/order-detail" element={<OrderDetail />} />
+          <Route path="/order-detail/:id" element={<OrderDetail />} />
           <Route path="/order-invoice" element={<OrderInvoice />} />
           <Route path="/customer-list" element={<CustomerList />} />
           <Route path="/customer-detail" element={<CustomerDetail />} />

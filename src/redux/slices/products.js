@@ -144,14 +144,61 @@ export const updateSingleProduct = createAsyncThunk(
   }
 );
 
+export const getOrders = createAsyncThunk("products/get-orders", async (data, { getState,rejectWithValue }) => {
+  try {
+    const { token } = getState().auth;
+    const res = await axios.get("/orders/get-orders", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error.response.data);
+  }
+});
+
+export const getSingleOrder = createAsyncThunk("product/get-single-order", async (data, { getState,rejectWithValue }) => {
+  try {
+    const { token } = getState().auth;
+    const res = await axios.get(`/orders/get-single-order/${data}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error.response.data);
+  }
+});
+
+export const updateOrderStatus = createAsyncThunk("products/update-order-status", async (data, { getState ,rejectWithValue}) => {
+  try {
+    const { token } = getState().auth;
+    const res = await axios.post(`/orders/update-order-status/${data.id}`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error.response.data);
+  }
+});
+
 const initialState = {
+  status:{},
+  order:{},
+  orders:[],
   product: {},
   categories: [],
   categoriesCount: 0,
   products: [],
   productsCount: 0,
   isLoading: false,
+  isOrdersLoading:false,
   isSingleProductLoading: false,
+  isSingleOrderLoading:false,
   isAllProductsLoading: false,
   error: null,
 };
@@ -273,7 +320,40 @@ const productAuthSlice = createSlice({
     builder.addCase(updateSingleProduct.rejected,(state,action)=>{
       state.isLoading=false;
       state.error = action.payload;
-    })
+    });
+    builder.addCase(getOrders.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getOrders.fulfilled, (state, action) => {
+      state.isOrdersLoading = false;
+      state.orders = action.payload.data;
+    });
+    builder.addCase(getOrders.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(getSingleOrder.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getSingleOrder.fulfilled, (state, action) => {
+      state.isSingleOrderLoading = false;
+      state.order = action.payload.data;
+    });
+    builder.addCase(getSingleOrder.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(updateOrderStatus.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(updateOrderStatus.fulfilled, (state, action) => {
+      state.isSingleOrderLoading = false;
+      state.status = action.payload.data;
+    });
+    builder.addCase(updateOrderStatus.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    });
   },
 });
 export default productAuthSlice.reducer;

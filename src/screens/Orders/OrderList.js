@@ -1,8 +1,8 @@
 import React from 'react';
-import DataTable from 'react-data-table-component';
+// import DataTable from 'react-data-table-component';
 import PageHeader1 from '../../components/common/PageHeader1';
-import { OrderListData } from '../../components/Data/OrderListData';
-
+// import { OrderListData } from '../../components/Data/OrderListData';
+import OrdersList from '../../components/Data/OrderListData';
 function OrderList() {
     return (
         <div className="body d-flex py-3">
@@ -15,14 +15,14 @@ function OrderList() {
                                 <div id="myDataTable_wrapper" className="dataTables_wrapper dt-bootstrap5 no-footer">
                                     <div className="row">
                                         <div className="col-sm-12">
-                                            <DataTable
-                                                columns={OrderListData.columns}
-                                                data={OrderListData.rows}
-                                                defaultSortField="title"
-                                                pagination
-                                                selectableRows={false}
-                                                className="table myDataTable table-hover align-middle mb-0 d-row nowrap dataTable no-footer dtr-inline"
-                                                highlightOnHover={true}
+                                            <OrdersList
+                                                // columns={OrderListData.columns}
+                                                // data={OrderListData.rows}
+                                                // defaultSortField="title"
+                                                // pagination
+                                                // selectableRows={false}
+                                                // className="table myDataTable table-hover align-middle mb-0 d-row nowrap dataTable no-footer dtr-inline"
+                                                // highlightOnHover={true}
                                             />
                                         </div>
                                     </div>
