@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
 
-export const addCategory = createAsyncThunk("products/add-category", async (data, { getState, rejectWithValue  }) => {
+export const addCategory = createAsyncThunk("products/add-category", async (data, { getState, rejectWithValue }) => {
   try {
     const { token } = getState().auth;
     const res = await axios.post("/products/add-category", data, {
@@ -15,36 +15,45 @@ export const addCategory = createAsyncThunk("products/add-category", async (data
   }
 });
 
-export const getCategories = createAsyncThunk("products/get-categories", async (data, { getState,rejectWithValue }) => {
-  try {
-    const { token } = getState().auth;
-    const res = await axios.get(`/products/get-categories?perpage=${data.recordsPerPage}&pageno=${data.currentPage}&all=${data.all}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return res.data;
-  } catch (error) {
-    return rejectWithValue(error.response.data);
+export const getCategories = createAsyncThunk(
+  "products/get-categories",
+  async (data, { getState, rejectWithValue }) => {
+    try {
+      const { token } = getState().auth;
+      const res = await axios.get(
+        `/products/get-categories?perpage=${data.recordsPerPage}&pageno=${data.currentPage}&all=${data.all}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
-export const getSingleCategory = createAsyncThunk("product/get-single-category", async (data, { getState,rejectWithValue }) => {
-  try {
-    const { token } = getState().auth;
-    const res = await axios.get(`/products/get-single-category/${data}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return res.data;
-  } catch (error) {
-    return rejectWithValue(error.response.data);
+export const getSingleCategory = createAsyncThunk(
+  "product/get-single-category",
+  async (data, { getState, rejectWithValue }) => {
+    try {
+      const { token } = getState().auth;
+      const res = await axios.get(`/products/get-single-category/${data}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
-});
+);
 export const updateSingleCategory = createAsyncThunk(
   "products/update-single-category",
-  async (updata, { getState,rejectWithValue }) => {
+  async (updata, { getState, rejectWithValue }) => {
     try {
       const { token } = getState().auth;
       const res = await axios.patch(`/products/update-single-category/${updata.id}`, updata, {
@@ -58,20 +67,23 @@ export const updateSingleCategory = createAsyncThunk(
     }
   }
 );
-export const deleteSingleCategory = createAsyncThunk("products/delete-single-category", async (id, { getState,rejectWithValue }) => {
-  try {
-    const { token } = getState().auth;
-    const res = await axios.delete(`/products/delete-single-category/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return res.data;
-  } catch (error) {
-    return rejectWithValue(error.response.data);
+export const deleteSingleCategory = createAsyncThunk(
+  "products/delete-single-category",
+  async (id, { getState, rejectWithValue }) => {
+    try {
+      const { token } = getState().auth;
+      const res = await axios.delete(`/products/delete-single-category/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
-});
-export const addProduct = createAsyncThunk("products/add-product", async (data, { getState ,rejectWithValue}) => {
+);
+export const addProduct = createAsyncThunk("products/add-product", async (data, { getState, rejectWithValue }) => {
   try {
     const { token } = getState().auth;
     const res = await axios.post("/products/add-product", data, {
@@ -85,10 +97,10 @@ export const addProduct = createAsyncThunk("products/add-product", async (data, 
   }
 });
 
-export const getProducts = createAsyncThunk("products/get-products", async (data, { getState,rejectWithValue }) => {
+export const getProducts = createAsyncThunk("products/get-products", async (data, { getState, rejectWithValue }) => {
   try {
     const { token } = getState().auth;
-    const res = await axios.get(`/products/get-products?perpage=${data.recordsPerPage}&pageno=${data.currentPage}` ,{
+    const res = await axios.get(`/products/get-products?perpage=${data.recordsPerPage}&pageno=${data.currentPage}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -99,37 +111,43 @@ export const getProducts = createAsyncThunk("products/get-products", async (data
   }
 });
 
-export const deleteSingleProduct = createAsyncThunk("products/delete-single-product", async (id, { getState,rejectWithValue }) => {
-  try {
-    const { token } = getState().auth;
-    const res = await axios.delete(`/products/delete-single-product/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return res.data;
-  } catch (error) {
-    return rejectWithValue(error.response.data);
+export const deleteSingleProduct = createAsyncThunk(
+  "products/delete-single-product",
+  async (id, { getState, rejectWithValue }) => {
+    try {
+      const { token } = getState().auth;
+      const res = await axios.delete(`/products/delete-single-product/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
-export const getSingleProduct = createAsyncThunk("product/get-single-product", async (data, { getState,rejectWithValue }) => {
-  try {
-    const { token } = getState().auth;
-    const res = await axios.get(`/products/get-single-product/${data}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return res.data;
-  } catch (error) {
-    return rejectWithValue(error.response.data);
+export const getSingleProduct = createAsyncThunk(
+  "product/get-single-product",
+  async (data, { getState, rejectWithValue }) => {
+    try {
+      const { token } = getState().auth;
+      const res = await axios.get(`/products/get-single-product/${data}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
 export const updateSingleProduct = createAsyncThunk(
   "products/update-single-product",
-  async (updata, { getState,rejectWithValue }) => {
+  async (updata, { getState, rejectWithValue }) => {
     try {
       const { token } = getState().auth;
       const res = await axios.patch(`/products/update-single-product/${updata.id}`, updata, {
@@ -144,7 +162,7 @@ export const updateSingleProduct = createAsyncThunk(
   }
 );
 
-export const getOrders = createAsyncThunk("products/get-orders", async (data, { getState,rejectWithValue }) => {
+export const getOrders = createAsyncThunk("products/get-orders", async (data, { getState, rejectWithValue }) => {
   try {
     const { token } = getState().auth;
     const res = await axios.get("/orders/get-orders", {
@@ -158,10 +176,44 @@ export const getOrders = createAsyncThunk("products/get-orders", async (data, { 
   }
 });
 
-export const getSingleOrder = createAsyncThunk("product/get-single-order", async (data, { getState,rejectWithValue }) => {
+export const getSingleOrder = createAsyncThunk(
+  "product/get-single-order",
+  async (data, { getState, rejectWithValue }) => {
+    try {
+      const { token } = getState().auth;
+      const res = await axios.get(`/orders/get-single-order/${data}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const updateOrderStatus = createAsyncThunk(
+  "products/update-order-status",
+  async (data, { getState, rejectWithValue }) => {
+    try {
+      const { token } = getState().auth;
+      const res = await axios.post(`/orders/update-order-status/${data.id}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const getUsers = createAsyncThunk("products/get-users", async (data, { getState, rejectWithValue }) => {
   try {
     const { token } = getState().auth;
-    const res = await axios.get(`/orders/get-single-order/${data}`, {
+    const res = await axios.get("/orders/get-users", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -172,33 +224,38 @@ export const getSingleOrder = createAsyncThunk("product/get-single-order", async
   }
 });
 
-export const updateOrderStatus = createAsyncThunk("products/update-order-status", async (data, { getState ,rejectWithValue}) => {
-  try {
-    const { token } = getState().auth;
-    const res = await axios.post(`/orders/update-order-status/${data.id}`, data, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return res.data;
-  } catch (error) {
-    return rejectWithValue(error.response.data);
+export const getOrdersByUserId = createAsyncThunk(
+  "product/get-order-by-user-id",
+  async (data, { getState, rejectWithValue }) => {
+    try {
+      const { token } = getState().auth;
+      const res = await axios.get(`/orders/get-order-by-user-id/${data}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
 const initialState = {
-  status:{},
-  order:{},
-  orders:[],
+  status: {},
+  order: {},
+  userOrders: [],
+  users: [],
+  orders: [],
   product: {},
   categories: [],
   categoriesCount: 0,
   products: [],
   productsCount: 0,
   isLoading: false,
-  isOrdersLoading:false,
+  isOrdersLoading: false,
   isSingleProductLoading: false,
-  isSingleOrderLoading:false,
+  isSingleOrderLoading: false,
   isAllProductsLoading: false,
   error: null,
 };
@@ -264,61 +321,60 @@ const productAuthSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     });
-    builder.addCase(addProduct.pending,(state)=>{
-      state.isAllProductsLoading=true;
+    builder.addCase(addProduct.pending, (state) => {
+      state.isAllProductsLoading = true;
     });
-    builder.addCase(addProduct.fulfilled,(state,action)=>{
-      state.isAllProductsLoading=false;
-      state.product=action.payload.data;
+    builder.addCase(addProduct.fulfilled, (state, action) => {
+      state.isAllProductsLoading = false;
+      state.product = action.payload.data;
     });
-    builder.addCase(addProduct.rejected,(state,action)=>{
-      state.isAllProductsLoading=false;
+    builder.addCase(addProduct.rejected, (state, action) => {
+      state.isAllProductsLoading = false;
       state.error = action.payload;
     });
-    builder.addCase(getProducts.pending,(state)=>{
-      state.isLoading=true;
+    builder.addCase(getProducts.pending, (state) => {
+      state.isLoading = true;
     });
-    builder.addCase(getProducts.fulfilled,(state,action)=>{
-      state.isLoading=false;
-      state.products=action.payload.data;
+    builder.addCase(getProducts.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.products = action.payload.data;
       state.productsCount = action.payload.count;
-
     });
-    builder.addCase(getProducts.rejected,(state,action)=>{
-      state.isLoading=false;
+    builder.addCase(getProducts.rejected, (state, action) => {
+      state.isLoading = false;
       state.error = action.payload;
     });
-    builder.addCase(deleteSingleProduct.pending,(state)=>{
-      state.isLoading=true;
+    builder.addCase(deleteSingleProduct.pending, (state) => {
+      state.isLoading = true;
     });
-    builder.addCase(deleteSingleProduct.fulfilled,(state,action)=>{
-      state.isLoading=false;
-      state.deleteproduct=action.payload.data;
+    builder.addCase(deleteSingleProduct.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.deleteproduct = action.payload.data;
     });
-    builder.addCase(deleteSingleProduct.rejected,(state,action)=>{
-      state.isLoading=false;
+    builder.addCase(deleteSingleProduct.rejected, (state, action) => {
+      state.isLoading = false;
       state.error = action.payload;
     });
-    builder.addCase(getSingleProduct.pending,(state)=>{
-      state.isSingleProductLoading=true;
+    builder.addCase(getSingleProduct.pending, (state) => {
+      state.isSingleProductLoading = true;
     });
-    builder.addCase(getSingleProduct.fulfilled,(state,action)=>{
-      state.isSingleProductLoading=false;
-      state.product=action.payload.data;
+    builder.addCase(getSingleProduct.fulfilled, (state, action) => {
+      state.isSingleProductLoading = false;
+      state.product = action.payload.data;
     });
-    builder.addCase(getSingleProduct.rejected,(state,action)=>{
-     state.isSingleProductLoading=false;
-     state.error = action.payload;
+    builder.addCase(getSingleProduct.rejected, (state, action) => {
+      state.isSingleProductLoading = false;
+      state.error = action.payload;
     });
-    builder.addCase(updateSingleProduct.pending,(state)=>{
-      state.isLoading=true;
+    builder.addCase(updateSingleProduct.pending, (state) => {
+      state.isLoading = true;
     });
-    builder.addCase(updateSingleProduct.fulfilled,(state,action)=>{
-      state.isLoading=false;
-      state.updateProduct=action.payload.data;
+    builder.addCase(updateSingleProduct.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.updateProduct = action.payload.data;
     });
-    builder.addCase(updateSingleProduct.rejected,(state,action)=>{
-      state.isLoading=false;
+    builder.addCase(updateSingleProduct.rejected, (state, action) => {
+      state.isLoading = false;
       state.error = action.payload;
     });
     builder.addCase(getOrders.pending, (state) => {
@@ -351,6 +407,28 @@ const productAuthSlice = createSlice({
       state.status = action.payload.data;
     });
     builder.addCase(updateOrderStatus.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(getUsers.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getUsers.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.users = action.payload.data;
+    });
+    builder.addCase(getUsers.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(getOrdersByUserId.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getOrdersByUserId.fulfilled, (state, action) => {
+      state.isSingleOrderLoading = false;
+      state.userOrders = action.payload.data;
+    });
+    builder.addCase(getOrdersByUserId.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     });

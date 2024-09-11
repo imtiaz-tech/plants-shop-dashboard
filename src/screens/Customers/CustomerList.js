@@ -1,61 +1,79 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom';
 import PageHeader1 from '../../components/common/PageHeader1';
-import { CustomerData } from '../../components/Data/CustomerData';
+// import { CustomerData } from '../../components/Data/CustomerData';
+import { getUsers } from '../../redux/slices/products';
+import { useDispatch,useSelector } from 'react-redux';
 
 function CustomerList() {
-    const [table_row, setTable_row] = useState([...CustomerData.rows]);
+
+    const dispatch=useDispatch();
+
+    const { users } = useSelector((state) => state.products || {});
+
+    // const [table_row, setTable_row] = useState([...CustomerData.rows]);
     const [ismodal, setIsmodal] = useState(false);
     const [iseditmodal, setIseditmodal] = useState(false);
+
+    useEffect(() => {
+        dispatch(getUsers())
+         }, []);
+
     const columns = () => {
         return [
             {
                 name: " ID",
-                selector: (row) => row.id,
+                selector: (row) => row._id,
+                cell: row => <><span className="px-2">
+                    <Link to={`/customer-detail/${row._id}`}>{row._id}</Link>
+                    </span></>,
                 sortable: true,
             },
             {
                 name: "CUSTOMER",
                 selector: (row) => row.name,
-                cell: row => <><img className="avatar rounded lg border" src={row.image} alt="" /> <span className="px-2"><Link to={process.env.PUBLIC_URL + '/customer-detail'}>{row.name}</Link></span></>,
                 sortable: true, minWidth: "200px"
             },
             {
                 name: "REGISTER DATE",
-                selector: (row) => row.date,
+                selector: (row) => row.createdAt.slice(0, 10),
                 sortable: true,
 
             },
             {
                 name: "MAIL",
-                selector: (row) => row.mail,
+                selector: (row) => row.email,
                 sortable: true
             },
-            {
-                name: "PHONE",
-                selector: (row) => row.phone,
-                sortable: true
-            },
-            {
-                name: "COUNTRY",
-                selector: (row) => row.country,
-                sortable: true,
-            },
-            {
-                name: "TOTAL ORDER",
-                selector: (row) => row.order,
-                sortable: true,
-            },
+            // {
+            //     name: "PHONE",
+            //     selector: (row) => row.phone,
+            //     sortable: true
+            // },
+            // {
+            //     name: "COUNTRY",
+            //     selector: (row) => row.country,
+            //     sortable: true,
+            // },
+            // {
+            //     name: "TOTAL ORDER",
+            //     selector: (row) => row.order,
+            //     sortable: true,
+            // },
             {
                 name: "ACTION",
-                selector: (row) => { },
+                selector: (row) => row.status,
                 sortable: true,
-                cell: (row) => <div className="btn-group" role="group" aria-label="Basic outlined example">
-                    <button onClick={() => { setIseditmodal(true) }} type="button" className="btn btn-outline-secondary"><i className="icofont-edit text-success"></i></button>
-                    <button type="button" onClick={() => { onDeleteRow(row) }} className="btn btn-outline-secondary deleterow"><i className="icofont-ui-delete text-danger"></i></button>
+                cell:(row) => <div className="btn-group" role="group" aria-label="Basic outlined example">
+                    <button className="btn btn-outline-secondary">Active</button>
+                    <button className="btn btn-outline-secondary">InActive</button>
                 </div>
+                // cell: (row) => <div className="btn-group" role="group" aria-label="Basic outlined example">
+                //     <button onClick={() => { setIseditmodal(true) }} type="button" className="btn btn-outline-secondary"><i className="icofont-edit text-success"></i></button>
+                //     <button type="button" onClick={() => { onDeleteRow(row) }} className="btn btn-outline-secondary deleterow"><i className="icofont-ui-delete text-danger"></i></button>
+                // </div>
             }
         ]
     }
@@ -63,7 +81,7 @@ function CustomerList() {
        //eslint-disable-next-line
         var result = await table_row.filter((d) => {  if (d !== row) { return d } });
         
-        setTable_row([...result])
+        // setTable_row([...result])
     }
 
     return (
@@ -83,7 +101,7 @@ function CustomerList() {
                                         <div className="col-sm-12">
                                             <DataTable
                                                 columns={columns()}
-                                                data={table_row}
+                                                data={users}
                                                 defaultSortField="title"
                                                 pagination
                                                 selectableRows={false}

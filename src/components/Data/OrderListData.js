@@ -1,18 +1,17 @@
-
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrders,getSingleOrder } from "../../redux/slices/products";
+import { getOrders } from "../../redux/slices/products";
 import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
 
 function OrdersList() {
   const dispatch = useDispatch();
-  const { order,orders, isOrdersLoading } = useSelector((state) => state.products || {});
-
+  const { order, orders, isOrdersLoading } = useSelector((state) => state.products || {});
+  console.log("🚀 ~ OrdersList ~ orders:", orders);
 
   useEffect(() => {
-   dispatch(getOrders())
-    }, []);
+    dispatch(getOrders());
+  }, []);
 
   return isOrdersLoading ? (
     <OverlaySpinner />
@@ -45,7 +44,6 @@ function OrdersList() {
                                 style={{ width: "32.2px" }}
                                 aria-label="Id: activate to sort column descending"
                                 aria-sort="ascending"
-                                
                               >
                                 Id
                               </th>
@@ -89,17 +87,17 @@ function OrdersList() {
                               <tr id="row11" role="row" className="odd">
                                 <td className="sorting_1" tabIndex="0">
                                   <Link to={`/order-detail/${order._id}`} className="">
-                                  {order._id.slice(0, 6)}
+                                    {order._id.slice(0, 6)}
                                   </Link>
-                                  </td>
+                                </td>
                                 <td>{order.billingDetails.firstName}</td>
-                                         <td className=" dt-body-right">
-                                               {
-                                             order.cart.reduce((total, item) => total + (item.unitPrice * item.quantity), 0)
-                                                 }
-                                           </td>
+                                <td className=" dt-body-right">
+                                  {order.cart.reduce((total, item) => total + item.unitPrice * item.quantity, 0)}
+                                </td>
                                 <td>
-                                  <span className={`badge ${order.status === "Completed" ? "bg-success"  : "bg-warning" }`}>
+                                  <span
+                                    className={`badge ${order.status === "Completed" ? "bg-success" : "bg-warning"}`}
+                                  >
                                     {order.status}
                                   </span>
                                 </td>
@@ -120,9 +118,3 @@ function OrdersList() {
   );
 }
 export default OrdersList;
-
-
-
-
-
-

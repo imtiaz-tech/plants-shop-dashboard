@@ -14,6 +14,7 @@ function OrderDetail() {
 
   let params = useParams();
   const { id } = params;
+  console.log("🚀 ~ OrderDetail ~ id:", id)
 
   const { order,isSingleOrderLoading } = useSelector((state) => state.products || {});
 
