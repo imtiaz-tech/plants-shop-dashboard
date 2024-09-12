@@ -4,7 +4,6 @@ import Dashboard from "./Dashboard/Dashboard";
 import ProductList from "./Products/ProductList";
 import ProductEdit from "./Products/ProductEdit";
 import ProductAdd from "./Products/ProductAdd";
-import ShoppingCart from "./Products/ShoppingCart";
 import Header from "../components/common/Header";
 import CategoriesList from "./Categories/CategoriesList";
 import OrderList from "./Orders/OrderList";
@@ -58,7 +57,6 @@ function MainIndex() {
           <Route path="/product-list" element={<ProductList />} />
           <Route path="/product-edit/:id" element={<ProductEdit />} />
           <Route path="/product-add" element={<ProductAdd />} />
-          <Route path="/shopping-cart" element={<ShoppingCart />} />
           <Route path="/categories-list" element={<CategoriesList />} />
           <Route path="/categories-edit/:id" element={<CategoriesEdit />} />
           <Route path="/categories-add" element={<CategoriesAdd />} />
