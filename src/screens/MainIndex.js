@@ -13,7 +13,6 @@ import CustomerDetail from "./Customers/CustomerDetail";
 import Expense from "./Accounts/Expense";
 import ProfilePage from "./Other Pages/ProfilePage";
 import Icons from "./Other Pages/Icon";
-import TableExample from "./Other Pages/TableExample";
 import Alerts from "./Uicomponent/Alerts";
 import Badges from "./Uicomponent/Badge";
 import Breadcrumb from "./Uicomponent/Breadcrumb";
@@ -62,7 +61,6 @@ function MainIndex() {
 
           <Route path="/profile-pages" element={<ProfilePage />} />
           <Route path="/icons" element={<Icons />} />
-          <Route path="/table-example" element={<TableExample />} />
 
           <Route path="/ui-alerts" element={<Alerts />} />
           <Route path="/ui-badge" element={<Badges />} />
