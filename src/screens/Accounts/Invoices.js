@@ -2,7 +2,6 @@ import React from 'react';
 import { Col, Row, Tab } from 'react-bootstrap';
 import EmailInvoice from '../../components/Accounts/Invoice/EmailInvoice';
 import InvoiceList from '../../components/Accounts/Invoice/InvoiceList';
-import SimpleInvoice from '../../components/Accounts/Invoice/SimpleInvoice';
 import PageHeader1 from '../../components/common/PageHeader1';
 
 function Invoices () {
@@ -19,11 +18,9 @@ function Invoices () {
                                     <div className="col-lg-12 col-md-12">
                                         <Tab.Content className="tab-content">
                                             <Tab.Pane className="tab-pane fade  show" eventKey="first" id="Invoice-list">
-                                            {/* <SimpleInvoice/> */}
                                                 <InvoiceList />
                                             </Tab.Pane>
                                             <Tab.Pane className="tab-pane fade  show" eventKey="second" id="Invoice-Simpl">
-                                                <SimpleInvoice/>
                                                 {/* <InvoiceList /> */}
                                             </Tab.Pane>
                                             <Tab.Pane className="tab-pane fade show" eventKey="third" id="Invoice-Email">

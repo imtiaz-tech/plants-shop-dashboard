@@ -17,7 +17,6 @@ import Purchase from "./Inventory/Purchase";
 import Supplier from "./Inventory/Supplier";
 import Return from "./Inventory/Return";
 import Departments from "./Inventory/Departments";
-import Invoices from "./Accounts/Invoices";
 import Expense from "./Accounts/Expense";
 import Salaryslip from "./Accounts/Salaryslip";
 import ProfilePage from "./Other Pages/ProfilePage";
@@ -52,7 +51,6 @@ import Changelog from "./Changelog/Changelog";
 import CategoriesAdd from "./Categories/CategoriesAdd";
 import CategoriesEdit from "./Categories/CategoriesEdit";
 import Help from "./Help/Help";
-import SimpleInvoice from "../components/Accounts/Invoice/SimpleInvoice";
 
 function MainIndex() {
   return (
@@ -79,8 +77,6 @@ function MainIndex() {
           <Route path="/supplier" element={<Supplier />} />
           <Route path="/return" element={<Return />} />
           <Route path="/departments" element={<Departments />} />
-          <Route path="/invoices" element={<Invoices />} />
-          <Route path="/simple-invoice" element={<SimpleInvoice />} />
 
           <Route path="/expense" element={<Expense />} />
           <Route path="/salaryslip" element={<Salaryslip />} />
