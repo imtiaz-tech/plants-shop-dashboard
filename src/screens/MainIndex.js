@@ -21,7 +21,6 @@ import ListGroup from "./Uicomponent/ListGroup";
 import ModalUI from "./Uicomponent/Modal";
 import NavbarUI from "./Uicomponent/Navbar";
 import NavsUI from "./Uicomponent/Navs";
-import PopoversUI from "./Uicomponent/Popovers";
 import Calendar from "./App/Calendar";
 import StaterPage from "./Stater Page/StaterPage";
 import Documentation from "./Documentation/Documentation";
@@ -61,7 +60,6 @@ function MainIndex() {
           <Route path="/ui-modalui" element={<ModalUI />} />
           <Route path="/ui-navbarui" element={<NavbarUI />} />
           <Route path="/ui-navsui" element={<NavsUI />} />
-          <Route path="/ui-popoversui" element={<PopoversUI />} />
           <Route path="/stater-page" element={<StaterPage />} />
           <Route path="/documentation" element={<Documentation />} />
 
