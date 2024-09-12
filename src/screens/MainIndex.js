@@ -7,7 +7,6 @@ import ProductDetail from "./Products/ProductDetail";
 import ProductAdd from "./Products/ProductAdd";
 import ShoppingCart from "./Products/ShoppingCart";
 import Header from "../components/common/Header";
-import CheckOut from "./Products/CheckOut";
 import CategoriesList from "./Categories/CategoriesList";
 import OrderList from "./Orders/OrderList";
 import OrderDetail from "./Orders/OrderDetail";
@@ -70,7 +69,6 @@ function MainIndex() {
           <Route path="/product-detail" element={<ProductDetail />} />
           <Route path="/product-add" element={<ProductAdd />} />
           <Route path="/shopping-cart" element={<ShoppingCart />} />
-          <Route path="/check-out" element={<CheckOut />} />
           <Route path="/categories-list" element={<CategoriesList />} />
           <Route path="/categories-edit/:id" element={<CategoriesEdit />} />
           <Route path="/categories-add" element={<CategoriesAdd />} />
