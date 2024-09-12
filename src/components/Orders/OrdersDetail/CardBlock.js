@@ -1,5 +1,4 @@
 import React from "react";
-import { OrderDetailData } from "../../Data/OrderDetailData";
 import {  useSelector } from "react-redux";
 import moment from "moment";
 
