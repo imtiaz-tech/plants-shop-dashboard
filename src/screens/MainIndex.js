@@ -12,7 +12,6 @@ import CustomerList from "./Customers/CustomerList";
 import CustomerDetail from "./Customers/CustomerDetail";
 import Expense from "./Accounts/Expense";
 import ProfilePage from "./Other Pages/ProfilePage";
-import ContactUs from "./Other Pages/ContactUs";
 import Icons from "./Other Pages/Icon";
 import TableExample from "./Other Pages/TableExample";
 import Alerts from "./Uicomponent/Alerts";
@@ -62,7 +61,6 @@ function MainIndex() {
           <Route path="/calendar" element={<Calendar />} />
 
           <Route path="/profile-pages" element={<ProfilePage />} />
-          <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/icons" element={<Icons />} />
           <Route path="/table-example" element={<TableExample />} />
 
