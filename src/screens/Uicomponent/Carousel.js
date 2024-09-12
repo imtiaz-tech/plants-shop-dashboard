@@ -1,5 +1,4 @@
 import React from "react";
-import CarouselUITile from '../../components/Uicomponent/CarouselUITile';
 
 
 function Carousel (){
@@ -7,7 +6,6 @@ function Carousel (){
         <div className="container">
             <div className="col-12">
                 <div className="row justify-content-between">
-                    <CarouselUITile />
                     <div className="col-lg-3 col-sm-12 d-none d-sm-block">
                         <div className="sticky-lg-top card p-4">
                             <strong className="d-block h6 my-2 pb-2 border-bottom">On this page</strong>

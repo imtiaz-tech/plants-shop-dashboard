@@ -141,16 +141,7 @@
                     "isApp": false,
                     "children": []
                 },
-                {
-                    "name": "Carousel",
-                    "routerLink": ["ui-carousel"],
-                    "identifier": "Carousel",
-                    "iconClass": "",
-                    "breadcrumbMessage": "",
-                    "isCategory": false,
-                    "isApp": false,
-                    "children": []
-                },
+                
                 {
                     "name": "Collapse",
                     "routerLink": ["ui-collapse"],
