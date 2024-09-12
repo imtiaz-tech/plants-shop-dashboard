@@ -13,7 +13,6 @@ import CustomerDetail from "./Customers/CustomerDetail";
 import Expense from "./Accounts/Expense";
 import ProfilePage from "./Other Pages/ProfilePage";
 import Icons from "./Other Pages/Icon";
-import Badges from "./Uicomponent/Badge";
 import Breadcrumb from "./Uicomponent/Breadcrumb";
 import Buttons from "./Uicomponent/Buttons";
 import Cards from "./Uicomponent/Card";
@@ -55,7 +54,6 @@ function MainIndex() {
           <Route path="/profile-pages" element={<ProfilePage />} />
           <Route path="/icons" element={<Icons />} />
 
-          <Route path="/ui-badge" element={<Badges />} />
           <Route path="/ui-breadcrumb" element={<Breadcrumb />} />
           <Route path="/ui-buttons" element={<Buttons />} />
           <Route path="/ui-card" element={<Cards />} />
