@@ -52,7 +52,6 @@ import Documentation from "./Documentation/Documentation";
 import Changelog from "./Changelog/Changelog";
 import CategoriesAdd from "./Categories/CategoriesAdd";
 import CategoriesEdit from "./Categories/CategoriesEdit";
-import StoreLocation from "./StoreLocation/Storelocation";
 import Help from "./Help/Help";
 import SimpleInvoice from "../components/Accounts/Invoice/SimpleInvoice";
 
@@ -88,7 +87,6 @@ function MainIndex() {
           <Route path="/salaryslip" element={<Salaryslip />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/calendar" element={<Calendar />} />
-          <Route path="/store-location" element={<StoreLocation />} />
 
           <Route path="/profile-pages" element={<ProfilePage />} />
           <Route path="/price-plan" element={<PricePlanExample />} />
