@@ -124,18 +124,6 @@
                     "children": []
                 },
                 
-                
-                {
-                    "name": "Dropdowns",
-                    "routerLink": ["ui-dropdowns"],
-                    "identifier": "Dropdowns",
-                    "iconClass": "",
-                    "breadcrumbMessage": "",
-                    "isCategory": false,
-                    "isApp": false,
-                    "children": []
-                },
-                
                 {
                     "name": "Modal",
                     "routerLink": ["ui-modalui"],
