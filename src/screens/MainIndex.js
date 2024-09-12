@@ -13,7 +13,6 @@ import CustomerDetail from "./Customers/CustomerDetail";
 import Expense from "./Accounts/Expense";
 import ProfilePage from "./Other Pages/ProfilePage";
 import Icons from "./Other Pages/Icon";
-import Breadcrumb from "./Uicomponent/Breadcrumb";
 import Cards from "./Uicomponent/Card";
 import Collapse from "./Uicomponent/Collapse";
 import Dropdowns from "./Uicomponent/Dropdowns";
@@ -52,7 +51,6 @@ function MainIndex() {
           <Route path="/profile-pages" element={<ProfilePage />} />
           <Route path="/icons" element={<Icons />} />
 
-          <Route path="/ui-breadcrumb" element={<Breadcrumb />} />
           <Route path="/ui-card" element={<Cards />} />
           <Route path="/ui-collapse" element={<Collapse />} />
           <Route path="/ui-dropdowns" element={<Dropdowns />} />
