@@ -4,7 +4,6 @@ import DataTable from "react-data-table-component";
 import { Link } from "react-router-dom";
 import PageHeader1 from "../../components/common/PageHeader1";
 import moment from "moment";
-// import { CustomerData } from '../../components/Data/CustomerData';
 import { getUsers,updateUserStatus } from "../../redux/slices/products";
 import { useDispatch, useSelector } from "react-redux";
 import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
