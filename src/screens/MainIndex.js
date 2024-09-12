@@ -27,7 +27,6 @@ import NavbarUI from "./Uicomponent/Navbar";
 import NavsUI from "./Uicomponent/Navs";
 import PopoversUI from "./Uicomponent/Popovers";
 import ProgressUI from "./Uicomponent/Progress";
-import Scrollspy from "./Uicomponent/Scrollspy";
 import SpinnersUI from "./Uicomponent/Spinners";
 import ToastsUI from "./Uicomponent/Toasts";
 import Calendar from "./App/Calendar";
@@ -75,7 +74,6 @@ function MainIndex() {
           <Route path="/ui-navsui" element={<NavsUI />} />
           <Route path="/ui-popoversui" element={<PopoversUI />} />
           <Route path="/ui-progressui" element={<ProgressUI />} />
-          <Route path="/ui-Scrollspyui" element={<Scrollspy />} />
           <Route path="/ui-spinnersui" element={<SpinnersUI />} />
           <Route path="/ui-toastsui" element={<ToastsUI />} />
           <Route path="/stater-page" element={<StaterPage />} />

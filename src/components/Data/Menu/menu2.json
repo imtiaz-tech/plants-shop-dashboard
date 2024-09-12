@@ -241,16 +241,7 @@
                     "isApp": false,
                     "children": []
                 },
-                {
-                    "name": "Scrollspy",
-                    "routerLink": ["ui-Scrollspyui"],
-                    "identifier": "Scrollspy",
-                    "iconClass": "",
-                    "breadcrumbMessage": "",
-                    "isCategory": false,
-                    "isApp": false,
-                    "children": []
-                },
+                
                 {
                     "name": "Spinners",
                     "routerLink": ["ui-spinnersui"],
