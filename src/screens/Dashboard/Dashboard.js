@@ -1,12 +1,6 @@
 import React from 'react';
 import { Tab, Nav, Row, Col } from 'react-bootstrap';
-import ShoppingStatuschart from '../../components/dashboard/ShoppingStatuschart';
-import TopShellingProductChart from '../../components/dashboard/TopShellingProductChart';
-import AvgexpenceChart from '../../components/dashboard/AvgexpenceChart';
-import BranchLocation from '../../components/dashboard/BranchLocation';
-import ActiveUsersStatus from '../../components/dashboard/ActiveUsersStatus';
 import RecentTransaction from '../../components/dashboard/RecentTransaction';
-import SalesStatus from '../../components/dashboard/SalesStatus';
 import { DashboardStatusData, MonthData, TodayData, WeekData, YearData } from '../../components/Data/Data';
 
 function Dashboard() {
@@ -140,28 +134,6 @@ function Dashboard() {
                             </Col>
                         </Row>
                     </Tab.Container>
-                </div>
-                <div className='row g-3 mb-3'>
-                    <div className='col-xl-12'>
-                        <SalesStatus />
-                    </div>
-                </div>
-                <div className="row g-3 mb-3">
-                    <div className="col-xxl-8 col-xl-8">
-                        <ShoppingStatuschart />
-                        <TopShellingProductChart />
-                    </div>
-                    <div className='col-xxl-4 col-xl-4'>
-                        <BranchLocation />
-                    </div>
-                </div>
-                <div className="row g-3 mb-3">
-                    <div className="col-lg-4 col-md-12">
-                        <ActiveUsersStatus />
-                    </div>
-                    <div className='col-lg-8 col-md-12'>
-                        <AvgexpenceChart />
-                    </div>
                 </div>
                 <div className="row g-3 mb-3">
                     <div className="col-md-12">
