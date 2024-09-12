@@ -15,7 +15,6 @@ import ProfilePage from "./Other Pages/ProfilePage";
 import Icons from "./Other Pages/Icon";
 import Cards from "./Uicomponent/Card";
 import Dropdowns from "./Uicomponent/Dropdowns";
-import ListGroup from "./Uicomponent/ListGroup";
 import ModalUI from "./Uicomponent/Modal";
 import Calendar from "./App/Calendar";
 import StaterPage from "./Stater Page/StaterPage";
@@ -50,7 +49,6 @@ function MainIndex() {
 
           <Route path="/ui-card" element={<Cards />} />
           <Route path="/ui-dropdowns" element={<Dropdowns />} />
-          <Route path="/ui-listgroup" element={<ListGroup />} />
           <Route path="/ui-modalui" element={<ModalUI />} />
           <Route path="/stater-page" element={<StaterPage />} />
           <Route path="/documentation" element={<Documentation />} />
