@@ -19,7 +19,6 @@ import Dropdowns from "./Uicomponent/Dropdowns";
 import ListGroup from "./Uicomponent/ListGroup";
 import ModalUI from "./Uicomponent/Modal";
 import NavbarUI from "./Uicomponent/Navbar";
-import NavsUI from "./Uicomponent/Navs";
 import Calendar from "./App/Calendar";
 import StaterPage from "./Stater Page/StaterPage";
 import Documentation from "./Documentation/Documentation";
@@ -57,7 +56,6 @@ function MainIndex() {
           <Route path="/ui-listgroup" element={<ListGroup />} />
           <Route path="/ui-modalui" element={<ModalUI />} />
           <Route path="/ui-navbarui" element={<NavbarUI />} />
-          <Route path="/ui-navsui" element={<NavsUI />} />
           <Route path="/stater-page" element={<StaterPage />} />
           <Route path="/documentation" element={<Documentation />} />
 
