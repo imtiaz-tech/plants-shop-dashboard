@@ -12,7 +12,6 @@ import OrderDetail from "./Orders/OrderDetail";
 import CustomerList from "./Customers/CustomerList";
 import CustomerDetail from "./Customers/CustomerDetail";
 import StockList from "./Inventory/StockList";
-import Purchase from "./Inventory/Purchase";
 import Supplier from "./Inventory/Supplier";
 import Return from "./Inventory/Return";
 import Expense from "./Accounts/Expense";
@@ -68,7 +67,6 @@ function MainIndex() {
           <Route path="/customer-list" element={<CustomerList />} />
           <Route path="/customer-detail/:id" element={<CustomerDetail />} />
           <Route path="/stock-list" element={<StockList />} />
-          <Route path="/purchase" element={<Purchase />} />
           <Route path="/supplier" element={<Supplier />} />
           <Route path="/return" element={<Return />} />
 
