@@ -10,16 +10,11 @@ import OrderList from "./Orders/OrderList";
 import OrderDetail from "./Orders/OrderDetail";
 import CustomerList from "./Customers/CustomerList";
 import CustomerDetail from "./Customers/CustomerDetail";
-import StockList from "./Inventory/StockList";
-import Supplier from "./Inventory/Supplier";
-import Return from "./Inventory/Return";
 import Expense from "./Accounts/Expense";
 import ProfilePage from "./Other Pages/ProfilePage";
 import ContactUs from "./Other Pages/ContactUs";
 import Icons from "./Other Pages/Icon";
-import FormsExample from "./Other Pages/FormsExample";
 import TableExample from "./Other Pages/TableExample";
-import ChartsExample from "./Other Pages/ChartsExample";
 import Alerts from "./Uicomponent/Alerts";
 import Badges from "./Uicomponent/Badge";
 import Breadcrumb from "./Uicomponent/Breadcrumb";
@@ -64,9 +59,6 @@ function MainIndex() {
           <Route path="/order-detail/:id" element={<OrderDetail />} />
           <Route path="/customer-list" element={<CustomerList />} />
           <Route path="/customer-detail/:id" element={<CustomerDetail />} />
-          <Route path="/stock-list" element={<StockList />} />
-          <Route path="/supplier" element={<Supplier />} />
-          <Route path="/return" element={<Return />} />
 
           <Route path="/expense" element={<Expense />} />
           <Route path="/calendar" element={<Calendar />} />
@@ -74,9 +66,7 @@ function MainIndex() {
           <Route path="/profile-pages" element={<ProfilePage />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/icons" element={<Icons />} />
-          <Route path="/form-example" element={<FormsExample />} />
           <Route path="/table-example" element={<TableExample />} />
-          <Route path="/charts-example" element={<ChartsExample />} />
 
           <Route path="/ui-alerts" element={<Alerts />} />
           <Route path="/ui-badge" element={<Badges />} />
