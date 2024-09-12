@@ -13,7 +13,6 @@ import CustomerDetail from "./Customers/CustomerDetail";
 import Expense from "./Accounts/Expense";
 import ProfilePage from "./Other Pages/ProfilePage";
 import Icons from "./Other Pages/Icon";
-import Cards from "./Uicomponent/Card";
 import Dropdowns from "./Uicomponent/Dropdowns";
 import ModalUI from "./Uicomponent/Modal";
 import Calendar from "./App/Calendar";
@@ -47,7 +46,6 @@ function MainIndex() {
           <Route path="/profile-pages" element={<ProfilePage />} />
           <Route path="/icons" element={<Icons />} />
 
-          <Route path="/ui-card" element={<Cards />} />
           <Route path="/ui-dropdowns" element={<Dropdowns />} />
           <Route path="/ui-modalui" element={<ModalUI />} />
           <Route path="/stater-page" element={<StaterPage />} />
