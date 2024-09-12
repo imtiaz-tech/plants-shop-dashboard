@@ -18,7 +18,6 @@ import Return from "./Inventory/Return";
 import Departments from "./Inventory/Departments";
 import Expense from "./Accounts/Expense";
 import ProfilePage from "./Other Pages/ProfilePage";
-import PricePlanExample from "./Other Pages/PricePlanExample";
 import ContactUs from "./Other Pages/ContactUs";
 import Icons from "./Other Pages/Icon";
 import FormsExample from "./Other Pages/FormsExample";
@@ -79,7 +78,6 @@ function MainIndex() {
           <Route path="/calendar" element={<Calendar />} />
 
           <Route path="/profile-pages" element={<ProfilePage />} />
-          <Route path="/price-plan" element={<PricePlanExample />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/icons" element={<Icons />} />
           <Route path="/form-example" element={<FormsExample />} />
