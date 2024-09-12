@@ -14,7 +14,6 @@ import Expense from "./Accounts/Expense";
 import ProfilePage from "./Other Pages/ProfilePage";
 import Icons from "./Other Pages/Icon";
 import Breadcrumb from "./Uicomponent/Breadcrumb";
-import Buttons from "./Uicomponent/Buttons";
 import Cards from "./Uicomponent/Card";
 import Collapse from "./Uicomponent/Collapse";
 import Dropdowns from "./Uicomponent/Dropdowns";
@@ -55,7 +54,6 @@ function MainIndex() {
           <Route path="/icons" element={<Icons />} />
 
           <Route path="/ui-breadcrumb" element={<Breadcrumb />} />
-          <Route path="/ui-buttons" element={<Buttons />} />
           <Route path="/ui-card" element={<Cards />} />
           <Route path="/ui-collapse" element={<Collapse />} />
           <Route path="/ui-dropdowns" element={<Dropdowns />} />

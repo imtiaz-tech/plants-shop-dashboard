@@ -121,16 +121,7 @@
                     "isApp": false,
                     "children": []
                 },
-                {
-                    "name": "Buttons",
-                    "routerLink": ["ui-buttons"],
-                    "identifier": "Buttons",
-                    "iconClass": "",
-                    "breadcrumbMessage": "",
-                    "isCategory": false,
-                    "isApp": false,
-                    "children": []
-                },
+                
                 {
                     "name": "Card",
                     "routerLink": ["ui-card"],
