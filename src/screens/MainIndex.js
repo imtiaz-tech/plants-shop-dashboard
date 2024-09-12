@@ -14,7 +14,6 @@ import Expense from "./Accounts/Expense";
 import ProfilePage from "./Other Pages/ProfilePage";
 import Icons from "./Other Pages/Icon";
 import Cards from "./Uicomponent/Card";
-import Collapse from "./Uicomponent/Collapse";
 import Dropdowns from "./Uicomponent/Dropdowns";
 import ListGroup from "./Uicomponent/ListGroup";
 import ModalUI from "./Uicomponent/Modal";
@@ -50,7 +49,6 @@ function MainIndex() {
           <Route path="/icons" element={<Icons />} />
 
           <Route path="/ui-card" element={<Cards />} />
-          <Route path="/ui-collapse" element={<Collapse />} />
           <Route path="/ui-dropdowns" element={<Dropdowns />} />
           <Route path="/ui-listgroup" element={<ListGroup />} />
           <Route path="/ui-modalui" element={<ModalUI />} />

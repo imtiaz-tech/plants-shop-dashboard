@@ -124,16 +124,7 @@
                     "children": []
                 },
                 
-                {
-                    "name": "Collapse",
-                    "routerLink": ["ui-collapse"],
-                    "identifier": "Collapse",
-                    "iconClass": "",
-                    "breadcrumbMessage": "",
-                    "isCategory": false,
-                    "isApp": false,
-                    "children": []
-                },
+                
                 {
                     "name": "Dropdowns",
                     "routerLink": ["ui-dropdowns"],
