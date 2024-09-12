@@ -20,7 +20,6 @@ import Departments from "./Inventory/Departments";
 import Invoices from "./Accounts/Invoices";
 import Expense from "./Accounts/Expense";
 import Salaryslip from "./Accounts/Salaryslip";
-import Chat from "./App/Chat";
 import ProfilePage from "./Other Pages/ProfilePage";
 import PricePlanExample from "./Other Pages/PricePlanExample";
 import ContactUs from "./Other Pages/ContactUs";
@@ -85,7 +84,6 @@ function MainIndex() {
 
           <Route path="/expense" element={<Expense />} />
           <Route path="/salaryslip" element={<Salaryslip />} />
-          <Route path="/chat" element={<Chat />} />
           <Route path="/calendar" element={<Calendar />} />
 
           <Route path="/profile-pages" element={<ProfilePage />} />
