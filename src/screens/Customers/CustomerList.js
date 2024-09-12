@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
 function CustomerList() {
   const dispatch = useDispatch();
-  const [isActive, setIsActive] = useState("");
   const { users, isUsersLoading } = useSelector((state) => state.products || {});
 
   useEffect(() => {

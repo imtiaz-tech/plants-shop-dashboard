@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./Dashboard/Dashboard";
-import ProductGrid from "./Products/ProductGrid";
 import ProductList from "./Products/ProductList";
 import ProductEdit from "./Products/ProductEdit";
 import ProductDetail from "./Products/ProductDetail";
@@ -12,7 +11,6 @@ import CheckOut from "./Products/CheckOut";
 import CategoriesList from "./Categories/CategoriesList";
 import OrderList from "./Orders/OrderList";
 import OrderDetail from "./Orders/OrderDetail";
-import OrderInvoice from "./Orders/OrderInvoice";
 import CustomerList from "./Customers/CustomerList";
 import CustomerDetail from "./Customers/CustomerDetail";
 import StockList from "./Inventory/StockList";
@@ -67,7 +65,6 @@ function MainIndex() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/product-grid" element={<ProductGrid />} />
           <Route path="/product-list" element={<ProductList />} />
           <Route path="/product-edit/:id" element={<ProductEdit />} />
           <Route path="/product-detail" element={<ProductDetail />} />
@@ -79,7 +76,6 @@ function MainIndex() {
           <Route path="/categories-add" element={<CategoriesAdd />} />
           <Route path="/order-list" element={<OrderList />} />
           <Route path="/order-detail/:id" element={<OrderDetail />} />
-          <Route path="/order-invoice" element={<OrderInvoice />} />
           <Route path="/customer-list" element={<CustomerList />} />
           <Route path="/customer-detail/:id" element={<CustomerDetail />} />
           <Route path="/stock-list" element={<StockList />} />
