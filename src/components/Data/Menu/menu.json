@@ -50,16 +50,7 @@
       "isCategory": false,
       "isApp": true,
       "children": []
-    },
-    {
-      "name": "Promotion",
-      "routerLink": ["coupons-list"],
-      "identifier": "romotion",
-      "iconClass": "icofont-sale-discount fs-5",
-      "breadcrumbMessage": "",
-      "isCategory": false,
-      "isApp": true,
-      "children": []
     }
+   
   ]
 }

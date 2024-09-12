@@ -15,9 +15,6 @@ import OrderDetail from "./Orders/OrderDetail";
 import OrderInvoice from "./Orders/OrderInvoice";
 import CustomerList from "./Customers/CustomerList";
 import CustomerDetail from "./Customers/CustomerDetail";
-import CouponsList from "./SalesPromotion.js/CouponsList";
-import CouponsAdd from "./SalesPromotion.js/CouponsAdd";
-import CouponsEdit from "./SalesPromotion.js/CouponsEdit";
 import StockList from "./Inventory/StockList";
 import Purchase from "./Inventory/Purchase";
 import Supplier from "./Inventory/Supplier";
@@ -85,9 +82,6 @@ function MainIndex() {
           <Route path="/order-invoice" element={<OrderInvoice />} />
           <Route path="/customer-list" element={<CustomerList />} />
           <Route path="/customer-detail/:id" element={<CustomerDetail />} />
-          <Route path="/coupons-list" element={<CouponsList />} />
-          <Route path="/coupons-add" element={<CouponsAdd />} />
-          <Route path="/coupons-edit" element={<CouponsEdit />} />
           <Route path="/stock-list" element={<StockList />} />
           <Route path="/purchase" element={<Purchase />} />
           <Route path="/supplier" element={<Supplier />} />
