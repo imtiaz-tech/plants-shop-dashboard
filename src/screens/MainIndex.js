@@ -13,12 +13,10 @@ import CustomerDetail from "./Customers/CustomerDetail";
 import Expense from "./Accounts/Expense";
 import ProfilePage from "./Other Pages/ProfilePage";
 import Icons from "./Other Pages/Icon";
-import Alerts from "./Uicomponent/Alerts";
 import Badges from "./Uicomponent/Badge";
 import Breadcrumb from "./Uicomponent/Breadcrumb";
 import Buttons from "./Uicomponent/Buttons";
 import Cards from "./Uicomponent/Card";
-import Carousel from "./Uicomponent/Carousel";
 import Collapse from "./Uicomponent/Collapse";
 import Dropdowns from "./Uicomponent/Dropdowns";
 import ListGroup from "./Uicomponent/ListGroup";
@@ -60,12 +58,10 @@ function MainIndex() {
           <Route path="/profile-pages" element={<ProfilePage />} />
           <Route path="/icons" element={<Icons />} />
 
-          <Route path="/ui-alerts" element={<Alerts />} />
           <Route path="/ui-badge" element={<Badges />} />
           <Route path="/ui-breadcrumb" element={<Breadcrumb />} />
           <Route path="/ui-buttons" element={<Buttons />} />
           <Route path="/ui-card" element={<Cards />} />
-          <Route path="/ui-carousel" element={<Carousel />} />
           <Route path="/ui-collapse" element={<Collapse />} />
           <Route path="/ui-dropdowns" element={<Dropdowns />} />
           <Route path="/ui-listgroup" element={<ListGroup />} />
