@@ -25,7 +25,6 @@ import ListGroup from "./Uicomponent/ListGroup";
 import ModalUI from "./Uicomponent/Modal";
 import NavbarUI from "./Uicomponent/Navbar";
 import NavsUI from "./Uicomponent/Navs";
-import PaginationUI from "./Uicomponent/Pagination";
 import PopoversUI from "./Uicomponent/Popovers";
 import ProgressUI from "./Uicomponent/Progress";
 import Scrollspy from "./Uicomponent/Scrollspy";
@@ -74,7 +73,6 @@ function MainIndex() {
           <Route path="/ui-modalui" element={<ModalUI />} />
           <Route path="/ui-navbarui" element={<NavbarUI />} />
           <Route path="/ui-navsui" element={<NavsUI />} />
-          <Route path="/ui-paginationui" element={<PaginationUI />} />
           <Route path="/ui-popoversui" element={<PopoversUI />} />
           <Route path="/ui-progressui" element={<ProgressUI />} />
           <Route path="/ui-Scrollspyui" element={<Scrollspy />} />
