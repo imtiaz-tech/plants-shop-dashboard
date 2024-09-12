@@ -15,7 +15,6 @@ import StockList from "./Inventory/StockList";
 import Purchase from "./Inventory/Purchase";
 import Supplier from "./Inventory/Supplier";
 import Return from "./Inventory/Return";
-import Departments from "./Inventory/Departments";
 import Expense from "./Accounts/Expense";
 import ProfilePage from "./Other Pages/ProfilePage";
 import ContactUs from "./Other Pages/ContactUs";
@@ -72,7 +71,6 @@ function MainIndex() {
           <Route path="/purchase" element={<Purchase />} />
           <Route path="/supplier" element={<Supplier />} />
           <Route path="/return" element={<Return />} />
-          <Route path="/departments" element={<Departments />} />
 
           <Route path="/expense" element={<Expense />} />
           <Route path="/calendar" element={<Calendar />} />
