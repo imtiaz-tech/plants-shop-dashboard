@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import Dashboard from "./Dashboard/Dashboard";
 import ProductList from "./Products/ProductList";
 import ProductEdit from "./Products/ProductEdit";
-import ProductDetail from "./Products/ProductDetail";
 import ProductAdd from "./Products/ProductAdd";
 import ShoppingCart from "./Products/ShoppingCart";
 import Header from "../components/common/Header";
@@ -62,7 +61,6 @@ function MainIndex() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/product-list" element={<ProductList />} />
           <Route path="/product-edit/:id" element={<ProductEdit />} />
-          <Route path="/product-detail" element={<ProductDetail />} />
           <Route path="/product-add" element={<ProductAdd />} />
           <Route path="/shopping-cart" element={<ShoppingCart />} />
           <Route path="/categories-list" element={<CategoriesList />} />
