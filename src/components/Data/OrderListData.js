@@ -6,8 +6,7 @@ import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
 
 function OrdersList() {
   const dispatch = useDispatch();
-  const { order, orders, isOrdersLoading } = useSelector((state) => state.products || {});
-  console.log("🚀 ~ OrdersList ~ orders:", orders);
+  const { orders, isOrdersLoading } = useSelector((state) => state.products || {});
 
   useEffect(() => {
     dispatch(getOrders());

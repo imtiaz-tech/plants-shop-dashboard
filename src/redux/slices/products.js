@@ -241,6 +241,24 @@ export const getOrdersByUserId = createAsyncThunk(
   }
 );
 
+export const updateUserStatus = createAsyncThunk(
+  "products/update-user-status",
+  async (data, { getState, rejectWithValue }) => {
+    try {
+      const { token } = getState().auth;
+      const res = await axios.post(`/orders/update-user-status/${data.id}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+
 const initialState = {
   status: {},
   order: {},
@@ -253,6 +271,8 @@ const initialState = {
   products: [],
   productsCount: 0,
   isLoading: false,
+  isUsersLoading:false,
+  isUserOrdersLoading:false,
   isOrdersLoading: false,
   isSingleProductLoading: false,
   isSingleOrderLoading: false,
@@ -378,25 +398,25 @@ const productAuthSlice = createSlice({
       state.error = action.payload;
     });
     builder.addCase(getOrders.pending, (state) => {
-      state.isLoading = true;
+      state.isOrdersLoading = true;
     });
     builder.addCase(getOrders.fulfilled, (state, action) => {
       state.isOrdersLoading = false;
       state.orders = action.payload.data;
     });
     builder.addCase(getOrders.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isOrdersLoading = false;
       state.error = action.payload;
     });
     builder.addCase(getSingleOrder.pending, (state) => {
-      state.isLoading = true;
+      state.isSingleOrderLoading = true;
     });
     builder.addCase(getSingleOrder.fulfilled, (state, action) => {
       state.isSingleOrderLoading = false;
       state.order = action.payload.data;
     });
     builder.addCase(getSingleOrder.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isSingleOrderLoading = false;
       state.error = action.payload;
     });
     builder.addCase(updateOrderStatus.pending, (state) => {
@@ -411,24 +431,35 @@ const productAuthSlice = createSlice({
       state.error = action.payload;
     });
     builder.addCase(getUsers.pending, (state) => {
-      state.isLoading = true;
+      state.isUsersLoading = true;
     });
     builder.addCase(getUsers.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isUsersLoading = false;
       state.users = action.payload.data;
     });
     builder.addCase(getUsers.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isUsersLoading = false;
       state.error = action.payload;
     });
     builder.addCase(getOrdersByUserId.pending, (state) => {
-      state.isLoading = true;
+      state.isUserOrdersLoading = true;
     });
     builder.addCase(getOrdersByUserId.fulfilled, (state, action) => {
-      state.isSingleOrderLoading = false;
+      state.isUserOrdersLoading = false;
       state.userOrders = action.payload.data;
     });
     builder.addCase(getOrdersByUserId.rejected, (state, action) => {
+      state.isUserOrdersLoading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(updateUserStatus.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(updateUserStatus.fulfilled, (state, action) => {
+      state.Loading = false;
+      state.status = action.payload.data;
+    });
+    builder.addCase(updateUserStatus.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     });

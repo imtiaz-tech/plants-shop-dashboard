@@ -7,14 +7,13 @@ import AddressBlock from "../../components/Customers/CustomerDetails/AddressBloc
 import { useDispatch, useSelector } from "react-redux";
 import { getOrdersByUserId } from "../../redux/slices/products";
 import { useParams } from "react-router-dom";
-
+import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
 function CustomerDetail() {
   const dispatch = useDispatch();
 
   let params = useParams();
   const { id } = params;
-  const { userOrders } = useSelector((state) => state.products || {});
-  console.log("🚀 ~ CustomerDetail ~ userOrders:", userOrders);
+  const { userOrders,isUserOrdersLoading } = useSelector((state) => state.products || {});
 
   useEffect(() => {
     dispatch(getOrdersByUserId(id));
@@ -52,13 +51,15 @@ function CustomerDetail() {
     ],
   };
 
-  return (
+  return isUserOrdersLoading ? (
+     <OverlaySpinner/>
+  ) : (
     <div className="body d-flex py-3">
       <div className="container-xxl">
         <PageHeader1 pagetitle="Customer Detail" />
         <div className="row g-3 mb-xl-3">
           <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
-            {/* <AddressBlock /> */}
+            <AddressBlock />
             <div className="card">
               <div className="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
                 <h6 className="mb-0 fw-bold ">Customer Order</h6>

@@ -11,6 +11,7 @@ function CardBlock() {
   const dispatch = useDispatch();
 
   const { products, productsCount, isLoading } = useSelector((state) => state.products || {});
+  console.log("🚀 ~ CardBlock ~ isLoading:", isLoading)
 
   const [isModal, setIsModal] = useState(false);
   const [deleteId, setDeleteId] = useState("");

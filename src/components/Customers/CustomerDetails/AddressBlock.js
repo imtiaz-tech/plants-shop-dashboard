@@ -1,5 +1,4 @@
 import React from 'react';
-// import { CustomerDetailData } from '../../Data/CustomerDetailData';
 import { useSelector } from 'react-redux';
 
 
@@ -9,7 +8,7 @@ function AddressBlock() {
 return (
 
       <>
-      {singleOrder.map((order) =>
+      {singleOrder?.map((order) =>
         <div className="col">
           <div className="card">
             <div className="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">

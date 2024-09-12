@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 function OrderSummeryBlock() {
   const { order } = useSelector((state) => state.products || {});
-  console.log("🚀 ~ OrderSummeryBlock ~ order:", order)
 
   const columns = () => {
     return [
