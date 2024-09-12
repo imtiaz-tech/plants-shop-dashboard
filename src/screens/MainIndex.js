@@ -36,10 +36,8 @@ import ToastsUI from "./Uicomponent/Toasts";
 import Calendar from "./App/Calendar";
 import StaterPage from "./Stater Page/StaterPage";
 import Documentation from "./Documentation/Documentation";
-import Changelog from "./Changelog/Changelog";
 import CategoriesAdd from "./Categories/CategoriesAdd";
 import CategoriesEdit from "./Categories/CategoriesEdit";
-import Help from "./Help/Help";
 
 function MainIndex() {
   return (
@@ -88,9 +86,7 @@ function MainIndex() {
           <Route path="/ui-toastsui" element={<ToastsUI />} />
           <Route path="/stater-page" element={<StaterPage />} />
           <Route path="/documentation" element={<Documentation />} />
-          <Route path="/changelog" element={<Changelog />} />
 
-          <Route path="/help" element={<Help />} />
         </Routes>
       </div>
     </div>

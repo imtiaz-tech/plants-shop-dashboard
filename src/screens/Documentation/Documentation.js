@@ -96,7 +96,6 @@ function Documentation() {
                                                             <li><strong><i className="icofont-folder text-secondary me-2"></i>Accounts</strong></li>
                                                             <li><strong><i className="icofont-folder text-secondary me-2"></i>App</strong></li>
                                                             <li><strong><i className="icofont-folder text-secondary me-2"></i>Categories</strong></li>
-                                                            <li><strong><i className="icofont-folder text-secondary me-2"></i>Changelog</strong></li>
                                                             <li><strong><i className="icofont-folder text-secondary me-2"></i>Customers</strong></li>
                                                             <li><strong><i className="icofont-folder text-secondary me-2"></i>Dashboard</strong></li>
                                                             <li><strong><i className="icofont-folder text-secondary me-2"></i>Documentation</strong></li>

@@ -283,16 +283,7 @@
             "isCategory": false,
             "isApp": false,
             "children": []
-        },
-        {
-            "name": "Changelog",
-            "routerLink": ["changelog"],
-            "identifier": "Changelog",
-            "iconClass": "icofont-edit",
-            "breadcrumbMessage": "Welcome to Analytics Dashboard.",
-            "isCategory": false,
-            "isApp": false,
-            "children": []
         }
+        
     ]
 }
