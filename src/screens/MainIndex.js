@@ -17,7 +17,6 @@ import Supplier from "./Inventory/Supplier";
 import Return from "./Inventory/Return";
 import Departments from "./Inventory/Departments";
 import Expense from "./Accounts/Expense";
-import Salaryslip from "./Accounts/Salaryslip";
 import ProfilePage from "./Other Pages/ProfilePage";
 import PricePlanExample from "./Other Pages/PricePlanExample";
 import ContactUs from "./Other Pages/ContactUs";
@@ -77,7 +76,6 @@ function MainIndex() {
           <Route path="/departments" element={<Departments />} />
 
           <Route path="/expense" element={<Expense />} />
-          <Route path="/salaryslip" element={<Salaryslip />} />
           <Route path="/calendar" element={<Calendar />} />
 
           <Route path="/profile-pages" element={<ProfilePage />} />
