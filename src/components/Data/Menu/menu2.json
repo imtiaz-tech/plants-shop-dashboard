@@ -242,17 +242,8 @@
                     "isCategory": false,
                     "isApp": false,
                     "children": []
-                },
-                {
-                    "name": "Toasts",
-                    "routerLink": ["ui-toastsui"],
-                    "identifier": "Toasts",
-                    "iconClass": "",
-                    "breadcrumbMessage": "",
-                    "isCategory": false,
-                    "isApp": false,
-                    "children": []
                 }
+                
                 
             ]
         },
