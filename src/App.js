@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import AddModal from "./components/common/AddModal";
 import Sidebar from "./components/common/Sidebar";
 import AuthIndex from "./screens/AuthIndex";
 import MainIndex from "./screens/MainIndex";
