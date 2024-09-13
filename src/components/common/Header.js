@@ -57,12 +57,6 @@ function Header() {
                     </div>
                   </div>
                   <div className="list-group m-2 ">
-                    <Link
-                      to={process.env.PUBLIC_URL + "/profile-pages"}
-                      className="list-group-item list-group-item-action border-0 "
-                    >
-                      <i className="icofont-ui-user fs-5 me-3"></i>Profile Page
-                    </Link>
                     <button
                       className="list-group-item list-group-item-action border-0"
                       onClick={() => onLogout()}

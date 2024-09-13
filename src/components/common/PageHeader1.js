@@ -47,21 +47,6 @@ function PageHeader1 (props) {
                         </div>
                     </div> : null
                         }
-                        {/* {
-                            Orderdetail ? <div className="col-auto d-flex btn-set-task w-sm-100 align-items-center">
-                                <select className="form-select" aria-label="Default select example">
-                                    <option>Select Order Id</option>
-                                    <option value="1">Order-78414</option>
-                                    <option value="2">Order-78415</option>
-                                    <option value="3">Order-78416</option>
-                                    <option value="4">Order-78417</option>
-                                    <option value="5">Order-78418</option>
-                                    <option value="6">Order-78419</option>
-                                    <option value="7">Order-78420</option>
-                                </select>
-                            </div> : null
-                        } */}
-                        
                         {
                             productlist ? <div className="btn-group group-link btn-set-task w-sm-100">
                                 <Link to={"/product-list"} className="btn btn-primary btn-set-task w-sm-100"><i className="icofont-listing-box px-2 fs-5"></i> List View</Link>
