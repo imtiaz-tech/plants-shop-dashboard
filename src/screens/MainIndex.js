@@ -10,7 +10,6 @@ import OrderList from "./Orders/OrderList";
 import OrderDetail from "./Orders/OrderDetail";
 import CustomerList from "./Customers/CustomerList";
 import CustomerDetail from "./Customers/CustomerDetail";
-import Expense from "./Accounts/Expense";
 import Calendar from "./App/Calendar";
 import StaterPage from "./Stater Page/StaterPage";
 import Documentation from "./Documentation/Documentation";
@@ -36,7 +35,6 @@ function MainIndex() {
           <Route path="/customer-list" element={<CustomerList />} />
           <Route path="/customer-detail/:id" element={<CustomerDetail />} />
 
-          <Route path="/expense" element={<Expense />} />
           <Route path="/calendar" element={<Calendar />} />
 
           <Route path="/stater-page" element={<StaterPage />} />
