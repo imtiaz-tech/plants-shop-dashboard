@@ -198,17 +198,8 @@
                 
                 
             ]
-        },
-        {
-            "name": "Documentation",
-            "routerLink": ["documentation"],
-            "identifier": "Documentation",
-            "iconClass": "icofont-law-document",
-            "breadcrumbMessage": "Welcome to Analytics Dashboard.",
-            "isCategory": false,
-            "isApp": false,
-            "children": []
         }
+        
         
     ]
 }

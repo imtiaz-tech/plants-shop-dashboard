@@ -11,7 +11,6 @@ import OrderDetail from "./Orders/OrderDetail";
 import CustomerList from "./Customers/CustomerList";
 import CustomerDetail from "./Customers/CustomerDetail";
 import Calendar from "./App/Calendar";
-import Documentation from "./Documentation/Documentation";
 import CategoriesAdd from "./Categories/CategoriesAdd";
 import CategoriesEdit from "./Categories/CategoriesEdit";
 
@@ -35,9 +34,7 @@ function MainIndex() {
           <Route path="/customer-detail/:id" element={<CustomerDetail />} />
 
           <Route path="/calendar" element={<Calendar />} />
-
-          <Route path="/documentation" element={<Documentation />} />
-
+          
         </Routes>
       </div>
     </div>
