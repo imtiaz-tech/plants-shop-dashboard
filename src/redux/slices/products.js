@@ -169,6 +169,10 @@ export const getOrders = createAsyncThunk("products/get-orders", async (data, { 
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      params: {
+        userId: data?.userId,
+        status: data?.status
+      },
     });
     return res.data;
   } catch (error) {
@@ -224,22 +228,6 @@ export const getUsers = createAsyncThunk("products/get-users", async (data, { ge
   }
 });
 
-export const getOrdersByUserId = createAsyncThunk(
-  "product/get-order-by-user-id",
-  async (data, { getState, rejectWithValue }) => {
-    try {
-      const { token } = getState().auth;
-      const res = await axios.get(`/orders/get-order-by-user-id/${data}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      return res.data;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
-  }
-);
 
 export const updateUserStatus = createAsyncThunk(
   "products/update-user-status",
@@ -258,7 +246,6 @@ export const updateUserStatus = createAsyncThunk(
   }
 );
 
-
 const initialState = {
   status: {},
   order: {},
@@ -271,8 +258,8 @@ const initialState = {
   products: [],
   productsCount: 0,
   isLoading: false,
-  isUsersLoading:false,
-  isUserOrdersLoading:false,
+  isUsersLoading: false,
+  isUserOrdersLoading: false,
   isOrdersLoading: false,
   isSingleProductLoading: false,
   isSingleOrderLoading: false,
@@ -439,17 +426,6 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(getUsers.rejected, (state, action) => {
       state.isUsersLoading = false;
-      state.error = action.payload;
-    });
-    builder.addCase(getOrdersByUserId.pending, (state) => {
-      state.isUserOrdersLoading = true;
-    });
-    builder.addCase(getOrdersByUserId.fulfilled, (state, action) => {
-      state.isUserOrdersLoading = false;
-      state.userOrders = action.payload.data;
-    });
-    builder.addCase(getOrdersByUserId.rejected, (state, action) => {
-      state.isUserOrdersLoading = false;
       state.error = action.payload;
     });
     builder.addCase(updateUserStatus.pending, (state) => {

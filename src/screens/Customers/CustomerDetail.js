@@ -5,7 +5,7 @@ import DataTable from "react-data-table-component";
 import PageHeader1 from "../../components/common/PageHeader1";
 import AddressBlock from "../../components/Customers/CustomerDetails/AddressBlock";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrdersByUserId } from "../../redux/slices/products";
+import { getOrders } from "../../redux/slices/products";
 import { useParams } from "react-router-dom";
 import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
 function CustomerDetail() {
@@ -13,10 +13,11 @@ function CustomerDetail() {
 
   let params = useParams();
   const { id } = params;
-  const { userOrders,isUserOrdersLoading } = useSelector((state) => state.products || {});
+  const { orders, isUserOrdersLoading } = useSelector((state) => state.products || {});
 
   useEffect(() => {
-    dispatch(getOrdersByUserId(id));
+    const data = { userId: id };
+    dispatch(getOrders(data));
   }, [id]);
 
   const CustomerDetailDatatable = {
@@ -52,7 +53,7 @@ function CustomerDetail() {
   };
 
   return isUserOrdersLoading ? (
-     <OverlaySpinner/>
+    <OverlaySpinner />
   ) : (
     <div className="body d-flex py-3">
       <div className="container-xxl">
@@ -70,7 +71,7 @@ function CustomerDetail() {
                     <div className="col-sm-12">
                       <DataTable
                         columns={CustomerDetailDatatable.columns}
-                        data={userOrders}
+                        data={orders}
                         defaultSortField="title"
                         selectableRows={false}
                         className="table myDataTable table-hover align-middle mb-0 d-row nowrap dataTable no-footer dtr-inline"
