@@ -11,7 +11,6 @@ import OrderDetail from "./Orders/OrderDetail";
 import CustomerList from "./Customers/CustomerList";
 import CustomerDetail from "./Customers/CustomerDetail";
 import Calendar from "./App/Calendar";
-import StaterPage from "./Stater Page/StaterPage";
 import Documentation from "./Documentation/Documentation";
 import CategoriesAdd from "./Categories/CategoriesAdd";
 import CategoriesEdit from "./Categories/CategoriesEdit";
@@ -37,7 +36,6 @@ function MainIndex() {
 
           <Route path="/calendar" element={<Calendar />} />
 
-          <Route path="/stater-page" element={<StaterPage />} />
           <Route path="/documentation" element={<Documentation />} />
 
         </Routes>
