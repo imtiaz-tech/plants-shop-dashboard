@@ -11,7 +11,6 @@ import OrderDetail from "./Orders/OrderDetail";
 import CustomerList from "./Customers/CustomerList";
 import CustomerDetail from "./Customers/CustomerDetail";
 import Expense from "./Accounts/Expense";
-import ProfilePage from "./Other Pages/ProfilePage";
 import Calendar from "./App/Calendar";
 import StaterPage from "./Stater Page/StaterPage";
 import Documentation from "./Documentation/Documentation";
@@ -39,8 +38,6 @@ function MainIndex() {
 
           <Route path="/expense" element={<Expense />} />
           <Route path="/calendar" element={<Calendar />} />
-
-          <Route path="/profile-pages" element={<ProfilePage />} />
 
           <Route path="/stater-page" element={<StaterPage />} />
           <Route path="/documentation" element={<Documentation />} />
