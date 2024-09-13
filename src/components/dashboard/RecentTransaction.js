@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrders } from "../../redux/slices/products";
+import { Link } from "react-router-dom";
+
 function RecentTransaction() {
   const dispatch = useDispatch();
 
@@ -18,6 +20,13 @@ function RecentTransaction() {
     {
       name: " ID",
       selector: (row) => row._id.slice(0, 8),
+      cell: (row) => (
+        <>
+          <span className="px-2">
+            <Link to={`/order-detail/${row._id}`}>{row._id.slice(0, 6)}</Link>
+          </span>
+        </>
+      ),
       sortable: false,
     },
     {
