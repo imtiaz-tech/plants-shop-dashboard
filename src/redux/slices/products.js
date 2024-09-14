@@ -163,15 +163,17 @@ export const updateSingleProduct = createAsyncThunk(
 );
 
 export const getOrders = createAsyncThunk("products/get-orders", async (data, { getState, rejectWithValue }) => {
-  console.log("🚀 ~ getOrders ~ data:", data)
   try {
     const { token } = getState().auth;
-    const res = await axios.get(`/orders/get-orders?perpage=${data.recordsPerPage}&pageno=${data.currentPage}`, {
+    const res = await axios.get("/orders/get-orders", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      params: {
+        userId: data?.userId,
+        status: data?.status
+      },
       });
-      console.log("🚀 ~ getOrders ~ res:", res)
     return res.data;
   } catch (error) {
     return rejectWithValue(error.response.data);
