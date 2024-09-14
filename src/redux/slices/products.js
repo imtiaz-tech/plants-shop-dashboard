@@ -163,17 +163,15 @@ export const updateSingleProduct = createAsyncThunk(
 );
 
 export const getOrders = createAsyncThunk("products/get-orders", async (data, { getState, rejectWithValue }) => {
+  console.log("🚀 ~ getOrders ~ data:", data)
   try {
     const { token } = getState().auth;
-    const res = await axios.get("/orders/get-orders", {
+    const res = await axios.get(`/orders/get-orders?perpage=${data.recordsPerPage}&pageno=${data.currentPage}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      params: {
-        userId: data?.userId,
-        status: data?.status
-      },
-    });
+      });
+      console.log("🚀 ~ getOrders ~ res:", res)
     return res.data;
   } catch (error) {
     return rejectWithValue(error.response.data);
@@ -221,6 +219,10 @@ export const getUsers = createAsyncThunk("products/get-users", async (data, { ge
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      params: {
+        recordsPerPage: data?.recordsPerPage,
+        currentPage: data?.currentPage
+      },
     });
     return res.data;
   } catch (error) {
@@ -257,6 +259,7 @@ const initialState = {
   categoriesCount: 0,
   products: [],
   productsCount: 0,
+  usersCount:0,
   isLoading: false,
   isUsersLoading: false,
   isUserOrdersLoading: false,
@@ -423,6 +426,8 @@ const productAuthSlice = createSlice({
     builder.addCase(getUsers.fulfilled, (state, action) => {
       state.isUsersLoading = false;
       state.users = action.payload.data;
+      state.usersCount = action.payload.count;
+
     });
     builder.addCase(getUsers.rejected, (state, action) => {
       state.isUsersLoading = false;

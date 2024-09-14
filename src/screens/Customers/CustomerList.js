@@ -7,13 +7,32 @@ import moment from "moment";
 import { getUsers,updateUserStatus } from "../../redux/slices/products";
 import { useDispatch, useSelector } from "react-redux";
 import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
+import Pagination from "../../components/Categories/Pagination";
 function CustomerList() {
   const dispatch = useDispatch();
-  const { users, isUsersLoading } = useSelector((state) => state.products || {});
+  const { users, isUsersLoading,usersCount } = useSelector((state) => state.products || {});
 
-  useEffect(() => {
-    dispatch(getUsers());
-  }, []);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(10);
+
+  const nPages = Math.ceil(usersCount / recordsPerPage);
+  
+  const getUsersByPage = (pageNumber) => {
+    const data = {
+      currentPage: pageNumber,
+      recordsPerPage,
+    };
+    dispatch(getUsers(data));
+  };
+  const goToPage = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    getUsersByPage(pageNumber);
+  };
+
+  useEffect((currentPage) => {
+    getUsersByPage(currentPage);
+  }, [currentPage]);
+
 
 
   const onStatusChange = (e, row) => {
@@ -81,11 +100,12 @@ function CustomerList() {
                         columns={columns}
                         data={users}
                         defaultSortField="title"
-                        pagination
+                        // pagination
                         selectableRows={false}
                         className="table myDataTable table-hover align-middle mb-0 d-row nowrap dataTable no-footer dtr-inline"
                         highlightOnHover={true}
                       />
+                      <Pagination nPages={nPages} currentPage={currentPage} goToPage={goToPage} />
                     </div>
                   </div>
                 </div>

@@ -19,7 +19,7 @@ function RecentTransaction() {
   const columns = [
     {
       name: " ID",
-      selector: (row) => row._id.slice(0, 8),
+      selector: (row) => row._id,
       cell: (row) => (
         <>
           <span className="px-2">
