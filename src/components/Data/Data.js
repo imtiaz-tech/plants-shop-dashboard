@@ -22,34 +22,34 @@ export const ActiveUserStatusData=[
     }
 ]
 export const DashboardStatusData = [
-    {
-        title: 'Revenue',
-        value: '$18,925',
-        iconClass: 'fa fa-dollar fa-lg',
-        bgClass: 'alert-success',
-        iconBgClass: 'bg-success'
-    },
-    {
-        title: 'Expense',
-        value: '$11,024',
-        iconClass: 'fa fa-credit-card fa-lg',
-        bgClass: 'alert-danger',
-        iconBgClass: 'bg-danger'
-    },
-    {
-        title: 'Happy Clients',
-        value: '8,925',
-        iconClass: 'fa fa-smile-o fa-lg',
-        bgClass: 'alert-warning',
-        iconBgClass: 'bg-warning'
-    },
-    {
-        title: 'New StoreOpen',
-        value: '8,925',
-        iconClass: 'fa fa-shopping-bag',
-        bgClass: 'alert-info',
-        iconBgClass: 'bg-info'
-    }
+    // {
+    //     title: 'Revenue',
+    //     value: '$18,925',
+    //     iconClass: 'fa fa-dollar fa-lg',
+    //     bgClass: 'alert-success',
+    //     iconBgClass: 'bg-success'
+    // },
+    // {
+    //     title: 'Expense',
+    //     value: '$11,024',
+    //     iconClass: 'fa fa-credit-card fa-lg',
+    //     bgClass: 'alert-danger',
+    //     iconBgClass: 'bg-danger'
+    // },
+    // {
+    //     title: 'Happy Clients',
+    //     value: '8,925',
+    //     iconClass: 'fa fa-smile-o fa-lg',
+    //     bgClass: 'alert-warning',
+    //     iconBgClass: 'bg-warning'
+    // },
+    // {
+    //     title: 'New StoreOpen',
+    //     value: '8,925',
+    //     iconClass: 'fa fa-shopping-bag',
+    //     bgClass: 'alert-info',
+    //     iconBgClass: 'bg-info'
+    // }
 ]
 
 export const TodayData = [
@@ -83,30 +83,30 @@ export const TodayData = [
         iconClass: 'icofont-calculator-alt-1 fs-3 color-lightblue',
         cardBg: 'bg-light'
     },
-    {
-        title: 'Visitors',
-        value: '11452',
-        iconClass: 'icofont-users-social fs-3 color-light-success',
-        cardBg: 'bg-light'
-    },
+    // {
+    //     title: 'Visitors',
+    //     value: '11452',
+    //     iconClass: 'icofont-users-social fs-3 color-light-success',
+    //     cardBg: 'bg-light'
+    // },
     {
         title: 'Total Products',
         value: '184511',
         iconClass: 'icofont-bag fs-3 color-light-orange',
         cardBg: 'bg-light'
     },
-    {
-        title: 'Top Selling Item',
-        value: '122',
-        iconClass: 'icofont-star fs-3 color-lightyellow',
-        cardBg: 'bg-light'
-    },
-    {
-        title: 'Dealership',
-        value: '32',
-        iconClass: 'icofont-handshake-deal fs-3 color-lavender-purple',
-        cardBg: 'bg-light'
-    }
+    // {
+    //     title: 'Top Selling Item',
+    //     value: '122',
+    //     iconClass: 'icofont-star fs-3 color-lightyellow',
+    //     cardBg: 'bg-light'
+    // },
+    // {
+    //     title: 'Dealership',
+    //     value: '32',
+    //     iconClass: 'icofont-handshake-deal fs-3 color-lavender-purple',
+    //     cardBg: 'bg-light'
+    // }
 ]
 
 export const WeekData = [
@@ -140,30 +140,30 @@ export const WeekData = [
         iconClass: 'icofont-calculator-alt-1 fs-3 color-lightblue',
         cardBg: 'bg-light'
     },
-    {
-        title: 'Visitors',
-        value: '111452',
-        iconClass: 'icofont-users-social fs-3 color-light-success',
-        cardBg: 'bg-light'
-    },
+    // {
+    //     title: 'Visitors',
+    //     value: '111452',
+    //     iconClass: 'icofont-users-social fs-3 color-light-success',
+    //     cardBg: 'bg-light'
+    // },
     {
         title: 'Total Products',
         value: '194511',
         iconClass: 'icofont-bag fs-3 color-light-orange',
         cardBg: 'bg-light'
     },
-    {
-        title: 'Top Selling Item',
-        value: '1122',
-        iconClass: 'icofont-star fs-3 color-lightyellow',
-        cardBg: 'bg-light'
-    },
-    {
-        title: 'Dealership',
-        value: '132',
-        iconClass: 'icofont-handshake-deal fs-3 color-lavender-purple',
-        cardBg: 'bg-light'
-    }
+    // {
+    //     title: 'Top Selling Item',
+    //     value: '1122',
+    //     iconClass: 'icofont-star fs-3 color-lightyellow',
+    //     cardBg: 'bg-light'
+    // },
+    // {
+    //     title: 'Dealership',
+    //     value: '132',
+    //     iconClass: 'icofont-handshake-deal fs-3 color-lavender-purple',
+    //     cardBg: 'bg-light'
+    // }
 ]
 
 export const MonthData = [
@@ -197,30 +197,30 @@ export const MonthData = [
         iconClass: 'icofont-calculator-alt-1 fs-3 color-lightblue',
         cardBg: 'bg-light'
     },
-    {
-        title: 'Visitors',
-        value: '211452',
-        iconClass: 'icofont-users-social fs-3 color-light-success',
-        cardBg: 'bg-light'
-    },
+    // {
+    //     title: 'Visitors',
+    //     value: '211452',
+    //     iconClass: 'icofont-users-social fs-3 color-light-success',
+    //     cardBg: 'bg-light'
+    // },
     {
         title: 'Total Products',
         value: '284511',
         iconClass: 'icofont-bag fs-3 color-light-orange',
         cardBg: 'bg-light'
     },
-    {
-        title: 'Top Selling Item',
-        value: '222',
-        iconClass: 'icofont-star fs-3 color-lightyellow',
-        cardBg: 'bg-light'
-    },
-    {
-        title: 'Dealership',
-        value: '232',
-        iconClass: 'icofont-handshake-deal fs-3 color-lavender-purple',
-        cardBg: 'bg-light'
-    }
+    // {
+    //     title: 'Top Selling Item',
+    //     value: '222',
+    //     iconClass: 'icofont-star fs-3 color-lightyellow',
+    //     cardBg: 'bg-light'
+    // },
+    // {
+    //     title: 'Dealership',
+    //     value: '232',
+    //     iconClass: 'icofont-handshake-deal fs-3 color-lavender-purple',
+    //     cardBg: 'bg-light'
+    // }
 ]
 
 export const YearData = [
@@ -254,28 +254,28 @@ export const YearData = [
         iconClass: 'icofont-calculator-alt-1 fs-3 color-lightblue',
         cardBg: 'bg-light'
     },
-    {
-        title: 'Visitors',
-        value: '114521452',
-        iconClass: 'icofont-users-social fs-3 color-light-success',
-        cardBg: 'bg-light'
-    },
+    // {
+    //     title: 'Visitors',
+    //     value: '114521452',
+    //     iconClass: 'icofont-users-social fs-3 color-light-success',
+    //     cardBg: 'bg-light'
+    // },
     {
         title: 'Total Products',
         value: '884511',
         iconClass: 'icofont-bag fs-3 color-light-orange',
         cardBg: 'bg-light'
     },
-    {
-        title: 'Top Selling Item',
-        value: '7522',
-        iconClass: 'icofont-star fs-3 color-lightyellow',
-        cardBg: 'bg-light'
-    },
-    {
-        title: 'Dealership',
-        value: '1832',
-        iconClass: 'icofont-handshake-deal fs-3 color-lavender-purple',
-        cardBg: 'bg-light'
-    }
+    // {
+    //     title: 'Top Selling Item',
+    //     value: '7522',
+    //     iconClass: 'icofont-star fs-3 color-lightyellow',
+    //     cardBg: 'bg-light'
+    // },
+    // {
+    //     title: 'Dealership',
+    //     value: '1832',
+    //     iconClass: 'icofont-handshake-deal fs-3 color-lavender-purple',
+    //     cardBg: 'bg-light'
+    // }
 ]

@@ -29,9 +29,9 @@ function CustomerList() {
     getUsersByPage(pageNumber);
   };
 
-  useEffect((currentPage) => {
+  useEffect(() => {
     getUsersByPage(currentPage);
-  }, [currentPage]);
+  }, []);
 
 
 
@@ -100,7 +100,6 @@ function CustomerList() {
                         columns={columns}
                         data={users}
                         defaultSortField="title"
-                        // pagination
                         selectableRows={false}
                         className="table myDataTable table-hover align-middle mb-0 d-row nowrap dataTable no-footer dtr-inline"
                         highlightOnHover={true}

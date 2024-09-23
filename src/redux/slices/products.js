@@ -171,9 +171,9 @@ export const getOrders = createAsyncThunk("products/get-orders", async (data, { 
       },
       params: {
         userId: data?.userId,
-        status: data?.status
+        status: data?.status,
       },
-      });
+    });
     return res.data;
   } catch (error) {
     return rejectWithValue(error.response.data);
@@ -223,7 +223,7 @@ export const getUsers = createAsyncThunk("products/get-users", async (data, { ge
       },
       params: {
         recordsPerPage: data?.recordsPerPage,
-        currentPage: data?.currentPage
+        currentPage: data?.currentPage,
       },
     });
     return res.data;
@@ -231,7 +231,6 @@ export const getUsers = createAsyncThunk("products/get-users", async (data, { ge
     return rejectWithValue(error.response.data);
   }
 });
-
 
 export const updateUserStatus = createAsyncThunk(
   "products/update-user-status",
@@ -250,6 +249,22 @@ export const updateUserStatus = createAsyncThunk(
   }
 );
 
+export const getDashboardDetails = createAsyncThunk("products/get-dashboard-details", async (data, { getState, rejectWithValue }) => {
+  console.log("🚀 ~ getDashboardDetails ~ data:", data)
+  try {
+    const { token } = getState().auth;
+    const res = await axios.post("/orders/get-dashboard-details", data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log("🚀 ~ getDashboardDetails ~ res:", res)
+    return res.data;
+  } catch (error) {
+    return rejectWithValue(error.response.data);
+  }
+});
+
 const initialState = {
   status: {},
   order: {},
@@ -261,7 +276,7 @@ const initialState = {
   categoriesCount: 0,
   products: [],
   productsCount: 0,
-  usersCount:0,
+  usersCount: 0,
   isLoading: false,
   isUsersLoading: false,
   isUserOrdersLoading: false,
@@ -429,7 +444,6 @@ const productAuthSlice = createSlice({
       state.isUsersLoading = false;
       state.users = action.payload.data;
       state.usersCount = action.payload.count;
-
     });
     builder.addCase(getUsers.rejected, (state, action) => {
       state.isUsersLoading = false;
@@ -444,6 +458,17 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(updateUserStatus.rejected, (state, action) => {
       state.isLoading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(getDashboardDetails.pending, (state) => {
+      state.isOrdersLoading = true;
+    });
+    builder.addCase(getDashboardDetails.fulfilled, (state, action) => {
+      state.isOrdersLoading = false;
+      state.dashboarddetails = action.payload.data;
+    });
+    builder.addCase(getDashboardDetails.rejected, (state, action) => {
+      state.isOrdersLoading = false;
       state.error = action.payload;
     });
   },
