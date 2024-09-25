@@ -250,7 +250,6 @@ export const updateUserStatus = createAsyncThunk(
 );
 
 export const getDashboardDetails = createAsyncThunk("products/get-dashboard-details", async (data, { getState, rejectWithValue }) => {
-  console.log("🚀 ~ getDashboardDetails ~ data:", data)
   try {
     const { token } = getState().auth;
     const res = await axios.post("/orders/get-dashboard-details", data, {
@@ -258,7 +257,6 @@ export const getDashboardDetails = createAsyncThunk("products/get-dashboard-deta
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log("🚀 ~ getDashboardDetails ~ res:", res)
     return res.data;
   } catch (error) {
     return rejectWithValue(error.response.data);
@@ -271,6 +269,7 @@ const initialState = {
   userOrders: [],
   users: [],
   orders: [],
+  dashboarddetails:[],
   product: {},
   categories: [],
   categoriesCount: 0,
@@ -465,7 +464,7 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(getDashboardDetails.fulfilled, (state, action) => {
       state.isOrdersLoading = false;
-      state.dashboarddetails = action.payload.data;
+      state.dashboarddetails = action.payload;
     });
     builder.addCase(getDashboardDetails.rejected, (state, action) => {
       state.isOrdersLoading = false;
