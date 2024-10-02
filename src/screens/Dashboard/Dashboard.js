@@ -39,7 +39,7 @@ function Dashboard() {
     <div className="body d-flex py-3">
       <div className="container-xxl">
         <div className="mt-1">
-          <div id="left-tabs-example" defaultActiveKey="first" className="col-lg-12 col-md-12">
+          <div id="left-tabs-example" defaultActiveKey="today" className="col-lg-12 col-md-12">
             <Row>
               <Col sm={12}>
                 <div className="tab-filter d-flex align-items-center justify-content-between mb-3 flex-wrap">
@@ -49,7 +49,7 @@ function Dashboard() {
                     onSelect={(selected) => onDateSelect(selected)}
                   >
                     <Nav.Item className="nav-item">
-                      <Nav.Link className="nav-link" eventKey="today">
+                      <Nav.Link className="nav-link" defaultActiveKey="today">
                         Today
                       </Nav.Link>
                     </Nav.Item>
