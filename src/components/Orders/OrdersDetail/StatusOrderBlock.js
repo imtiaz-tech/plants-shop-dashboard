@@ -18,6 +18,7 @@ function StatusOrderBlock(props) {
     const changeStatus = () => {
         setStatus();
       };
+      // function for update order status and after update status navigate to order list
       const updateStatus=()=> {
         const data ={
             id:order._id,
@@ -31,7 +32,7 @@ function StatusOrderBlock(props) {
             }
           });
       }
-
+    //    show modal for update order status
       const onClickUpdate = (orderId) => {
         setIsModal(true);
         setOrderId(orderId);

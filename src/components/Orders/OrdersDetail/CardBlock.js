@@ -16,7 +16,7 @@ function CardBlock() {
             </div>
             <div className="flex-fill ms-3 text-truncate">
               <div className="h6 mb-0">Name</div>
-              <span className="small">{order?.userId?.name}</span>
+              <span className="small">{order?.billingDetails?.firstName}</span>
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@ function CardBlock() {
             </div>
             <div className="flex-fill ms-3 text-truncate">
               <div className="h6 mb-0">Email</div>
-              <span className="small">{order.userId?.email}</span>
+              <span className="small">{order?.billingDetails?.email}</span>
             </div>
           </div>
         </div>

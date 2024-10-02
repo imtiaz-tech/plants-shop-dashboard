@@ -7,7 +7,7 @@ import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
 function OrdersList() {
   const dispatch = useDispatch();
   const { orders, isOrdersLoading } = useSelector((state) => state.products || {});
-
+  // useEffect function call when user click on sidebar menu orders
   useEffect(() => {
     dispatch(getOrders());
   }, []);

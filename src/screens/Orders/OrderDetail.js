@@ -16,7 +16,7 @@ function OrderDetail() {
   const { id } = params;
 
   const { order,isSingleOrderLoading } = useSelector((state) => state.products || {});
-
+ // function useEffect call when single order details by id required from order list
   useEffect(() => {
     dispatch(getSingleOrder(id));
   }, [id]);
@@ -27,8 +27,10 @@ function OrderDetail() {
     <div className="body d-flex py-3">
       <div className="container-xxl">
         <PageHeader1 pagetitle="Order Details" Orderdetail={true} />
+        {/* cardblock is used for showing data name,email,phone and order created at  */}
         <CardBlock />
         <div className="row g-3 mb-3 row-cols-1 row-cols-md-1 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-3 row-deck">
+        {/* AddressBlock is used for showing data firstname,lastname,address,city,email,postcode etc. */}
           <AddressBlock />
         </div>
         <div className="row g-3 mb-3">
@@ -42,6 +44,7 @@ function OrderDetail() {
                   <div className="checkout-table table-responsive">
                     <div id="myCartTable_wrapper" className="dataTables_wrapper dt-bootstrap5 no-footer">
                       <div className="row">
+                      {/* OrderSummeryBlock is used showing data product image,name,quantity of products in one order and price */}
                         <OrderSummeryBlock />
                       </div>
                     </div>
@@ -61,6 +64,7 @@ function OrderDetail() {
             </div>
           </div>
           <div className="col-xl-12 col-xxl-4">
+          {/* StatusOrderBlock is used for showing status  */}
             <StatusOrderBlock order={order} />
           </div>
         </div>
