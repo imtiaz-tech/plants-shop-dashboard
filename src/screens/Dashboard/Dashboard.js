@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import {  Nav, Row, Col } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Nav, Row, Col } from "react-bootstrap";
 import RecentTransaction from "../../components/dashboard/RecentTransaction";
 import { useDispatch, useSelector } from "react-redux";
 import { getDashboardDetails } from "../../redux/slices/products";
@@ -9,6 +9,8 @@ function Dashboard() {
   const dispatch = useDispatch();
 
   const { dashboarddetails } = useSelector((state) => state.products || {});
+
+  const [activeNavLink, setActiveNavLink] = useState("today");
 
   const onDateSelect = (period) => {
     let startTime = "";
@@ -49,7 +51,7 @@ function Dashboard() {
                     onSelect={(selected) => onDateSelect(selected)}
                   >
                     <Nav.Item className="nav-item">
-                      <Nav.Link className="nav-link" defaultActiveKey="today">
+                      <Nav.Link className={activeNavLink === "today" ? "active" : "unactive"} eventKey="today">
                         Today
                       </Nav.Link>
                     </Nav.Item>
@@ -122,7 +124,7 @@ function Dashboard() {
                               <div className="h6 mb-0">Avg Sale</div>
                               <span className="text-muted">Avg Sale</span>
                               <div>
-                                <span className="fs-6 fw-bold me-2">{round(dashboarddetails.average,0)}</span>
+                                <span className="fs-6 fw-bold me-2">{round(dashboarddetails.average, 0)}</span>
                               </div>
                             </div>
                             <div className="right-icon">
@@ -146,7 +148,7 @@ function Dashboard() {
                               <div className="h6 mb-0">Avg Item Sale</div>
                               <span className="text-muted">Avg Item Sale</span>
                               <div>
-                                <span className="fs-6 fw-bold me-2">{round(dashboarddetails.averageItemSale,0)}</span>
+                                <span className="fs-6 fw-bold me-2">{round(dashboarddetails.averageItemSale, 0)}</span>
                               </div>
                             </div>
                             <div className="right-icon">
@@ -162,7 +164,9 @@ function Dashboard() {
                               <div className="h6 mb-0">Total Sale</div>
                               <span className="text-muted">Total Sale</span>
                               <div>
-                                <span className="fs-6 fw-bold me-2">{dashboarddetails.orderSalesCount?.[0]?.totalSales}</span>
+                                <span className="fs-6 fw-bold me-2">
+                                  {dashboarddetails.orderSalesCount?.[0]?.totalSales}
+                                </span>
                               </div>
                             </div>
                             <div className="right-icon">
