@@ -16,15 +16,19 @@ function Dashboard() {
     let startTime = "";
     let endTime = "";
     if (period === "today") {
+        setActiveNavLink("today")
       startTime = moment().startOf("D").format();
       endTime = moment().endOf("D").format();
     } else if (period === "week") {
+        setActiveNavLink("week")
       startTime = moment().startOf("W").format();
       endTime = moment().endOf("W").format();
     } else if (period === "month") {
+        setActiveNavLink("month")
       startTime = moment().startOf("M").format();
       endTime = moment().endOf("M").format();
     } else if (period === "year") {
+        setActiveNavLink("year")
       startTime = moment().startOf("Y").format();
       endTime = moment().endOf("Y").format();
     }
@@ -56,17 +60,17 @@ function Dashboard() {
                       </Nav.Link>
                     </Nav.Item>
                     <Nav.Item className="nav-item">
-                      <Nav.Link className="nav-link" eventKey="week">
+                      <Nav.Link className={activeNavLink === "week" ? "active" : "unactive"} eventKey="week">
                         Week
                       </Nav.Link>
                     </Nav.Item>
                     <Nav.Item className="nav-item">
-                      <Nav.Link className="nav-link" eventKey="month">
+                      <Nav.Link className={activeNavLink === "month" ? "active" : "unactive"} eventKey="month">
                         Month
                       </Nav.Link>
                     </Nav.Item>
                     <Nav.Item className="nav-item">
-                      <Nav.Link className="nav-link" eventKey="year">
+                      <Nav.Link className={activeNavLink === "year" ? "active" : "unactive"} eventKey="year">
                         Year
                       </Nav.Link>
                     </Nav.Item>
