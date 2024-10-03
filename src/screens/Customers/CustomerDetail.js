@@ -8,13 +8,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { getOrders } from "../../redux/slices/products";
 import { useParams } from "react-router-dom";
 import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
-function CustomerDetail() {
-  const dispatch = useDispatch();
 
+function CustomerDetail() {
+  //useDispatch() hook is used to dispatch actions to the Redux store
+  const dispatch = useDispatch();
+  // useParams hooks of React-Router that returns a dynamic parameter of the URL that the user is currently on
   let params = useParams();
   const { id } = params;
+  //useSelector hook is a feature provided by the React-Redux library that allows React components to access the state stored in a Redux store.
   const { orders, isUserOrdersLoading } = useSelector((state) => state.products || {});
-
+ // useEffeect call when dashboard user click on Id customer information page and this useEffect output is getorders by userId
   useEffect(() => {
     const data = { userId: id };
     dispatch(getOrders(data));
@@ -27,6 +30,7 @@ function CustomerDetail() {
         sortable: false,
         maxWidth: "150px",
         cell: (row) => (
+                //  get order id from orders for showing on customer detail page and this id link to order detail page
           <Link to={`/order-detail/${row._id}`} className="">
             {row._id.slice(0, 6)}
           </Link>
@@ -35,17 +39,20 @@ function CustomerDetail() {
       {
         name: "Order Date",
         sortable: false,
+      //  get order date from orders for showing on customer detail page 
         cell: (row) => <>{moment(row.createdAt).format("DD-MM-YYYY")}</>,
       },
       {
         name: "Price",
         sortable: false,
+        // reduce method used for to get total price of single order and shows on customer detail page 
         cell: (row) => <>PKR {row?.cart?.reduce((total, item) => total + item.unitPrice * item.quantity, 0)}</>,
       },
       {
         name: "Status",
         sortable: false,
         cell: (row) => (
+                //  get order status from orders for showing on customer detail page 
           <span className={`badge ${row.status === "Completed" ? "bg-success" : "bg-warning"}`}>{row.status}</span>
         ),
       },
@@ -69,6 +76,7 @@ function CustomerDetail() {
                 <div id="myProjectTable_wrapper" className="dataTables_wrapper dt-bootstrap5 no-footer">
                   <div className="row">
                     <div className="col-sm-12">
+                    {/* import datatable from react-data-table-component for showing order data in rows and columns */}
                       <DataTable
                         columns={CustomerDetailDatatable.columns}
                         data={orders}

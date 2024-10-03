@@ -6,12 +6,14 @@ import { getDashboardDetails } from "../../redux/slices/products";
 import moment from "moment";
 import { round } from "lodash";
 function Dashboard() {
+  //useDispatch() hook is used to dispatch actions to the Redux store
   const dispatch = useDispatch();
-
+   //useSelector hook is a feature provided by the React-Redux library that allows React components to access the state stored in a Redux store.
   const { dashboarddetails } = useSelector((state) => state.products || {});
-
+ // usestate hook used for set setActiveNavLink
   const [activeNavLink, setActiveNavLink] = useState("today");
-
+  // onDateSelect function called when user click on today,week,month,year on dashboard it require two parameters starttime,endtime;
+  //Moment is a JavaScript library that helps manipulate date objects in JavaScript
   const onDateSelect = (period) => {
     let startTime = "";
     let endTime = "";
@@ -34,7 +36,8 @@ function Dashboard() {
     }
     dispatch(getDashboardDetails({ startTime, endTime }));
   };
-
+   // useEffect calls when page render first time or web page refresh this useEffect require 2 parameters starttime and endtime; 
+     //Moment is a JavaScript library that helps manipulate date objects in JavaScript
   useEffect(() => {
     const startTime = moment().startOf("D").format();
     const endTime = moment().endOf("D").format();
@@ -75,14 +78,14 @@ function Dashboard() {
                       </Nav.Link>
                     </Nav.Item>
                   </Nav>
-                  <div className="date-filter d-flex align-items-center mt-2 mt-sm-0 w-sm-100">
+                  {/* <div className="date-filter d-flex align-items-center mt-2 mt-sm-0 w-sm-100">
                     <div className="input-group">
                       <input type="date" className="form-control" />
                       <button className="btn btn-primary" type="button">
                         <i className="icofont-filter fs-5"></i>
                       </button>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </Col>
               <Col sm={12}>
@@ -95,6 +98,7 @@ function Dashboard() {
                             <div className="left-info">
                               <div className="h6 mb-0">Customer</div>
                               <span className="text-muted">Customer</span>
+                                {/* get customerCount from dashboarddetails for showing on dashboard page */}
                               <div>
                                 <span className="fs-6 fw-bold me-2">{dashboarddetails.customerCount}</span>
                               </div>
@@ -111,6 +115,7 @@ function Dashboard() {
                             <div className="left-info">
                               <div className="h6 mb-0">Order</div>
                               <span className="text-muted">Order</span>
+                           {/* get orderCount from dashboarddetails for showing on dashboard page */}
                               <div>
                                 <span className="fs-6 fw-bold me-2">{dashboarddetails.orderCount}</span>
                               </div>
@@ -127,6 +132,7 @@ function Dashboard() {
                             <div className="left-info">
                               <div className="h6 mb-0">Avg Sale</div>
                               <span className="text-muted">Avg Sale</span>
+                                {/* get average from dashboarddetails for showing on dashboard page */}
                               <div>
                                 <span className="fs-6 fw-bold me-2">{round(dashboarddetails.average, 0)}</span>
                               </div>
@@ -151,6 +157,7 @@ function Dashboard() {
                             <div className="left-info">
                               <div className="h6 mb-0">Avg Item Sale</div>
                               <span className="text-muted">Avg Item Sale</span>
+                              {/* get averageItemSale from dashboarddetails for showing on dashboard page */}
                               <div>
                                 <span className="fs-6 fw-bold me-2">{round(dashboarddetails.averageItemSale, 0)}</span>
                               </div>
@@ -167,6 +174,7 @@ function Dashboard() {
                             <div className="left-info">
                               <div className="h6 mb-0">Total Sale</div>
                               <span className="text-muted">Total Sale</span>
+                                {/* get totalSales from dashboarddetails for showing on dashboard page */}
                               <div>
                                 <span className="fs-6 fw-bold me-2">
                                   {dashboarddetails.orderSalesCount?.[0]?.totalSales}
@@ -185,6 +193,7 @@ function Dashboard() {
                             <div className="left-info">
                               <div className="h6 mb-0">Total Products</div>
                               <span className="text-muted">Total Products</span>
+                                {/* get productCount from dashboarddetails for showing on dashboard page */}
                               <div>
                                 <span className="fs-6 fw-bold me-2">{dashboarddetails.productCount}</span>
                               </div>

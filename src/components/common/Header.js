@@ -20,7 +20,7 @@ function Header() {
             <Dropdown className="dropdown user-profilem ms-2 ms-sm-3 d-flex align-items-center zindex-popover">
               <div className="u-info me-2">
                 <p className="mb-0 text-end line-height-sm ">
-                  <span className="font-weight-bold">John Quinn</span>
+                  <span className="font-weight-bold">superadmin</span>
                 </p>
                 <small>Admin Profile</small>
               </div>
@@ -47,9 +47,9 @@ function Header() {
                       />
                       <div className="flex-fill ms-3">
                         <p className="mb-0">
-                          <span className="font-weight-bold">John Quinn</span>
+                          <span className="font-weight-bold">superadmin</span>
                         </p>
-                        <small>Johnquinn@gmail.com</small>
+                        <small>admin@planshop.com</small>
                       </div>
                     </div>
                     <div>

@@ -10,11 +10,12 @@ import { useDispatch, useSelector } from "react-redux";
 import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
 
 function OrderDetail() {
+  //useDispatch() hook is used to dispatch actions to the Redux store
   const dispatch = useDispatch();
-
+  // useParams hooks of React-Router that returns a dynamic parameter of the URL that the user is currently on
   let params = useParams();
   const { id } = params;
-
+  //useSelector hook is a feature provided by the React-Redux library that allows React components to access the state stored in a Redux store.
   const { order,isSingleOrderLoading } = useSelector((state) => state.products || {});
  // function useEffect call when single order details by id required from order list
   useEffect(() => {
@@ -54,6 +55,7 @@ function OrderDetail() {
                       <div className="single-total total-payable">
                         <p className="value">Total Payable:</p>
                         <p className="price">
+                          {/* function for get total price of order */}
                           {order?.cart?.reduce((total, item) => total + item.unitPrice * item.quantity, 0)}
                         </p>
                       </div>

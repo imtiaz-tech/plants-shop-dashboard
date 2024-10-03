@@ -9,6 +9,7 @@ function AuthIndex() {
       <div className="body d-flex p-0 p-xl-5">
         <div className="container-xxl">
           <div className="row g-0">
+            {/* React Router is a Routing and Navigation Library for React.  */}
             <ReactRoutes>
               <Route exact path={"/sign-in"} element={<SignIn />} />
               <Route exact path={"/page-404"} element={<Page404 />} />

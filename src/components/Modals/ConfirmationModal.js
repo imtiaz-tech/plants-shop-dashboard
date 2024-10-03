@@ -2,6 +2,7 @@ import React from "react";
 import { Modal } from "react-bootstrap";
 
 function ConfirmationModal(props) {
+  //props pass from parent component
   const { isModal, setIsModal, onConfirm } = props;
   return (
     <Modal

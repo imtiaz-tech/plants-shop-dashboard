@@ -6,9 +6,11 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function App(props) {
+  //useNavigate hook provides a simple API for navigating between pages in your React application.
   const navigate = useNavigate();
+  //useSelector hook is a feature provided by the React-Redux library that allows React components to access the state stored in a Redux store.
   const auth = useSelector((state) => state.auth);
-
+  //useEffect call on first render if token navigate to home page otherwise navigate to signin 
   useEffect(() => {
     if (auth.token) {
       navigate("/");

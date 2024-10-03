@@ -20,6 +20,7 @@ function MainIndex() {
       <Header />
       <div className="body d-flex py-3 ">
         <Routes>
+          {/* the process of navigating between different pages without triggering a full page reload */}
           <Route path="/" element={<Dashboard />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/product-list" element={<ProductList />} />

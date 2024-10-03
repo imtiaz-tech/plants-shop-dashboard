@@ -1,6 +1,7 @@
 import React from 'react';
 
 function VisibilityStatus (props) {
+    // props pass from parent component
     const {status,setStatus}=props
 
         return (
@@ -10,6 +11,7 @@ function VisibilityStatus (props) {
                 </div>
                 <div className="card-body">
                 <div className="form-check">
+                    {/* onChange function call when status set to published */}
                     <input className="form-check-input" type="radio" name="couponsstatus" checked={status}
                     onChange={(e) => {setStatus(true) }}/>
                     <label className="form-check-label">
@@ -17,6 +19,7 @@ function VisibilityStatus (props) {
                     </label>
                 </div>
                 <div className="form-check">
+                    {/* onChange function call when status set to Unpublished */}
                     <input className="form-check-input" type="radio" name="couponsstatus" checked={!status}
                      onChange={(e) => {setStatus(false) }} />
                     <label className="form-check-label">

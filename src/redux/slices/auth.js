@@ -1,3 +1,5 @@
+//createAsyncThunk will generate three Redux action creators using createAction : pending , fulfilled , and rejected
+//createSlice simplifies the process of generating action creators and reducers.
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
 

@@ -9,16 +9,17 @@ import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
 import Pagination from "../../components/Categories/Pagination";
 
 function CategoriesList() {
+    //useDispatch() hook is used to dispatch actions to the Redux store
   const dispatch = useDispatch();
   const { categories, categoriesCount, isLoading } = useSelector((state) => state.products || {});
-
+    //useState hook  used for setIsModal,setDeleteId,setCurrentPage,recordsPerPage
   const [isModal, setIsModal] = useState(false);
   const [deleteId, setDeleteId] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
-
+    //Math.ceil method used for get no of pages for pagination
   const nPages = Math.ceil(categoriesCount / recordsPerPage);
-
+    // getCategoriesByPage function used for showing customers on customer information page it used two parameters currentpage recordsperpage.
   const getCategoriesByPage = (pageNumber) => {
     const data = {
       currentPage: pageNumber,
@@ -26,23 +27,23 @@ function CategoriesList() {
     };
     dispatch(getCategories(data));
   };
-
+   // useEffect call when dashboard user click on sidebar menu Categories and by default set getCategoriesByPage current page
   useEffect(() => {
     getCategoriesByPage(currentPage);
   }, []);
-
+   // goToPage function pass to pagination for next or previous page rendering
   const goToPage = (pageNumber) => {
     setCurrentPage(pageNumber);
     getCategoriesByPage(pageNumber);
   };
-
+  //  deleteCategory function used for delete single category by id it requires 1 parameter catedoryId after delete category getCategoriesByPage function called 
   const deleteCategory = () => {
     dispatch(deleteSingleCategory(deleteId)).then(() => {
       getCategoriesByPage(currentPage);
     });
     setIsModal(false);
   };
-
+  // show modal for delete category it require two parameter setIsModal,setDeleteId and after this delete operation occured
   const onDeleteClick = (categoryId) => {
     setIsModal(true);
     setDeleteId(categoryId);
@@ -53,6 +54,7 @@ function CategoriesList() {
   ) : (
     <div className="body d-flex py-3">
       <div className="container-xxl">
+        {/* link to categories add page */}
         <PageHeader1 pagetitle="Categorie List" righttitle="Add Categories" link="/categories-add" routebutton={true} />
         <div className="row g-3 mb-3">
           <div className="col-md-12">
@@ -130,23 +132,30 @@ function CategoriesList() {
                             </tr>
                           </thead>
                           <tbody>
+                           {/* map method calls on array of Categories for showing all Categories on Categories list page*/}
                             {categories?.map((category) => (
                               <tr id="row11" role="row" className="odd">
                                 <td className="sorting_1" tabIndex="0">
+                                {/* get category id from category to shows on categories list page */}
                                   {category._id.slice(0, 6)}
                                 </td>
+                              {/* get category name from category to shows on categories list page */}
                                 <td>{category.name}</td>
+                              {/* get created date from category to shows on categories list page */}
                                 <td className=" dt-body-right">{moment(category.createdAt).format("DD-MM-YYYY")}</td>
                                 <td>
                                   <span className={`badge ${category.status ? "bg-success" : "bg-warning"}`}>
+                              {/* get category status from category to shows on categories list page */}
                                     {category.status ? "Published" : "Unpublished"}
                                   </span>
                                 </td>
                                 <td className=" dt-body-right">
                                   <div className="btn-group" role="group" aria-label="Basic outlined example">
+                                  {/* get category id from category and link to category edit page */}
                                     <Link to={`/categories-edit/${category._id}`} className="btn btn-outline-secondary">
                                       <i className="icofont-edit text-success"></i>
                                     </Link>
+                                  {/* onDeleteClick function call when user click on delete button before action execute it shows confirmation modal */}
                                     <button
                                       onClick={() => {
                                         onDeleteClick(category._id);
@@ -162,6 +171,7 @@ function CategoriesList() {
                             ))}
                           </tbody>
                         </table>
+                        {/* pagination used for showing Categories by page */}
                         <Pagination nPages={nPages} currentPage={currentPage} goToPage={goToPage} />
                       </div>
                     </div>
@@ -172,6 +182,7 @@ function CategoriesList() {
           </div>
         </div>
       </div>
+        {/* pass deleteCategory function to confirmation modal to delete category */}
       <ConfirmationModal setIsModal={setIsModal} isModal={isModal} onConfirm={deleteCategory} />
     </div>
   );

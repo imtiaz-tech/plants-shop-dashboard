@@ -5,7 +5,9 @@ import { getOrders } from "../../redux/slices/products";
 import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
 
 function OrdersList() {
+    //useDispatch() hook is used to dispatch actions to the Redux store
   const dispatch = useDispatch();
+    //useSelector hook is a feature provided by the React-Redux library that allows React components to access the state stored in a Redux store.
   const { orders, isOrdersLoading } = useSelector((state) => state.products || {});
   // useEffect function call when user click on sidebar menu orders
   useEffect(() => {
@@ -82,21 +84,26 @@ function OrdersList() {
                             </tr>
                           </thead>
                           <tbody>
+                            {/* map method calls on array of orders for showing all orders on order list page*/}
                             {orders.map((order) => (
                               <tr id="row11" role="row" className="odd">
                                 <td className="sorting_1" tabIndex="0">
+                                {/* get order id from order to shows on order list page */}
                                   <Link to={`/order-detail/${order._id}`} className="">
                                     {order._id.slice(0, 6)}
                                   </Link>
                                 </td>
+                                {/* get firstname from order to shows on order list page */}
                                 <td>{order.billingDetails.firstName}</td>
                                 <td className=" dt-body-right">
+                                {/*reduce method used for to get total price of single order and shows on order list page */}
                                   {order.cart.reduce((total, item) => total + item.unitPrice * item.quantity, 0)}
                                 </td>
                                 <td>
                                   <span
                                     className={`badge ${order.status === "Completed" ? "bg-success" : "bg-warning"}`}
                                   >
+                                 {/* get status from order to shows on order list page */}
                                     {order.status}
                                   </span>
                                 </td>

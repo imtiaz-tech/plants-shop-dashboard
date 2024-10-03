@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
 function VisibilityStatus(props) {
+  // props pass from parent component
   const { status, setStatus } = props;
   return (
     <>
       <div className="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+        {/* Heading */}
         <h6 className="m-0 fw-bold">Visibility Status</h6>
       </div>
       <div className="card-body">
@@ -14,6 +16,7 @@ function VisibilityStatus(props) {
             type="radio"
             name="couponsstatus"
             checked={status}
+            // onChange function call when status set to published
             onChange={(e) => {
               setStatus(true);
             }}
@@ -27,6 +30,7 @@ function VisibilityStatus(props) {
             type="radio"
             name="couponsstatus"
             checked={!status}
+            // onChange function call when status set to UnPublished
             onChange={(e) => {
               setStatus(false);
             }}

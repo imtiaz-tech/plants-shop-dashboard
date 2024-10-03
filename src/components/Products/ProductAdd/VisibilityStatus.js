@@ -9,6 +9,7 @@ function VisibilityStatus(props) {
             </div>
             <div className="card-body">
                 <div className="form-check">
+                 {/* onChange function call when status set to published */}
                     <input className="form-check-input" type="radio" name="couponsstatus" checked={status}
                     onChange={(e) => {setStatus(true) }}/>
                     <label className="form-check-label">
@@ -17,7 +18,8 @@ function VisibilityStatus(props) {
                 </div>
                 <div className="form-check">
                     <input className="form-check-input" type="radio" name="couponsstatus" checked={!status}
-            onChange={(e) => {setStatus(false) }} />
+                    //   onChange function call when status set to Unpublished 
+                     onChange={(e) => {setStatus(false) }} />
                     <label className="form-check-label">
                         Unpublished
                     </label>

@@ -4,6 +4,7 @@ import moment from "moment";
 
 
 function CardBlock() {
+   //useSelector hook is a feature provided by the React-Redux library that allows React components to access the state stored in a Redux store.
     const { order } = useSelector((state) => state.products || {});
 
   return (
@@ -16,6 +17,7 @@ function CardBlock() {
             </div>
             <div className="flex-fill ms-3 text-truncate">
               <div className="h6 mb-0">Name</div>
+              {/* get name for showing on single order detail page */}
               <span className="small">{order?.billingDetails?.firstName}</span>
             </div>
           </div>
@@ -29,6 +31,7 @@ function CardBlock() {
             </div>
             <div className="flex-fill ms-3 text-truncate">
               <div className="h6 mb-0">Email</div>
+              {/* get email for showing on single order detail page */}
               <span className="small">{order?.billingDetails?.email}</span>
             </div>
           </div>
@@ -42,6 +45,7 @@ function CardBlock() {
             </div>
             <div className="flex-fill ms-3 text-truncate">
               <div className="h6 mb-0">Phone No</div>
+             {/* get phoneNumber for showing on single order detail page */}
               <span className="small">{order.billingDetails?.phoneNumber}</span>
             </div>
           </div>
@@ -55,6 +59,7 @@ function CardBlock() {
             </div>
             <div className="flex-fill ms-3 text-truncate">
               <div className="h6 mb-0">Order Created at</div>
+             {/* get order created date for showing on single order detail page */}
               <span className="small">{moment(order.createdAt).format("DD-MM-YYYY")}</span>
 
             </div>
