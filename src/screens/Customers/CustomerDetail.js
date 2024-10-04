@@ -3,11 +3,11 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import PageHeader1 from "../../components/common/PageHeader1";
-import AddressBlock from "../../components/Customers/CustomerDetails/AddressBlock";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrders } from "../../redux/slices/products";
 import { useParams } from "react-router-dom";
 import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
+import AddressBlock from "../../components/Customers/CustomerDetails/AddressBlock";
 
 function CustomerDetail() {
   //useDispatch() hook is used to dispatch actions to the Redux store
