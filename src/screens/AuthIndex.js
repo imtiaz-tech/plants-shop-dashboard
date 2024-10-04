@@ -11,6 +11,7 @@ function AuthIndex() {
           <div className="row g-0">
             {/* React Router is a Routing and Navigation Library for React.  */}
             <ReactRoutes>
+             {/* the process of navigating between different pages without triggering a full page reload */}
               <Route exact path={"/sign-in"} element={<SignIn />} />
               <Route exact path={"/page-404"} element={<Page404 />} />
             </ReactRoutes>

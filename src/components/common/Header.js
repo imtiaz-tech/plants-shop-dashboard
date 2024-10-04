@@ -2,12 +2,16 @@ import React from "react";
 import { Dropdown } from "react-bootstrap";
 import Profile from "../../assets/images/profile_av.svg";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { logout } from "../../redux/slices/auth";
 
 function Header() {
+  //useSelector hook is a feature provided by the React-Redux library that allows React components to access the state stored in a Redux store.
+  const { user } = useSelector((state) => state.auth || {});
+   //useDispatch() hook is used to dispatch actions to the Redux store
   const dispatch = useDispatch();
+  // onLogout called when clicked on signout
   const onLogout = () => {
     dispatch(logout());
   };
@@ -20,7 +24,7 @@ function Header() {
             <Dropdown className="dropdown user-profilem ms-2 ms-sm-3 d-flex align-items-center zindex-popover">
               <div className="u-info me-2">
                 <p className="mb-0 text-end line-height-sm ">
-                  <span className="font-weight-bold">superadmin</span>
+                  <span className="font-weight-bold">{user.name}</span>
                 </p>
                 <small>Admin Profile</small>
               </div>
@@ -47,9 +51,9 @@ function Header() {
                       />
                       <div className="flex-fill ms-3">
                         <p className="mb-0">
-                          <span className="font-weight-bold">superadmin</span>
+                          <span className="font-weight-bold">{user.name}</span>
                         </p>
-                        <small>admin@planshop.com</small>
+                        <small>{user.email}</small>
                       </div>
                     </div>
                     <div>
@@ -57,6 +61,7 @@ function Header() {
                     </div>
                   </div>
                   <div className="list-group m-2 ">
+                  {/* onLogout function called when clicked on Sign out */}
                     <button
                       className="list-group-item list-group-item-action border-0"
                       onClick={() => onLogout()}

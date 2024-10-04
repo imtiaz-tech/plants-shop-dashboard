@@ -2,7 +2,7 @@
 //createSlice simplifies the process of generating action creators and reducers.
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
-
+// addCategory api used for addCategory  in CategoriesAdd component
 export const addCategory = createAsyncThunk("products/add-category", async (data, { getState, rejectWithValue }) => {
   try {
     const { token } = getState().auth;
@@ -16,7 +16,7 @@ export const addCategory = createAsyncThunk("products/add-category", async (data
     return rejectWithValue(error.response.data);
   }
 });
-
+// getCategories api used for getCategories  in CategoriesList component
 export const getCategories = createAsyncThunk(
   "products/get-categories",
   async (data, { getState, rejectWithValue }) => {
@@ -36,7 +36,7 @@ export const getCategories = createAsyncThunk(
     }
   }
 );
-
+//getSingleCategory api used for getSingleCategory for edit
 export const getSingleCategory = createAsyncThunk(
   "product/get-single-category",
   async (data, { getState, rejectWithValue }) => {
@@ -53,6 +53,7 @@ export const getSingleCategory = createAsyncThunk(
     }
   }
 );
+//updateSingleCategory api used for update Single Category 
 export const updateSingleCategory = createAsyncThunk(
   "products/update-single-category",
   async (updata, { getState, rejectWithValue }) => {
@@ -69,6 +70,7 @@ export const updateSingleCategory = createAsyncThunk(
     }
   }
 );
+//deleteSingleCategory api used for delete Single Category 
 export const deleteSingleCategory = createAsyncThunk(
   "products/delete-single-category",
   async (id, { getState, rejectWithValue }) => {
@@ -85,6 +87,7 @@ export const deleteSingleCategory = createAsyncThunk(
     }
   }
 );
+// addProduct api used for addProduct  in ProductAdd component
 export const addProduct = createAsyncThunk("products/add-product", async (data, { getState, rejectWithValue }) => {
   try {
     const { token } = getState().auth;
@@ -98,7 +101,7 @@ export const addProduct = createAsyncThunk("products/add-product", async (data, 
     return rejectWithValue(error.response.data);
   }
 });
-
+// getProducts api used for getProducts  in CardBlock component
 export const getProducts = createAsyncThunk("products/get-products", async (data, { getState, rejectWithValue }) => {
   try {
     const { token } = getState().auth;
@@ -112,7 +115,7 @@ export const getProducts = createAsyncThunk("products/get-products", async (data
     return rejectWithValue(error.response.data);
   }
 });
-
+// deleteSingleProduct api used for delete single product  in CardBlock component
 export const deleteSingleProduct = createAsyncThunk(
   "products/delete-single-product",
   async (id, { getState, rejectWithValue }) => {
@@ -129,7 +132,7 @@ export const deleteSingleProduct = createAsyncThunk(
     }
   }
 );
-
+//getSingleProduct api used for get Single Product for edit
 export const getSingleProduct = createAsyncThunk(
   "product/get-single-product",
   async (data, { getState, rejectWithValue }) => {
@@ -146,7 +149,7 @@ export const getSingleProduct = createAsyncThunk(
     }
   }
 );
-
+//updateSingleProduct api used for update Single Product in ProductEdit component 
 export const updateSingleProduct = createAsyncThunk(
   "products/update-single-product",
   async (updata, { getState, rejectWithValue }) => {
@@ -163,7 +166,8 @@ export const updateSingleProduct = createAsyncThunk(
     }
   }
 );
-
+//getOrders api used in RecentTransaction component,CustomerDetail component and OrderListData component for orders shows by status
+// orders shows by customer id and shows order by list in  OrderListData component
 export const getOrders = createAsyncThunk("products/get-orders", async (data, { getState, rejectWithValue }) => {
   try {
     const { token } = getState().auth;
@@ -181,7 +185,7 @@ export const getOrders = createAsyncThunk("products/get-orders", async (data, { 
     return rejectWithValue(error.response.data);
   }
 });
-
+//getSingleOrder api used for get Single order in orderDetail component 
 export const getSingleOrder = createAsyncThunk(
   "product/get-single-order",
   async (data, { getState, rejectWithValue }) => {
@@ -198,7 +202,7 @@ export const getSingleOrder = createAsyncThunk(
     }
   }
 );
-
+//updateOrderStatus api used in StatusOrderBlock component for change order status pending to completed
 export const updateOrderStatus = createAsyncThunk(
   "products/update-order-status",
   async (data, { getState, rejectWithValue }) => {
@@ -215,7 +219,7 @@ export const updateOrderStatus = createAsyncThunk(
     }
   }
 );
-
+//getUsers api used in CustomerList component for show users in list
 export const getUsers = createAsyncThunk("products/get-users", async (data, { getState, rejectWithValue }) => {
   try {
     const { token } = getState().auth;
@@ -233,7 +237,7 @@ export const getUsers = createAsyncThunk("products/get-users", async (data, { ge
     return rejectWithValue(error.response.data);
   }
 });
-
+//updateUserStatus api used in CustomerList component for update user status active to inactive or inactive to active
 export const updateUserStatus = createAsyncThunk(
   "products/update-user-status",
   async (data, { getState, rejectWithValue }) => {
@@ -250,7 +254,7 @@ export const updateUserStatus = createAsyncThunk(
     }
   }
 );
-
+//getDashboardDetails api used in Dashboard component for show customerCount,orderCount,average,averageItemSale,totalSales,productCount
 export const getDashboardDetails = createAsyncThunk("products/get-dashboard-details", async (data, { getState, rejectWithValue }) => {
   try {
     const { token } = getState().auth;
@@ -266,6 +270,7 @@ export const getDashboardDetails = createAsyncThunk("products/get-dashboard-deta
 });
 
 const initialState = {
+  category:{},
   status: {},
   order: {},
   userOrders: [],
@@ -298,7 +303,6 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(addCategory.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.category = action.payload.data;
     });
     builder.addCase(addCategory.rejected, (state, action) => {
       state.isLoading = false;
@@ -307,6 +311,10 @@ const productAuthSlice = createSlice({
     builder.addCase(getCategories.pending, (state) => {
       state.isLoading = true;
     });
+    //state.categories used in CategoriesList component for show categories in list;
+    //state.categoriesCount used in CategoriesList component for pagination;
+    //state.categories used in categories compnent for add product with category;
+    //state.categories used in categories compnent for edit product with category
     builder.addCase(getCategories.fulfilled, (state, action) => {
       state.isLoading = false;
       state.categories = action.payload.data;
@@ -319,6 +327,7 @@ const productAuthSlice = createSlice({
     builder.addCase(getSingleCategory.pending, (state) => {
       state.isLoading = true;
     });
+    //state.category used in CategoriesList for edit single category
     builder.addCase(getSingleCategory.fulfilled, (state, action) => {
       state.isLoading = false;
       state.category = action.payload.data;
@@ -332,7 +341,7 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(updateSingleCategory.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.updateCategory = action.payload.data;
+      // state.updateCategory = action.payload.data;
     });
     builder.addCase(updateSingleCategory.rejected, (state, action) => {
       state.isLoading = false;
@@ -343,7 +352,7 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(deleteSingleCategory.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.deletecategory = action.payload?.data;
+      // state.deletecategory = action.payload?.data;
     });
     builder.addCase(deleteSingleCategory.rejected, (state, action) => {
       state.isLoading = false;
@@ -354,12 +363,14 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(addProduct.fulfilled, (state, action) => {
       state.isAllProductsLoading = false;
-      state.product = action.payload.data;
+      // state.product = action.payload.data;
     });
     builder.addCase(addProduct.rejected, (state, action) => {
       state.isAllProductsLoading = false;
       state.error = action.payload;
     });
+    //state.products used in CardBlock component for show products in list;
+    //state.productsCount used in CardBlock component for pagination;
     builder.addCase(getProducts.pending, (state) => {
       state.isLoading = true;
     });
@@ -377,7 +388,7 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(deleteSingleProduct.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.deleteproduct = action.payload.data;
+      // state.deleteproduct = action.payload.data;
     });
     builder.addCase(deleteSingleProduct.rejected, (state, action) => {
       state.isLoading = false;
@@ -386,6 +397,7 @@ const productAuthSlice = createSlice({
     builder.addCase(getSingleProduct.pending, (state) => {
       state.isSingleProductLoading = true;
     });
+    // state.product used in ProductEdit for edit single product
     builder.addCase(getSingleProduct.fulfilled, (state, action) => {
       state.isSingleProductLoading = false;
       state.product = action.payload.data;
@@ -399,7 +411,7 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(updateSingleProduct.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.updateProduct = action.payload.data;
+      // state.updateProduct = action.payload.data;
     });
     builder.addCase(updateSingleProduct.rejected, (state, action) => {
       state.isLoading = false;
@@ -408,6 +420,9 @@ const productAuthSlice = createSlice({
     builder.addCase(getOrders.pending, (state) => {
       state.isOrdersLoading = true;
     });
+    //state.orders used in RecentTransaction component shows orders by status pending;
+    //state.orders used in OrderListData component shows orders by list;
+    //state.orders used in CustomerDetail component shows orders by customer;
     builder.addCase(getOrders.fulfilled, (state, action) => {
       state.isOrdersLoading = false;
       state.orders = action.payload.data;
@@ -419,6 +434,11 @@ const productAuthSlice = createSlice({
     builder.addCase(getSingleOrder.pending, (state) => {
       state.isSingleOrderLoading = true;
     });
+    //state.order used in orderDetail component for get total price of order
+    //state.order used in cardBlock component for showing data name,email,phone and order created at
+    //state.order used in cardBlock component for showing data firstname,lastname,address,city,email,postcode etc.
+    //state.order used in cardBlock component for showing showing data product image,name,quantity of products in one order and price
+    //state.isSingleOrderLoading is used in orderDetail component for loading
     builder.addCase(getSingleOrder.fulfilled, (state, action) => {
       state.isSingleOrderLoading = false;
       state.order = action.payload.data;
@@ -441,6 +461,9 @@ const productAuthSlice = createSlice({
     builder.addCase(getUsers.pending, (state) => {
       state.isUsersLoading = true;
     });
+    //state.users used in CustomerList component for show users in list
+    //state.usersCount used in CustomerList component for pagination;
+    //state.isUsersLoading is used in CustomerList component for loading
     builder.addCase(getUsers.fulfilled, (state, action) => {
       state.isUsersLoading = false;
       state.users = action.payload.data;
@@ -455,7 +478,7 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(updateUserStatus.fulfilled, (state, action) => {
       state.Loading = false;
-      state.status = action.payload.data;
+      // state.status = action.payload.data;
     });
     builder.addCase(updateUserStatus.rejected, (state, action) => {
       state.isLoading = false;
@@ -464,6 +487,7 @@ const productAuthSlice = createSlice({
     builder.addCase(getDashboardDetails.pending, (state) => {
       state.isOrdersLoading = true;
     });
+     //state.users used in Dashboard component for show customerCount,orderCount,average,averageItemSale,totalSales,productCount
     builder.addCase(getDashboardDetails.fulfilled, (state, action) => {
       state.isOrdersLoading = false;
       state.dashboarddetails = action.payload;

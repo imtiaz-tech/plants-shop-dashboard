@@ -9,8 +9,11 @@ import { store } from "./redux/store.js";
 
 
 ReactDOM.render(
+  // React.StrictMode is a tool for highlighting potential problems in an application.
   <React.StrictMode>
+    {/*Provider acts as a gateway or supervisor, granting access to the Redux store to any component that needs it */}
     <Provider store={store}>
+    {/*BrowserRouter enables navigation between views from different components in a React application, allows the browser URL to be changed, and keeps the UI in sync with the URL. */}
       <BrowserRouter>
         <App />
       </BrowserRouter>

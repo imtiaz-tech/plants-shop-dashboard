@@ -5,6 +5,7 @@ function SignIn() {
   const dispatch = useDispatch();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+ //  onLogin function call when user click on SignIn button it require 2 parameters email, password
 
   const onLogin = (event) => {
     event.preventDefault();
@@ -34,6 +35,7 @@ function SignIn() {
                 className="form-control form-control-lg lift"
                 placeholder="name@example.com"
                 value={email}
+                //onchange function called when setemail in input fields
                 onChange={(e) => setemail(e.target.value)}
               />
             </div>
@@ -51,6 +53,7 @@ function SignIn() {
                 value={password}
                 className="form-control form-control-lg lift"
                 placeholder="***************"
+                //onchange function called when setpassword in input fields
                 onChange={(e) => setpassword(e.target.value)}
               />
             </div>
@@ -69,6 +72,7 @@ function SignIn() {
             </div>
           </div>
           <div className="col-12 text-center mt-4">
+            {/* onLogin function call when user click on SignIn button  */}
             <button
               className="btn btn-lg btn-block btn-light lift text-uppercase"
               onClick={onLogin}

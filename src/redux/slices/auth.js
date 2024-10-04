@@ -2,7 +2,7 @@
 //createSlice simplifies the process of generating action creators and reducers.
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../config/axios";
-
+// signin api used for user sign-in in SignIn component
 export const signin = createAsyncThunk("auth/signin", async (data,{ rejectWithValue }) => {
   try {
     const res = await axios.post("/auth/signin", data);
@@ -22,6 +22,7 @@ const initialState = {
 const adminAuthSlice = createSlice({
   name: "auth",
   initialState,
+  //logout used for user logout in header.js component
   reducers: {
     logout: (state, action) => {
       state.user = null;
@@ -32,6 +33,7 @@ const adminAuthSlice = createSlice({
     builder.addCase(signin.pending, (state) => {
       state.isLoading = true;
     });
+    //state.token used in App.js component for sign-in and state.user used in Header.js component for showing user name,email on header
     builder.addCase(signin.fulfilled, (state, action) => {
       state.isLoading = false;
       state.token = action.payload.data.token.token;
