@@ -21,6 +21,7 @@ function Header() {
       <nav className="navbar py-4">
         <div className="container-xxl">
           <div className="h-right d-flex align-items-center order-1">
+          {/*Dropdown in React JS list is a graphical user interface element that gives users a list of possibilities and allows them to select one value from the list. */}
             <Dropdown className="dropdown user-profilem ms-2 ms-sm-3 d-flex align-items-center zindex-popover">
               <div className="u-info me-2">
                 <p className="mb-0 text-end line-height-sm ">
@@ -28,6 +29,7 @@ function Header() {
                 </p>
                 <small>Admin Profile</small>
               </div>
+              {/* Dropdowns are toggleable, contextual overlays for displaying lists of links and more */}
               <Dropdown.Toggle
                 as="a"
                 className="nav-link dropdown-toggle pulse p-0 mb-3"
@@ -40,6 +42,7 @@ function Header() {
                   alt="profile"
                 />
               </Dropdown.Toggle>
+              {/* Dropdown menus are a classic way to offer users a number of options, without taking them to a new page */}
               <Dropdown.Menu className="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-end p-0 m-0 mt-5 ">
                 <div className="card border-0   w280">
                   <div className="card-body pb-0 ">

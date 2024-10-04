@@ -11,7 +11,9 @@ import { useNavigate } from "react-router-dom";
 import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
 
 function ProductAdd() {
+  //useNavigate hook provides a simple API for navigating between pages in your React application.
   const navigate = useNavigate();
+  //useDispatch() hook is used to dispatch actions to the Redux store
   const dispatch = useDispatch();
   //usestate hook used for set name,textEditor,status,price,skuNum,quantity,category,image
   const [name, setName] = useState("");

@@ -50,6 +50,7 @@ function CategoriesList() {
   };
 
   return isLoading ? (
+    // import OverlaySpinner for loading
     <OverlaySpinner />
   ) : (
     <div className="body d-flex py-3">

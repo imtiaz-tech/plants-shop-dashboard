@@ -14,11 +14,11 @@ function CardBlock() {
   const { products, productsCount, isLoading } = useSelector((state) => state.products || {});
   //useState used for set confirmation modal
   const [isModal, setIsModal] = useState(false);
-    //useState used for set deletId for product delete 
+  //useState used for set deletId for product delete 
   const [deleteId, setDeleteId] = useState("");
-    //useState used for set currentPage for pagination
+  //useState used for set currentPage for pagination
   const [currentPage, setCurrentPage] = useState(1);
-    //useState used for set recordsPerPage 
+  //useState used for set recordsPerPage 
   const [recordsPerPage] = useState(10);
   //Math.ceil method used for get no of pages for pagination
   const nPages = Math.ceil(productsCount / recordsPerPage);
@@ -54,6 +54,7 @@ function CardBlock() {
   };
 
   return isLoading ? (
+   // import OverlaySpinner for loading
     <OverlaySpinner />
   ) : (
     <div className="card mb-3 bg-transparent p-2">

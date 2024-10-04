@@ -13,6 +13,7 @@ function OrderList() {
                 <div id="myDataTable_wrapper" className="dataTables_wrapper dt-bootstrap5 no-footer">
                   <div className="row">
                     <div className="col-sm-12">
+                      {/* import OrderList from OrderListData to show orders in list */}
                       <OrdersList />
                     </div>
                   </div>
