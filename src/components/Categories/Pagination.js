@@ -1,6 +1,7 @@
 import React from "react";
 
 function Pagination(props) {
+  //props pass from parent component
   const { nPages, currentPage, goToPage } = props;
 
   return (
@@ -9,6 +10,7 @@ function Pagination(props) {
         <nav className="justify-content-end d-flex">
           <ul className="pagination">
             <li className={`page-item ${currentPage == 1 ? "disabled" : ""}`}>
+              {/* onclick function called when click on previous button */}
               <a className="page-link" onClick={() => goToPage(currentPage - 1)} href="#!">
                 Previous
               </a>
@@ -26,6 +28,7 @@ function Pagination(props) {
               </li>
             ))}
             <li className={`page-item  ${currentPage == nPages ? "disabled" : ""}`}>
+              {/* onclick function called when click on Next button */}
               <a className="page-link" onClick={() => goToPage(currentPage + 1)} href="#!">
                 Next
               </a>
