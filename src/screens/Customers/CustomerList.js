@@ -93,6 +93,7 @@ function CustomerList() {
   ];
 
   return isUsersLoading ? (
+    // import OverlaySpinner for loading
     <OverlaySpinner />
   ) : (
     <div className="body d-flex py-lg-3 py-md-2">

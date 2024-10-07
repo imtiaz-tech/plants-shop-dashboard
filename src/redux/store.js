@@ -2,23 +2,14 @@
 //combineReducers function allows you to combine multiple reducer functions into a single function that can be passed to the Redux store.
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import authReducer from "./slices/auth";
-import productsReducer from "./slices/products"
+import productsReducer from "./slices/products";
 // REHYDRATE allows the application to restore the user's previous state, including data, authentication status, and other application state
-// persistStore allows you to save the Redux store's state to a persistent storage medium, such as local storage 
+// persistStore allows you to save the Redux store's state to a persistent storage medium, such as local storage
 // FLUSH allows the application to remove the state from store
-import {
-  persistReducer,
-  persistStore,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from "redux-persist";
+import { persistReducer, persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 //logger powerful tool that allows you to visualize the flow of actions, state changes, and errors in your Redux application
-import logger from 'redux-logger'
+import logger from "redux-logger";
 
 const persistConfig = {
   key: "auth",

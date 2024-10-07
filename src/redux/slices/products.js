@@ -16,7 +16,7 @@ export const addCategory = createAsyncThunk("products/add-category", async (data
     return rejectWithValue(error.response.data);
   }
 });
-// getCategories api used for getCategories  in CategoriesList component
+// getCategories api used for getCategories  in CategoriesList component,productadd componet add product by category and productedit component for edit product
 export const getCategories = createAsyncThunk(
   "products/get-categories",
   async (data, { getState, rejectWithValue }) => {
@@ -452,7 +452,7 @@ const productAuthSlice = createSlice({
     });
     builder.addCase(updateOrderStatus.fulfilled, (state, action) => {
       state.isSingleOrderLoading = false;
-      state.status = action.payload.data;
+      // state.status = action.payload.data;
     });
     builder.addCase(updateOrderStatus.rejected, (state, action) => {
       state.isLoading = false;
@@ -487,7 +487,7 @@ const productAuthSlice = createSlice({
     builder.addCase(getDashboardDetails.pending, (state) => {
       state.isOrdersLoading = true;
     });
-     //state.users used in Dashboard component for show customerCount,orderCount,average,averageItemSale,totalSales,productCount
+     //state.dashboarddetails used in Dashboard component for show customerCount,orderCount,average,averageItemSale,totalSales,productCount
     builder.addCase(getDashboardDetails.fulfilled, (state, action) => {
       state.isOrdersLoading = false;
       state.dashboarddetails = action.payload;

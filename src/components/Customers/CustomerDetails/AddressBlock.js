@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 function AddressBlock() {
     //useSelector hook is a feature provided by the React-Redux library that allows React components to access the state stored in a Redux store.
     const { order } = useSelector((state) => state.products || {});
+    console.log("🚀 ~ AddressBlock ~ order:", order)
 
 return (
 

@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getOrders } from "../../redux/slices/products";
 import { useParams } from "react-router-dom";
 import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
-import AddressBlock from "../../components/Customers/CustomerDetails/AddressBlock";
 
 function CustomerDetail() {
   //useDispatch() hook is used to dispatch actions to the Redux store
@@ -67,7 +66,6 @@ function CustomerDetail() {
         <PageHeader1 pagetitle="Customer Detail" />
         <div className="row g-3 mb-xl-3">
           <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
-            <AddressBlock />
             <div className="card">
               <div className="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
                 <h6 className="mb-0 fw-bold ">Customer Order</h6>
