@@ -5,12 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDashboardDetails } from "../../redux/slices/products";
 import moment from "moment";
 import { round } from "lodash";
+import OverlaySpinner from "../../components/Uicomponent/OverlaySpinner";
 function Dashboard() {
   //useDispatch() hook is used to dispatch actions to the Redux store
   const dispatch = useDispatch();
   //useSelector hook is a feature provided by the React-Redux library that allows React components to access the state stored in a Redux store.
   // We are getting dashboarddetails that contains ......
-  const { dashboarddetails } = useSelector((state) => state.products || {});
+  const { dashboarddetails,isDashboardDetailsLoading } = useSelector((state) => state.products || {});
   // usestate hook used for set setActiveNavLink
   const [activeNavLink, setActiveNavLink] = useState("today");
   // onDateSelect function called when user click on today,week,month,year on dashboard it require perior parameter;
@@ -45,7 +46,10 @@ function Dashboard() {
     dispatch(getDashboardDetails({ startTime, endTime }));
   }, []);
 
-  return (
+  return isDashboardDetailsLoading ? (
+    // import OverlaySpinner for loading
+      <OverlaySpinner />
+    ) :(
     <div className="body d-flex py-3">
       <div className="container-xxl">
         <div className="mt-1">

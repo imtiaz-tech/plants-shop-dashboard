@@ -287,6 +287,7 @@ const initialState = {
   isUsersLoading: false,
   isUserOrdersLoading: false,
   isOrdersLoading: false,
+  isDashboardDetailsLoading:false,
   isSingleProductLoading: false,
   isSingleOrderLoading: false,
   isAllProductsLoading: false,
@@ -485,15 +486,15 @@ const productAuthSlice = createSlice({
       state.error = action.payload;
     });
     builder.addCase(getDashboardDetails.pending, (state) => {
-      state.isOrdersLoading = true;
+      state.isDashboardDetailsLoading = true;
     });
      //state.dashboarddetails used in Dashboard component for show customerCount,orderCount,average,averageItemSale,totalSales,productCount
     builder.addCase(getDashboardDetails.fulfilled, (state, action) => {
-      state.isOrdersLoading = false;
+      state.isDashboardDetailsLoading = false;
       state.dashboarddetails = action.payload;
     });
     builder.addCase(getDashboardDetails.rejected, (state, action) => {
-      state.isOrdersLoading = false;
+      state.isDashboardDetailsLoading = false;
       state.error = action.payload;
     });
   },
